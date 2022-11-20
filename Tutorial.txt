@@ -1,0 +1,15 @@
+npm -v 
+node- v
+npm install express --save
+npm install -g express-generator //npm install  express-generator -g
+express --view=ejs  //if error delete \AppData\Roaming\npm\express.ps1
+npm install
+     ///   npm start//para correr el servidor //detener ctrl+ c 
+npm install nodemon -g
+nodemon start //if error fix //https://dev.to/jumbo02/how-to-fix-nodemon-nodemon-ps1-cannot-be-loaded-because-running-scripts-is-disabled-on-this-system-27km
+
+then 
+npm install mysql
+atros comandos
+npm install body-parser -g
+npm install --save multer

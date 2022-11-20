@@ -1,0 +1,91 @@
+<%- include ../layouts/cabecera.ejs %>
+
+  <body>
+    <div id="preloader"></div>
+    <!--==========================
+    Hero Section
+    ============================-->
+
+    <section id="hero">
+      <div class="hero-container">
+        <div class="wow fadeIn">
+          <div class="hero-logo">
+            <img class="" src="../img/user.png" width="200" alt="ProOnliPc">
+          </div>
+
+          <h1>Registrate ahora </h1>
+          <h2>Para ser <span class="rotating">parte de nosotros, un arrendador, un arrendatario </span></h2>
+        </div>
+      </div>
+    </section>
+
+
+    <!--==========================
+    Formulario
+    ============================-->
+
+    <section id="about">
+      <div class="container wow fadeInUp">
+        <div class="row">
+          <div class="col-md-12">
+            <form method="post" action="/casas" enctype="multipart/form-data">
+              <!--Envia la informacion a casas y se recepciona el route/casas-->
+
+              <!-- b-form-group -->
+              <div class="form-group">
+                <label for="my-input">ID</label>//type file
+                <input id="my-input" class="form-control-file" type="number" name="id">
+              </div>
+
+              <div class="form-group">
+                <label for="my-input">nombre</label>
+                <input id="my-input" class="form-control" type="text" name="nombre">
+              </div>
+              <div class="form-group">
+                <label for="my-input">apellidos</label>
+                <input id="my-input" class="form-control" type="text" name="apellido">
+              </div>
+              <div class="form-group">
+                <label for="my-input">edad</label>
+                <input id="my-input" class="form-control" type="number" name="apellido">
+              </div>
+              <div class="form-group">
+                <label for="my-select">sexo</label>
+                <select id="my-select" class="form-control" name="sexo">
+                  <option value="0">Masculino</option>
+                  <option value="1">Femenino</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="my-input">correo electronico</label>
+                <input id="my-input" class="form-control" type="number" name="correo">
+              </div>
+              <div class="form-group">
+                <label for="my-input">contraseña</label>
+                <input id="my-input" class="form-control" type="text" name="contraseña">
+              </div>
+              <div class="form-group">
+                <label for="my-input">curp</label>
+                <input id="my-input" class="form-control" type="number" name="curp">
+              </div>
+              <div class="form-group">
+                <label for="my-input">admin</label>
+                <input id="my-input" class="form-control" type="number" name="admin">
+              </div>
+
+              <!-- b-btn -->
+              <br>
+              <center>
+                <button class="btn btn-success" type="submit">Guardar</button>
+
+                <a class="btn btn-primary" href="../casas">Cancelar </a>
+
+              </center>
+
+            </form>
+
+    </section>
+
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <%- include ../layouts/pie.ejs %>

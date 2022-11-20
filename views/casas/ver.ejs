@@ -1,0 +1,85 @@
+<%- include ../layouts/cabecera.ejs %>
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+        <div class="hero-logo">
+          <img class="" src="../img/casa.webp" alt="ProOnliPc" width="200">
+        </div>
+        <h1>Visualiza los Inmuebles</h1>
+        <h2>Ya sea <span class="rotating">Casa, Departamento </span></h2>
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+  Formulario
+  ============================-->
+
+  <section id="about">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+
+          <section id="portfolio">
+            <div class="container wow fadeInUp">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="section-title">Visualización De inmuebles </h3>
+                  <div class="section-title-divider"></div>
+                  <p class="section-description"></p>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <% for( let i=0; i < DATOScasasDep1.length; i++ ) { %>
+                  <div class="col-md-3">
+                    <a class="portfolio-item" style="background-image: url('/images/<%=DATOScasasDep1[i].img %>');">
+                      <div class="details">
+                        <img class="img-thumbnail" width="100" src="/images/<%=DATOScasasDep1[i].img %>" alt="">
+                        <br>
+                        <td>Municipio:<%=DATOScasasDep1[i].municipio%>
+                        </td>
+                        <br>
+                        <td>Numero de casa:<%=DATOScasasDep1[i].id%>
+                        </td>
+                        <br>
+                        <td>Precio:<%=DATOScasasDep1[i].precio%>
+                        </td>
+                        <br>
+                        <td>Dimenciones:<%=DATOScasasDep1[i].dimenciones%>
+                        </td>
+                        <br>
+
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                          <form class="form-inline" method="get" action="/casas/editar/<%=DATOScasasDep1[i].id%> ">
+                            <button class="btn btn-danger" type="submit">Editar</button>
+                          </form>
+                        </div>
+
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                          <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOScasasDep1[i].id%>">
+                            <button class="btn btn-warning" type="submit">Borrar</button>
+                          </form>
+                        </div>
+
+                      </div>
+
+                    </a>
+
+                  </div>
+
+                  <% } %>
+
+              </div>
+            </div>
+          </section>
+          <a href="/casas/crear" class="btn btn-primary" type="button">Registrar inmuebles</a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <%- include ../layouts/pie.ejs %>

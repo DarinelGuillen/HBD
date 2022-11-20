@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- <script id="script">
+        function cargaCompletada(){
+          setTimeout(
+            seEjecutaraEn3seg=() => {
+               
+          //   document.getElementById("lugar").innerHTML=""+
+          // '<a href="casas" class="btn btn-primary" type="button"><h3>Ir a la ventana de visualizar casas</h3></a>';
+          res.render("casas/crear");
+          res.redirect("/casas");
+          router.get("/", casasController.index);
+          console.log("Here");
+        }, 1000);
+        }
+    </script> -->
+    <!-- <script>
+      $(document).ready(function(){
+          // indicamos que se ejecuta la función a los 5 segundos de haberse
+          // cargado la pagina
+          setTimeout(clickbutton,1000);
+
+          function clickbutton()
+          {
+              // simulamos el click del mouse en el boton del formulario
+              $("#botonEnviar").click();
+          }
+      });
+  </script> -->
+  <script>
+    var clickMe = document.getElementById('clickMe');
+
+clickMe.addEventListener('click', function() {
+  alert('I was clicked');
+}, true);
+
+setTimeout(function() {
+  var event = new MouseEvent('click'),
+    canceled = !clickMe.dispatchEvent(event);
+
+  if (canceled) {
+    alert('Click event was canceled');
+  }
+}, 1000);
+  </script>
+  </head>
+  <body onload="cargaCompletada()">
+    <h1>PRUEBA/INDEX
+      <br>WWWWWWWWWW: NO PUDE HACER UN BOTON PARA REGRESAR AL LOCALHOST:3000 NO HACER LO QUE DICE ABAJO </h1>
+    <h3>Estoy en /prueba/index.ejs</h3>
+    
+    <!-- <a href="casas" class="btn btn-primary" type="button"><h3>Ir a la ventana de visualizar casas</h3></a> -->
+    <br><br>
+    <h1>En 3 seg APARECERA UN BOTON QUE TE LLEVARA A /CASAS QUE LO PODEMOS CAMBIAR QUE TE LLEVE A INDEX</h1>
+    <div id="lugar"></div>
+    <a href="casas" id="clickMe"  class="btn btn-primary" type="button"><h3>Ir a la ventana de visualizar casas</h3></a>
+    <form action="casas">
+      <input type="submit" id="botonEnviar" href="casas" value="enviar formulario">
+  </form>
+    <H1>Esta panatalla puede estar destinada a una vista de carga y en 3 segundo podras darle al boton listo o asi</H1>
+  
+    <!-- <div id="clickMe">Click Me</div> -->
+  </body>
+</html>

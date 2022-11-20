@@ -1,0 +1,45 @@
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        
+<table class="table table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>IMG</th>
+                    <th>MUNISIPIO</th>
+                    <th>CALLE</th>
+                    <th>CODIGO POSTAL</th>
+                    <th>Num exterior</th>
+                    <th>DIMENCIONES</th>
+                    <th>CANTIDAD DE BAÑOS</th>
+                    <th>CANTIDAD DE RECAMARAS</th>
+                    <th>AMUELBLADO</th>
+                    <th>Internet</th>
+                    <th>AIRE ACONDICIONADO</th>
+                    <th>PRECIO</th>
+                    <th>DescripcionGENERAL</th>
+                    <th>Propietario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let i = 0; i < CD.length; i++ ) { %>
+                    <tr>
+                        <td>##<%=CD[i].id%></td>
+                        <td>##<%=CD[i].municipio%></td>
+                        <td>##<%=CD[i].calle%></td>
+                        <td>##<%=CD[i].codigo_postal%></td>
+                        <td>##<%=CD[i].numero_exterior%></td>
+                        <td>##<%=CD[i].dimenciones%></td>
+                        <td>##<%=CD[i].c_banos%></td>
+                        <td>##<%=CD[i].c_recamaras%></td>
+                        <td>##<%=CD[i].amueblado%></td>
+                        <td>##<%=CD[i].internet%></td>
+                        <td>##<%=CD[i].aire_acondicionado%></td>
+                        <td>##<%=CD[i].precio%></td>
+                        <td>##<%=CD[i].descripcion_general%></td>
+                        <td>##<%=CD[i].tipo_depa0_casa1%></td>
+                        <td>##<%=CD[i].id_propietario%></td>
+                        <td>_Editar - Borrar__</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
