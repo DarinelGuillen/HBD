@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users');//SE NECESITA PARA USERS
 var casasRouter = require('./routes/casas');//
 
 var app = express();
@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', usersRouter);//SE NECESITA PARA USERS
 // app.use('views', casasRouter);
 app.use('/casas', casasRouter);
 

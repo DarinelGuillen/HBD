@@ -1,5 +1,7 @@
-module.exports={
+module.exports={//SE NECESITA PARA USERS
     insertarUser:function(conexion,datos,archivos,funcion){
-        conexion.query("insert into libro (nombre, imagen) values (?,?)", [datos.nombre,archivos.filename], funcion);        
+        conexion.query("INSERT INTO "+
+         "libro (nombre, contrasena) values (?,?)"
+         ,[datos.nombre,datos.contrasena], funcion);        
     },
 };

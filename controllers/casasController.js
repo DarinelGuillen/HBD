@@ -1,4 +1,3 @@
-console.log("Hola aqui");
 var conexion = require("../config/conexion");
 var casa = require("../model/casa");
 var borrar = require("fs");
