@@ -3,19 +3,19 @@ var casa = require("../model/casa");
 var borrar = require("fs");
 
 module.exports = {
-  indexmain: function (req, res) {
-    ////Si se requiere de datos en el index agregar esta fincion
-    res.render("../index.ejs");
-  },
-  index: function (req, res) {
-    casa.obtener(conexion, function (err, datos) {
-      // console.log(datos);
-      res.render("casas/ver", {
-        title: "Aplicación",
-        DATOScasasDep1: datos,
-      }); //views/casas/index
-    });
-  },
+  // indexmain: function (req, res) {
+  //   ////Si se requiere de datos en el index agregar esta fincion
+  //   res.render("../index.ejs");
+  // },
+  // index: function (req, res) {
+  //   casa.obtener(conexion, function (err, datos) {
+  //     // console.log(datos);
+  //     res.render("casas/ver", {
+  //       title: "Aplicación",
+  //       DATOScasasDep1: datos,
+  //     }); //views/casas/index
+  //   });
+  // },
 
   ///
 

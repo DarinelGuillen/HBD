@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const casasController = require("../controllers/casasController");
+const indexController = require("../controllers/indexController");
 
 var multer= require('multer');
 var fecha= Date.now();
@@ -19,8 +20,9 @@ var rutaAlmacen=multer.diskStorage(
 var cargar=multer({storage:rutaAlmacen});
 
 /* GET home page. */
-router.get("/", casasController.indexmain);
-router.get("/", casasController.index);
+// router.get("/", casasController.indexmain);
+// router.get("/", casasController.index);
+router.get("/", indexController.index);
 router.get("/crear", casasController.crear);
 router.post("/",cargar.single("archivo"),casasController.guardar)
 router.post('/eliminar/:id',casasController.eliminar);

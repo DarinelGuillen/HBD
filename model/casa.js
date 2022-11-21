@@ -6,10 +6,9 @@ module.exports = {
   insertar: function (conexion, datos, archivos, funcion) {
     conexion.query(
       "INSERT INTO Depa_Casa_HBD " +
-        "(`id`, `municipio`, `calle`, `codigo_postal`, `numero_exterior`, `dimenciones`, `c_banos`, `c_recamaras`, `amueblado`, `internet`, `aire_acondicionado`, `precio`, `descripcion_general`, `tipo_depa0_casa1`, `id_propietario`,`disponible1_No0`,`img`)" +
-        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
+        "( `municipio`, `calle`, `codigo_postal`, `numero_exterior`, `dimenciones`, `c_banos`, `c_recamaras`, `amueblado`, `internet`, `aire_acondicionado`, `precio`, `descripcion_general`, `tipo_depa0_casa1`, `id_propietario`,`disponible1_No0`,`img`)" +
+        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
       [
-        datos.id,
         datos.municipio,
         datos.calle,
         datos.codigo_postal,

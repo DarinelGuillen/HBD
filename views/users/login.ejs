@@ -1,12 +1,39 @@
 <%- include ../layouts/cabecera.ejs %>
 <!-- //SE NECESITA PARA USERS -->
+<script>
+    function funcionprueba(){
+        // let users=new Array();
+        // users=UnicoDatosUser
+       let correo= document.getElementById("correo").value;
+       let contrasena= document.getElementById("contrasena").value;
+       for(let i = 0; i < users.length; i++){
+        if(UnicoDatosUser[i].correo==correo){
+            console.log("Correo OK")
+            if(UnicoDatosUser[i].contrasena==contrasena){
+                console.log("Contraseña")
+            //     document.getElementById("impresion").innerHTML=""+
+            // '<a class="btn btn-primary" href="../casas">Cancelar </a>';
+            }
+            console.log("segundo if")
+            // console.log("Holaaaaaaa")
+            
+            // window.location.href = "https://professor-falken.com";
+            // res.render("/usuarioAdmin/ver")
+        }
 
-    <body>
+       }
+       console.log("No POSIBLE")
+        // document.getElementById("impresion").innerHTML=""+
+        //     'ALGUN DATO ESTA MAL';
+} 
+
+</script>
+    <body >
         <div id="preloader"></div>
 
         <section id="hero">
             <div class="hero-container">
-                <form method="post" action="/casas" enctype="multipart/form-data">
+                <form method="post"  >
                     <!--Envia la informacion a user y se recepciona el route/casas-->
 
                     <!-- datos de inicio de session  -->
@@ -14,19 +41,27 @@
                     <br>
                     <br>
                     <div class="form-group">
-                        <label style="color:#ffffff" for="my-input">correo electronico</label>
-                        <input id="my-input" class="form-control-file" type="email" name="coreo"
+                        <label style="color:#ffffff" for="my-input"> electronico</label>
+                        <input id="correo" class="form-control-file" type="text" name="correo"
                             placeholder="Damo@example.com">
                     </div>
                     <div class="form-group">
                         <label style="color:#ffffff" for="my-input">contraseña</label>
-                        <input id="my-input" class="form-control-file" type="password" name="contraseña">
+                        <input id="contrasena" class="form-control-file" type="password" name="contraseña">
                     </div>
                     <!-- b-btns -->
-
+                    <% for( let i = 0; i < UnicoDatosUser.length; i++ ) { %>
+                        <div class="form-group">
+                            <label style="color:#ffffff" for="my-input">TTTT</label>
+                            <input id="my-input" class="form-control-file" value="<%=UnicoDatosUser[i].nombre%>" type="text" name="D">
+                        </div>
+                    <% } %> 
                     <br>
                     <center>
-                        <button class="btn btn-success" type="submit">iniciar sessión</button>
+                        <button onclick="funcionprueba()" >Coprobar datos</button>
+                        <div id="impresion">
+
+                        </div>
                         <a class="btn btn-primary" href="../casas">Cancelar </a>
                     </center>
                 </form>
