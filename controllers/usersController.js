@@ -10,11 +10,12 @@ module.exports = {
     res.render("users/login");
   },
   guardar: function (req, res) {
+    
     console.log(req.body);
     // console.log(req.file.filename);
     user.insertarUser(conexion, req.body, function (err) {
-      console.log("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEREEEEEEEEEEEEEEEEE");
-      res.render("users/crear");
+      res.redirect("http://localhost:3000/");
+    //   res.redirect("/casas");
     });
   },
 };
