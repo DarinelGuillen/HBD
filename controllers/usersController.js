@@ -11,7 +11,7 @@ module.exports = {
       // console.log(datos);
       res.render("users/login", {
         title: "Aplicación",
-        UnicoDatosUser: datos,
+        nicoDatosUsers: datos,
       }); //views/casas/index
     });
     // res.render("users/login");

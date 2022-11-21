@@ -1,24 +1,24 @@
 var conexion = require("../config/conexion");
 var user = require("../model/user");
 // var borrar = require("fs");
-
-module.exports ={
-    login: function (req, res) {
-        user.obtener(conexion, function (err, datos) {
-          // console.log(datos);
-          document.getElementById("").value;
-           // if()
-          res.render("", {
-            title: "Aplicación",
-            UnicoDatosUser: datos,
-          }); //views/casas/index
-        });
-        // res.render("users/login");
-      },
-      
+function prueba(){
+module.exports = {
+  login: function (req, res) {
+    user.obtener(conexion, function (err, datos) {
+      // console.log(datos);
+      let contrasena=document.getElementById("contrasena").value;
+      let correo=document.getElementById("correo").value;
+      // if(contrasena)
+      res.render("", {
+        title: "Aplicación",
+        nicoDatosUsers: datos,
+      }); //views/casas/index
+    });
+    // res.render("users/login");
+  },
+};
 }
-
-alert()
+alert();
 
 /*
   <script>
@@ -26,10 +26,10 @@ alert()
         let correo= document.getElementById("correo").value;
         let contrasena= document.getElementById("contrasena").value;
         
-        for(let i = 0; i < UnicoDatosUser.length; i++){
-          if(UnicoDatosUser[i].correo==correo){
+        for(let i = 0; i < nicoDatosUsers.length; i++){
+          if(nicoDatosUsers[i].correo==correo){
               alert("Correo OK")
-              if(UnicoDatosUser[i].contrasena==contrasena){
+              if(nicoDatosUsers[i].contrasena==contrasena){
                   alert("Contraseña")
                   document.getElementById("impresion").innerHTML=""+
               '<a class="btn btn-primary" href="../casas">Cancelar </a>';

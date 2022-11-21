@@ -23,11 +23,12 @@
                         <input id="contrasena" class="form-control-file" type="password" value="admin" name="contraseña">
                     </div>
                     <!-- b-btns -->
-                    <% for( let i = 0; i < UnicoDatosUser.length; i++ ) { %>
-                        <div class="form-group">
-                            <label style="color:#ffffff" for="my-input">TTTT</label>
-                            <input id="my-input" class="form-control-file" value="<%=UnicoDatosUser[i].nombre%>" type="text" name="D">
-                        </div>
+                    <% for( let i = 0; i < nicoDatosUsers.length; i++ ) { %>
+                        <p style="color: red;"><%=nicoDatosUsers[i].id%>==
+                            <%=nicoDatosUsers[i].nombre%>++<%=nicoDatosUsers[i].apellido%>
+                            ==<%=nicoDatosUsers[i].edad%>==<%=nicoDatosUsers[i].correo%>
+                        ==<%=nicoDatosUsers[i].contrasena%></p>
+                        
                     <% } %> 
                     <br>
                     <center>
