@@ -13,7 +13,7 @@ module.exports = {
     console.log(req.body);
     // console.log(req.file.filename);
     user.insertarUser(conexion, req.body, function (err) {
-      res.redirect("http://localhost:3000/");
+      //res.redirect("http://localhost:3000/");
     //   res.redirect("/casas");
     });
   },
