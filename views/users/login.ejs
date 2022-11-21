@@ -2,8 +2,8 @@
 <!-- //SE NECESITA PARA USERS -->
 <script>
     function funcionprueba(){
-        // let users=new Array();
-        // users=UnicoDatosUser
+        let users=new Array();
+        users=JSON.parse(UnicoDatosUser)
        let correo= document.getElementById("correo").value;
        let contrasena= document.getElementById("contrasena").value;
        for(let i = 0; i < users.length; i++){
@@ -11,8 +11,8 @@
             alert("Correo OK")
             if(UnicoDatosUser[i].contrasena==contrasena){
                 alert("Contraseña")
-            //     document.getElementById("impresion").innerHTML=""+
-            // '<a class="btn btn-primary" href="../casas">Cancelar </a>';
+                document.getElementById("impresion").innerHTML=""+
+            '<a class="btn btn-primary" href="../casas">Cancelar </a>';
             }
             alert("segundo if")
             // alert("Holaaaaaaa")
@@ -23,8 +23,8 @@
 
        }
        alert("No POSIBLE")
-        // document.getElementById("impresion").innerHTML=""+
-        //     'ALGUN DATO ESTA MAL';
+        document.getElementById("impresion").innerHTML=""+
+            'ALGUN DATO ESTA MAL';
 } 
 
 </script>
@@ -33,7 +33,7 @@
 
         <section id="hero">
             <div class="hero-container">
-                <form  >
+                
                     <!--Envia la informacion a user y se recepciona el route/casas-->
 
                     <!-- datos de inicio de session  -->
@@ -42,12 +42,12 @@
                     <br>
                     <div class="form-group">
                         <label style="color:#ffffff" for="my-input"> electronico</label>
-                        <input id="correo" class="form-control-file" type="text" name="correo"
+                        <input id="correo" class="form-control-file" type="text" name="correo" value="admin"
                             placeholder="Damo@example.com">
                     </div>
                     <div class="form-group">
                         <label style="color:#ffffff" for="my-input">contraseña</label>
-                        <input id="contrasena" class="form-control-file" type="password" name="contraseña">
+                        <input id="contrasena" class="form-control-file" type="password" value="admin" name="contraseña">
                     </div>
                     <!-- b-btns -->
                     <% for( let i = 0; i < UnicoDatosUser.length; i++ ) { %>
@@ -64,7 +64,7 @@
                         </div>
                         <a class="btn btn-primary" href="../casas">Cancelar </a>
                     </center>
-                </form>
+              
             </div>
         </section>
 
