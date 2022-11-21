@@ -13,4 +13,3 @@ npm install mysql
 atros comandos
 npm install body-parser -g
 npm install --save multer
-neewwwwwwwwwwwwww
