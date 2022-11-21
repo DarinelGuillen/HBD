@@ -10,6 +10,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');//SE NECESITA PARA USERS
 var casasRouter = require('./routes/casas');//
+var usuarioAdminRouter = require('./routes/usuarioAdmin');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);//SE NECESITA PARA USERS
 // app.use('views', casasRouter);
 app.use('/casas', casasRouter);
+app.use('/usuarioAdmin',usuarioAdminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
