@@ -1,34 +1,7 @@
 <%- include ../layouts/cabecera.ejs %>
 <!-- //SE NECESITA PARA USERS -->
-<script>
-    function funcionprueba(){
-        let users=new Array();
-        users=JSON.parse(UnicoDatosUser)
-       let correo= document.getElementById("correo").value;
-       let contrasena= document.getElementById("contrasena").value;
-       for(let i = 0; i < users.length; i++){
-        if(UnicoDatosUser[i].correo==correo){
-            alert("Correo OK")
-            if(UnicoDatosUser[i].contrasena==contrasena){
-                alert("Contraseña")
-                document.getElementById("impresion").innerHTML=""+
-            '<a class="btn btn-primary" href="../casas">Cancelar </a>';
-            }
-            alert("segundo if")
-            // alert("Holaaaaaaa")
-            
-            // window.location.href = "https://professor-falken.com";
-            // res.render("/usuarioAdmin/ver")
-        }
-
-       }
-       alert("No POSIBLE")
-        document.getElementById("impresion").innerHTML=""+
-            'ALGUN DATO ESTA MAL';
-} 
-
-</script>
     <body >
+        <script src="../../prueba/validacionDatos.js"> </script>
         <div id="preloader"></div>
 
         <section id="hero">
@@ -58,7 +31,7 @@
                     <% } %> 
                     <br>
                     <center>
-                        <button onclick="funcionprueba()" >Coprobar datos</button>
+                        <button onclick="prueba()" >Coprobar datos</button>
                         <div id="impresion">
 
                         </div>
