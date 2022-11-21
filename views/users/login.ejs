@@ -8,21 +8,21 @@
        let contrasena= document.getElementById("contrasena").value;
        for(let i = 0; i < users.length; i++){
         if(UnicoDatosUser[i].correo==correo){
-            console.log("Correo OK")
+            alert("Correo OK")
             if(UnicoDatosUser[i].contrasena==contrasena){
-                console.log("Contraseña")
+                alert("Contraseña")
             //     document.getElementById("impresion").innerHTML=""+
             // '<a class="btn btn-primary" href="../casas">Cancelar </a>';
             }
-            console.log("segundo if")
-            // console.log("Holaaaaaaa")
+            alert("segundo if")
+            // alert("Holaaaaaaa")
             
             // window.location.href = "https://professor-falken.com";
             // res.render("/usuarioAdmin/ver")
         }
 
        }
-       console.log("No POSIBLE")
+       alert("No POSIBLE")
         // document.getElementById("impresion").innerHTML=""+
         //     'ALGUN DATO ESTA MAL';
 } 
@@ -33,7 +33,7 @@
 
         <section id="hero">
             <div class="hero-container">
-                <form method="post"  >
+                <form  >
                     <!--Envia la informacion a user y se recepciona el route/casas-->
 
                     <!-- datos de inicio de session  -->
