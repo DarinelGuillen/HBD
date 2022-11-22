@@ -12,7 +12,7 @@ module.exports = {
   //     // console.log(datos);
   //     res.render("casas/ver", {
   //       title: "Aplicación",
-  //       DATOScasasDep1: datos,
+  //       DATOScasasDep12: datos,
   //     }); //views/casas/index
   //   });
   // },
@@ -22,7 +22,7 @@ module.exports = {
   ver: function (req, res) {
     casa.obtener(conexion, function (err, datos) {
       // console.log(datos);
-      res.render("casas/ver", { title: "Aplicación", DATOScasasDep1: datos }); //views/casas/index
+      res.render("casas/ver", { title: "Aplicación", DATOScasasDep12: datos }); //views/casas/index
     });
   },
 
