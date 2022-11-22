@@ -25,6 +25,10 @@
               <div class="row">
                 <div class="col-md-12">
                   <h3 class="section-title">Visualización De inmuebles </h3>
+                  <br>
+                  <center>
+                    <a href="/casas/crear" class="btn btn-primary" type="button">Registra tu inmueble ahora</a>
+                  </center>
                   <div class="section-title-divider"></div>
                   <p class="section-description"></p>
                 </div>
@@ -32,32 +36,35 @@
 
 
               <div class="row">
-                <% for( let i=0; i < DATOScasasDepAS.length; i++ ) { %>
+                <% for( let i=0; i < DATOSinmueblesCD.length; i++ ) { %>
                   <div class="col-md-3">
-                    <a class="portfolio-item" style="background-image: url('/images/<%=DATOScasasDepAS[i].img %>'); color: black;">
+                    <a class="portfolio-item" style="background-image: url('/images/<%=DATOSinmueblesCD[i].img %>');">
                       <div class="details">
                         <br>
-                        <td>Municipio:<%=DATOScasasDepAS[i].municipio%>
+                        <b style="color:rgb(5, 5, 5);">Municipio:<%=DATOSinmueblesCD[i].municipio%>
+                        </b>
+                        <br>
+                        <td>Numero de registro:<%=DATOSinmueblesCD[i].id%>
                         </td>
                         <br>
-                        <td>Numero de casa:<%=DATOScasasDepAS[i].id%>
+                        <td>Precio mensual:$<%=DATOSinmueblesCD[i].precio%>
                         </td>
                         <br>
-                        <td>Precio:<%=DATOScasasDepAS[i].precio%>
+                        <td>Dimenciones:<%=DATOSinmueblesCD[i].dimenciones%>m²
                         </td>
                         <br>
-                        <td>Dimenciones:<%=DATOScasasDepAS[i].dimenciones%>
+                        <td>Descripcion:<%=DATOSinmueblesCD[i].descripcion_general%>
                         </td>
                         <br>
 
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                          <form class="form-inline" method="get" action="/casas/editar/<%=DATOScasasDepAS[i].id%> ">
+                          <form class="form-inline" method="get" action="/casas/editar/<%=DATOSinmueblesCD[i].id%> ">
                             <button class="btn btn-danger" type="submit">Editar</button>
                           </form>
                         </div>
 
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                          <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOScasasDepAS[i].id%>">
+                          <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOSinmueblesCD[i].id%>">
                             <button class="btn btn-warning" type="submit">Borrar</button>
                           </form>
                         </div>
@@ -65,7 +72,6 @@
                       </div>
 
                     </a>
-
                   </div>
 
                   <% } %>
@@ -73,7 +79,6 @@
               </div>
             </div>
           </section>
-          <a href="/casas/crear" class="btn btn-primary" type="button">Registrar inmuebles</a>
 
         </div>
       </div>

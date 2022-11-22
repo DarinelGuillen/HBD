@@ -1,139 +1,143 @@
 <%- include ../layouts/cabeceraEditar.ejs %>
 
-  
 
-      <section id="hero">
+
+    <section id="hero">
         <div class="hero-container">
-          <div class="wow fadeIn">
-            <div class="hero-logo">
-              <img class="" src="/img/casa.webp" alt="ProOnliPc" width="200">
+            <div class="wow fadeIn">
+                <div class="hero-logo">
+                    <img class="" src="/img/casa.webp" alt="ProOnliPc" width="200">
+                </div>
+                <h1>edicion de inmueble</h1>
+                <h2>Ya sea <span class="rotating">Casa, Departamento </span></h2>
             </div>
-            <h1>edicion de inmueble</h1>
-            <h2>Ya sea <span class="rotating">Casa, Departamento </span></h2>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!--==========================
+    <!--==========================
   Formulario
   ============================-->
 
-  <section id="about">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
+    <section id="about">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
 
-            <form method="post" action="../actualizar/" enctype="multipart/form-data" ><!--Envia la informacion a casas y se recepciona el route/casas-->
-                <div>
-                    <h1> Informacion de inmueble : <%=casa.id%></h1>
-                </div>
-                <!-- b-form-group -->
-                <div class="form-group">
-                    <label for="my-input">ID</label>//type file
-                    <input id="my-input" class="form-control-file" value="<%=casa.id%>" type="number" name="id">
-                 </div>
-            
-                 <div class="form-group">
-                    <label for="my-input">municipio</label>
-                    <input id="my-input" class="form-control" value="<%=casa.municipio%>" type="text" name="municipio">
-                </div>
-            <!--D-->
-           
-            <div class="form-group">
-                <label for="my-input">calle</label>
-                <input id="my-input" class="form-control"value="<%=casa.calle%>" type="text" name="calle">
-            </div>
-            <div class="form-group">
-                <label for="my-input">codigo Postal</label>
-                <input id="my-input" class="form-control" type="number" value="<%=casa.codigo_postal%>" name="codigo_postal">
-            </div>
-            <div class="form-group">
-                <label for="my-input">Numero Exterior</label>
-                <input id="my-input" class="form-control" type="number"  value="<%=casa.numero_exterior%>"name="numero_exterior">
-            </div>
-            <div class="form-group">
-                <label for="my-input">Dimencionde de casa o departamento</label>
-                <input id="my-input" class="form-control" type="text" value="<%=casa.dimenciones%>" name="dimenciones">
-            </div>
-            <div class="form-group">
-                <label for="my-input">cantida de Baños</label>
-                <input id="my-input" class="form-control" type="number" value="<%=casa.c_banos%>" name="c_banos">
-            </div>
-            <div class="form-group">
-                <label for="my-input">Cantidad de Recamaras</label>
-                <input id="my-input" class="form-control" type="number"value="<%=casa.c_recamaras%>" name="c_recamaras">
-            </div>
-            <div class="form-group">
-                <label for="my-select">Amueblado</label>
-                <select id="my-select" class="form-control" name="amueblado">
-                    <option value="0">NO</option>
-                    <option value="1">YES</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="my-select">Internet</label>
-                <select id="my-select" class="form-control" name="internet">
-                    <option value="0">NO</option>
-                    <option value="1">YES</option>
-                </select>
-                <p id="aireAcondicionado">
-            <% if (casa.aire_acondicionado=1) { %>
-                 document.getElementById("aireAcondicionado").innerHTML="YES"+" HHHH"; 
-                
-            <% } %>NO
-                </p>
-                <div class="form-group">
-                    <label for="my-select">Aire Acondicionado</label>
-                    <select id="my-select" class="form-control" value="<%=casa.aire_acondicionado%>" name="aire_acondicionado">
-                        <option value="0">NO</option>
-                        <option value="1">YES</option>
-                    </select>
-            </div>
-            <div class="form-group">
-                <label for="my-input">precio</label>
-                <input id="my-input" class="form-control" type="number"value="<%=casa.precio%>" name="precio">
-            </div>
-            <div class="form-group">
-                <label for="my-input">Descripcion generar del departamento o casa</label>
-                <input id="my-input" class="form-control" type="text" value="<%=casa.descripcion_general%>" name="descripcion_general">
-            </div>
-            <div class="form-group">
-                <label for="my-select">Es una casa o departamento</label>
-                <select id="my-select" class="form-control" name="tipo_depa0_casa1">
-                    <option value="1">Casa</option>
-                    <option value="0">Departamento</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="my-input">Ingrese Su ID como propietario //Deberia de tomar el ID del Propietario Automaticamente</label>
-                <input id="my-input" class="form-control" type="number"value="<%=casa.id_propietario%>" name="id_propietario" >
-            </div>
-            
-            <div class="form-group">
-                <label for="my-select">El departamento esta Disponible  //Al crear uno Nuevo las disponivilidad debe de ser 1(verdadero o si disponible)</label>
-                <select id="my-select" class="form-control" name="disponible1_No0">
-                    <option value="0">NO</option>
-                    <option value="1">SI</option>
-                </select>
-            </div> 
-            <!-- b-form-file -->
-            
-            <div class="form-group">Imagen</label>
-                 <img class="img-thumbnail" src="../../images/<%=casa.img%>" width="100" alt="" >
-                <input id="my-input" class="form-control-file" type="file" name="archivo">
-            </div>
-            
-             <!-- b-btn --><br>
-             <button class="btn btn-success" type="submit">Guardar</button>
-             <a class="btn btn-primary" href="/casas">Cancelar </a>
-            </form>  
-         
-          <a href="/casas" class="btn btn-primary" type="button">Regresar A casas Visualizacion</a>
+                    <form method="post" action="../actualizar/" enctype="multipart/form-data">
+                        <!--Envia la informacion a casas y se recepciona el route/casas-->
+                        <div>
+                            <h1> Informacion del inmueble : <%=casa.id%>
+                            </h1>
+                        </div>
+                        <!-- b-form-group -->
+                        <div class="form-group">
+                            <label for="my-input">ID:</label>
+                            <input id="my-input" class="form-control-file" value="<%=casa.id%>" type="number" name="id">
+                        </div>
 
-  </section>
+                        <div class="form-group">
+                            <label for="my-input">Municipio:</label>
+                            <input id="my-input" class="form-control" value="<%=casa.municipio%>" type="text"
+                                name="municipio">
+                        </div>
+                        <!--D-->
 
-      <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-      <%- include ../layouts/pieEditar.ejs %>
+                        <div class="form-group">
+                            <label for="my-input">Calle:</label>
+                            <input id="my-input" class="form-control" value="<%=casa.calle%>" type="text" name="calle">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Codigo Postal:</label>
+                            <input id="my-input" class="form-control" type="number" value="<%=casa.codigo_postal%>"
+                                name="codigo_postal">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Numero Exterior:</label>
+                            <input id="my-input" class="form-control" type="number" value="<%=casa.numero_exterior%>"
+                                name="numero_exterior">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Dimencionde del inmueble en m²: (metros cuadrados)</label>
+                            <input id="my-input" class="form-control" type="text" value="<%=casa.dimenciones%>"
+                                name="dimenciones">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Cantidad de Baños</label>
+                            <input id="my-input" class="form-control" type="number" value="<%=casa.c_banos%>"
+                                name="c_banos">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Cantidad de Recamaras:</label>
+                            <input id="my-input" class="form-control" type="number" value="<%=casa.c_recamaras%>"
+                                name="c_recamaras">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-select">Amueblado:</label>
+                            <select id="my-select" class="form-control" name="amueblado">
+                                <option value="0">NO</option>
+                                <option value="1">YES</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-select">Internet</label>
+                            <select id="my-select" class="form-control" name="internet">
+                                <option value="0">NO</option>
+                                <option value="1">YES</option>
+                            </select>
+                            
+                            <div class="form-group">
+                                <label for="my-select">Aire Acondicionado:</label>
+                                <select id="my-select" class="form-control" value="<%=casa.aire_acondicionado%>"
+                                    name="aire_acondicionado">
+                                    <option value="0">NO</option>
+                                    <option value="1">YES</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="my-input">Precio (mensual):</label>
+                                <input id="my-input" class="form-control" type="number" value="<%=casa.precio%>"
+                                    name="precio">
+                            </div>
+                            <div class="form-group">
+                                <label for="my-input">Descripción del inmueble:</label>
+                                <input id="my-input" class="form-control" type="text"
+                                    value="<%=casa.descripcion_general%>" name="descripcion_general">
+                            </div>
+                            <div class="form-group">
+                                <label for="my-select">Tipo de inmueble:</label>
+                                <select id="my-select" class="form-control" name="tipo_depa0_casa1">
+                                    <option value="1">Casa</option>
+                                    <option value="0">Departamento</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="my-input">Ingrese su ID </label>
+                                <input id="my-input" class="form-control" type="number" value="<%=casa.id_propietario%>"
+                                    name="id_propietario">
+                            </div>
 
-      
+                            <div class="form-group">
+                                <label for="my-select">Estado del inmueble:</label>
+                                <select id="my-select" class="form-control" name="disponible1_No0">
+                                    <option value="0">Disponible</option>
+                                    <option value="1">Ocupado</option>
+                                </select>
+                            </div>
+                            <!-- b-form-file -->
 
+                            <div class="form-group">Imagen</label>
+                                <img class="img-thumbnail" src="../../images/<%=casa.img%>" width="100" alt="">
+                                <input id="my-input" class="form-control-file" type="file" name="archivo">
+                            </div>
+
+                            <!-- b-btn --><br>
+                            <button class="btn btn-success" type="submit">Guardar</button>
+                            <a class="btn btn-primary" href="/casas">Cancelar </a>
+                    </form>
+
+                    <a href="/casas" class="btn btn-primary" type="button">Regresar A casas Visualizacion</a>
+
+    </section>
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <%- include ../layouts/pieEditar.ejs %>
