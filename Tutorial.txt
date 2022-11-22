@@ -14,4 +14,4 @@ atros comandos
 npm install body-parser -g
 npm install --save multer
 dari new pc
-dddd
+prueba de git clone y push
