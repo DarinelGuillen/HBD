@@ -32,35 +32,32 @@
 
 
               <div class="row">
-                <% for( let i=0; i < DATOScasasDep12.length; i++ ) { %>
-                  <% if (condition) { %>
-                   
-                  <% } %>
+                <% for( let i=0; i < DATOScasasDepAS.length; i++ ) { %>
                   <div class="col-md-3">
-                    <a class="portfolio-item" style="background-image: url('/images/<%=DATOScasasDep12[i].img %>');">
+                    <a class="portfolio-item" style="background-image: url('/images/<%=DATOScasasDepAS[i].img %>'); color: black;">
                       <div class="details">
                         <br>
-                        <td>Municipio:<%=DATOScasasDep12[i].municipio%>
+                        <td>Municipio:<%=DATOScasasDepAS[i].municipio%>
                         </td>
                         <br>
-                        <td>Numero de casa:<%=DATOScasasDep12[i].id%>
+                        <td>Numero de casa:<%=DATOScasasDepAS[i].id%>
                         </td>
                         <br>
-                        <td>Precio:<%=DATOScasasDep12[i].precio%>
+                        <td>Precio:<%=DATOScasasDepAS[i].precio%>
                         </td>
                         <br>
-                        <td>Dimenciones:<%=DATOScasasDep12[i].dimenciones%>
+                        <td>Dimenciones:<%=DATOScasasDepAS[i].dimenciones%>
                         </td>
                         <br>
 
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                          <form class="form-inline" method="get" action="/casas/editar/<%=DATOScasasDep12[i].id%> ">
+                          <form class="form-inline" method="get" action="/casas/editar/<%=DATOScasasDepAS[i].id%> ">
                             <button class="btn btn-danger" type="submit">Editar</button>
                           </form>
                         </div>
 
                         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                          <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOScasasDep12[i].id%>">
+                          <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOScasasDepAS[i].id%>">
                             <button class="btn btn-warning" type="submit">Borrar</button>
                           </form>
                         </div>

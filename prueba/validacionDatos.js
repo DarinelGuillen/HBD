@@ -9,6 +9,7 @@ function prueba() {
         let contrasena = document.getElementById("contrasena").value;
         let correo = document.getElementById("correo").value;
         // if(contrasena)
+        
         res.render("", {
           title: "Aplicación",
           DataUser: datos,
