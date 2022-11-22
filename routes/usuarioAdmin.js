@@ -5,6 +5,5 @@ const usuarioAdminController = require("../controllers/usuarioAdminController");
 
 
 /* GET users listing. */
-router.get("/ver", usuarioAdminController.ver);
-// router.post("/",cargar.single("archivo"),librosController.guardar);
+router.get("/index", usuarioAdminController.index);
 module.exports = router;
