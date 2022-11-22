@@ -22,15 +22,17 @@
                         <label style="color:#ffffff" for="my-input">contraseña</label>
                         <input id="contrasena" class="form-control-file" type="password" value="admin" name="contraseña">
                     </div>
-                    <!-- b-btns -->
+                   
                     <%  %> 
                     <% for( let i = 0; i < UnicoDatosUsers1.length; i++ ) { %>
-                       
+                       <% if (UnicoDatosUsers1[i].correo=='admin') { %>
+                        
+                      
                         <p style="color: red;"><%=UnicoDatosUsers1[i].id%>==
                             <%=UnicoDatosUsers1[i].nombre%>++<%=UnicoDatosUsers1[i].apellido%>
                             ==<%=UnicoDatosUsers1[i].edad%>==<%=UnicoDatosUsers1[i].correo%>
                         ==<%=UnicoDatosUsers1[i].contrasena%></p>
-                        
+                        <% } %>
                     <% } %> 
                     <br>
                     <center>
@@ -38,38 +40,12 @@
                         <div id="impresion">
 
                         </div>
+                        <a href="/usuarioAdmin/index">users menu</a>
                         <a class="btn btn-primary" href="../casas">Cancelar </a>
                     </center>
               
             </div>
         </section>
-        <script>
-            function funcionprueba(UnicoDatosUsers1){
-
-              let correo= document.getElementById("correo").value;
-              let contrasena= document.getElementById("contrasena").value;
-              alert("lo que sea "+UnicoDatosUsers1)
-              for(let i = 0; i < UnicoDatosUsers1.length; i++){
-                alert("for")
-                if(UnicoDatosUsers1[i].correo==correo){
-                    alert("Correo OK")
-                    if(UnicoDatosUsers1[i].contrasena==contrasena){
-                        alert("Contraseña")
-                        document.getElementById("impresion").innerHTML=""+
-                    '<a class="btn btn-primary" href="../casas">Cancelar </a>';
-                    }
-                    alert("segundo if")
-                    // alert("Holaaaaaaa")
-                    
-                    // window.location.href = "https://professor-falken.com";
-                    // res.render("/usuarioAdmin/ver")
-                }
-      
-              }
-              alert("No POSIBLE")
-                
-        } 
-      
-        </script>
+        
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         <%- include ../layouts/pie.ejs %>
