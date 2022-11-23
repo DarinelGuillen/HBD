@@ -4,7 +4,7 @@
 function DOS(bdpUsers) {
 
   //alert('consola  prueba  funcionDeValidacion 333'+bdpUsers[1].nombre)
-  alert('holaaaaaaaaaa')
+  alert('holaaaaaaaaaaiiiiiiiiiiiii')
   console.log('consola  prueba  funcionDeValidacion 333');
 }
 /*
