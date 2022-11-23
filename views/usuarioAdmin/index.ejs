@@ -26,7 +26,29 @@
   <!--==========================
   Sección de encabezado
   ============================-->
+  <section>
+   
 
+               
+                  <% for( let i = 0; i < bdpUsers.length; i++ ) { %>
+                    <td>index:<%=i%>
+                    </td>
+                    <td>:<%=bdpUsers[i].id%>
+                    </td>
+                    <td>nom:<%=bdpUsers[i].nombre%>
+                    </td>
+                    <td>ape:<%=bdpUsers[i].apellidos%>
+                    </td>
+                    <td>edad:<%=bdpUsers[i].edad%>
+                    </td>
+                    <td>correo:<%=bdpUsers[i].correo%>
+                    </td>
+                    <br>
+                  <% } %>
+           
+             
+                  
+  </section>
   <!--==========================
   Acerca de nosostros mi scrum team bien chido y tumba codigo
   ============================-->
@@ -215,7 +237,7 @@
 
       <div class="row">
         <div class="col-md-6">
-          <a class="portfolio-item" style="background-image: url(img/inmueble_casa.jpeg);" href="/ProOnliPc/html/VisualizaciónCasas.html">
+          <a class="portfolio-item" style="background-image: url(/img/inmueble_casa.jpeg);" href="/ProOnliPc/html/VisualizaciónCasas.html">
             <div class="details">
               <h4>Casa</h4>
               <span>Visualiza aquí</span>
@@ -224,7 +246,7 @@
         </div>
 
         <div class="col-md-6">
-          <a class="portfolio-item" style="background-image: url(img/inmueble_departamento.jpeg);" href="/ProOnliPc/html/VisualizaciónDepartamentos.html">
+          <a class="portfolio-item" style="background-image: url(/img/inmueble_departamento.jpeg);" href="/ProOnliPc/html/VisualizaciónDepartamentos.html">
             <div class="details">
               <h4>Departamento</h4>
               <span>Visualiza aquí</span>
@@ -347,6 +369,7 @@
       </div>
     </div>
   </section>
+  
 
   <!--==========================
   Contact Section

@@ -1,12 +1,45 @@
 var conexion = require("../config/conexion");
-var user = require("../model/usuarioAdmin");
+var usuarioAdmin = require("../model/usuarioAdmin");
 // var borrar = require("fs");
 
 module.exports = {
-  //index: function (req, res) {
-  //  res.render("usuarioAdmin/index");
-  //},
   index: function (req, res) {
-    res.render("usuarioAdmin/index");
+    usuarioAdmin.obtener(conexion, function (err, datos) {
+      // console.log(datos);
+      //res.render("usuarioAdmin/index");
+    // res.render("usuarioAdmin/index", { title: "Aplicación", bdpInmuebles: datos }); //views/casas/index
+    res.render("usuarioAdmin/index", { bdpUsers:datos}); //views/casas/index
+    //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
+
+    });
   },
+  index1: function (req, res) {
+    usuarioAdmin.obtener1(conexion, function (err, datos) {
+      // console.log(datos);
+      //res.render("usuarioAdmin/index");
+      res.render("usuarioAdmin/dos", {  bdpInmuebles: datos }); //views/casas/index
+      //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
+
+   });
+  },
+  /*ver: function (req, res) {
+    usuarioAdmin.obtener(conexion, function (err, datos) {
+      // console.log(datos);
+      res.render("usuarioAdmin/index", { title: "Aplicación", bdpInmuebles: datos }); //views/casas/index
+      //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
+
+    });
+  },*
+  /*ver: function (req, res) {
+    usuarioAdmin.obtenerNotificaciones(conexion, function (err, datos) {
+      // console.log(datos);
+      res.render("usuarioAdmin/index", { title: "Aplicación", bdpNotificaciones: datos }); //views/casas/index
+    });
+  },
+  ver: function (req, res) {
+    usuarioAdmin.obtenerUsers(conexion, function (err, datos) {
+      // console.log(datos);
+      res.render("usuarioAdmin/index", { title: "Aplicación", bdpUsers: datos }); //views/casas/index
+    });
+  },*/
 };

@@ -1,0 +1,42 @@
+<div class="row">
+    <% for( let i=0; i < bdpInmuebles.length; i++ ) { %>
+      <% if (bdpInmuebles[i].id_propietario==4) { %>
+       
+      <div class="col-md-3">
+        <a class="portfolio-item" style="background-image: url('../images/ <%=bdpInmuebles[i].img %>');">
+          <div class="details">
+            <br>
+            <b style="color:rgb(5, 5, 5);">Municipio:<%=bdpInmuebles[i].municipio%>
+            </b>
+            <br>
+            <td>Numero de registro:<%=bdpInmuebles[i].id%>
+            </td>
+            <br>
+            <td>Precio mensual:$<%=bdpInmuebles[i].precio%>
+            </td>
+            <br>
+            <td>Dimenciones:<%=bdpInmuebles[i].dimenciones%>
+            </td>
+            <br>
+            <td>Descripcion:<%=bdpInmuebles[i].descripcion_general%>
+            </td>
+            <br>
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="get" action="/casas/editar/<%=bdpInmuebles[i].id%> ">
+                <button class="btn btn-danger" type="submit">Editar</button>
+              </form>
+            </div>
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="post" action="/casas/eliminar/<%=bdpInmuebles[i].id%>">
+                <button class="btn btn-warning" type="submit">Borrar</button>
+              </form>
+            </div>
+
+          </div>
+          <% } %>
+
+          <% } %>
+        </a>
+      </div>
