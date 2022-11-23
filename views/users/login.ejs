@@ -1,7 +1,6 @@
 <%- include ../layouts/cabecera.ejs %>
 <!-- //SE NECESITA PARA USERS -->
     <body >
-        <script src="../../prueba/validacionDatos.js"> </script>
         <div id="preloader"></div>
 
         <section id="hero">
@@ -34,11 +33,16 @@
                         ==<%=UnicoDatosUsers1[i].contrasena%></p>
                         <% } %>
                     <% } %> 
+                    
+                   
                     <br>
                     <center>
-                        <button onclick="prueba()">Comprobar datos</button>
+                        <button onclick="DOS()">DOS</button>
+                        <button onclick="validacionDatospublic()">validacionDatospublic</button>
+                        <button onclick="funcionEnEjs()">funcionEnEjs</button>
+                        <button onclick="funcionEnEjs2()">funcionEnEjs2</button>
                         <div id="impresion">
-
+                                <h1>aqui boton</h1>
                         </div>
                         <a href="/usuarioAdmin/index">users menu</a>
                         <a class="btn btn-primary" href="../casas">Cancelar </a>
@@ -46,6 +50,25 @@
               
             </div>
         </section>
-        
+        <script >
+            function funcionEnEjs() {
+                alert('consola  prueba  funcionDeValidacion 123')
+                console.log('consola  prueba  funcionDeValidacion 123');
+                }
+        </script>
+        <script>
+           
+            // var borrar = require("fs");
+            function funcionEnEjs2() {
+                
+            alert('consola  prueba  funcionDeValidacion 123')
+            console.log('consola  prueba  funcionDeValidacion 123');
+            }
+
+        </script>
+        <script src="../js/validacionDatos.js"></script>
+        <script src="/usuarioadmin/validacionDatos.js"></script>
+
+        src="../lib/jquery/jquery.min.js"
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         <%- include ../layouts/pie.ejs %>

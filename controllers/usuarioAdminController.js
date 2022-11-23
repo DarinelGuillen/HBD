@@ -22,6 +22,17 @@ module.exports = {
 
    });
   },
+  obt: function (req, res) {
+    usuarioAdmin.obtenerValidacicion(conexion, function (err, datos) {
+      // console.log(datos);
+      //res.render("usuarioAdmin/index");
+      //res.render("usuarioAdmin/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
+      res.send("../public/js/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
+      //res.send(datos);
+      //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
+
+   });
+  },
   /*ver: function (req, res) {
     usuarioAdmin.obtener(conexion, function (err, datos) {
       // console.log(datos);

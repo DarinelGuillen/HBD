@@ -11,6 +11,12 @@ module.exports = {
     //conexion.query("SELECT * FROM notificaciones", funcion);
     
   },
+  obtenerValidacicion: function (conexion, funcion) {
+    conexion.query("SELECT * FROM users_HBD", funcion);
+    //conexion.query("SELECT * FROM Depa_Casa_HBD", funcion);
+    //conexion.query("SELECT * FROM notificaciones", funcion);
+    
+  },
   /*obtenerNotificaciones: function (conexion, funcion) {
     conexion.query("SELECT * FROM notificaciones", funcion);
 
