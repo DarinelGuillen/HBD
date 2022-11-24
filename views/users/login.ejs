@@ -1,36 +1,16 @@
 <%- include ../layouts/cabecera.ejs %>
 <!-- //SE NECESITA PARA USERS -->
+
     <body >
+      
+
         <div id="preloader"></div>
 
         <section id="hero">
             <div class="hero-container">
                 
                     <!--Envia la informacion a user y se recepciona el route/casas-->
-                    <form method="post"  >
-                        <form method="post" action="../actualizar/" >
-                        <h1>inicio de sessión </h1>
-                        <br>
-                        <br>
-                        <div class="form-group">
-                            <label style="color:#ffffff" for="my-input"> ID</label>
-                            <input id="id" class="form-control-file" type="text" name="id" value="0"
-                                placeholder="Damo@example.com">
-                        </div>
-                       
-                        <div class="form-group">
-                            <label style="color:#ffffff" for="my-input"> electronico</label>
-                            <input id="correo" class="form-control-file" type="text" name="correo" value="admin"
-                                placeholder="Damo@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label style="color:#ffffff" for="my-input">contraseña</label>
-                            <input id="contrasena" class="form-control-file" type="password" value="admin" name="contrasena">
-                        </div>
-                        Envia la informacion a casas y se recepciona el route/casas
-                                 <button class="btn btn-success" type="submit">iniciar sesion</button>
-                    </form>
-                    <a href="/index">Vista render</a>
+                   
                     <!-- datos de inicio de session  -->
                    <!-- <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                         <form class="form-inline" method="post" action="/users/esElverificar/">
@@ -40,20 +20,45 @@
                       -->
                       
                       <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                        <form class="form-inline" method="post" action="/users/verificar/<%='admin,admin'%>">
+                        <form id="formulario" class="form-inline" >
                              <div class="form-group">
                             <label style="color:#ffffff" for="my-input"> electronico</label>
-                            <input id="correo" class="form-control-file" type="text" name="correo" value="admin"
-                                placeholder="Damo@example.com">
+                            <input id="correo" class="form-control-file" type="text" name="correo" placeholder="Damo@example.com">
                         </div>
                         <div class="form-group">
                             <label style="color:#ffffff" for="my-input">contraseña</label>
-                            <input id="contrasena" class="form-control-file" type="password" value="admin" name="contrasena">
+                            <input id="contrasena" class="form-control-file" type="password"  name="contrasena">
                         </div>
-                          <button class="btn btn-warning" type="submit">correo contra </button>
+                          <button class="btn btn-warning" type="submit" >correo contra </button>
                         </form>
                       </div>
-                   
+                      <script>
+
+                        $(document).ready(function() {
+                    
+                            $('#formulario').submit(function(e) {
+                                e.preventDefault();
+                                let co=document.getElementById('correo').value+'';
+                                let contrasena=document.getElementById('contrasena').value+'';
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: 'http://localhost:3000/users/verificar/'+co+','+contrasena,
+                                    headers: {'Authorization': 'Bearer xxxxxxxxxxxxx'},
+                                    data: $(this).serialize(),
+                                    success: function(response)
+                                    {
+                                     const ruta = JSON.parse(response);
+                                      console.log(ruta);
+                                      window.location.href = ruta.redirect;
+                                   },
+                                   error:function(error){
+                                    console.log(e.message);
+                                   }
+                               });
+                             });
+                        });
+                    </script>
                     <%  %> 
                     <% for( let i = 0; i < UnicoDatosUsers1.length; i++ ) { %>
                        <% if (UnicoDatosUsers1[i].correo=='admin') { %>
@@ -72,7 +77,7 @@
                         <div id="impresion">
                                 <h1>aqui boton</h1>
                         </div>
-                        <a href="/usuarioAdmin/index">users menu</a>
+                       <!-- <a href="/usuarioAdmin/index">users menu</a>-->
                         <a class="btn btn-primary" href="../casas">Cancelar </a>
                     </center>
                     <script src="/js/validacionDatos.js"></script>

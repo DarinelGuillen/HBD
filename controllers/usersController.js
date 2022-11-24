@@ -74,28 +74,38 @@ module.exports = {
 
     user.verificarUsuario(conexion, DATA[0], function (err, registros) {
       console.log(registros, "  resgistros    ");
-      let array=new Array;
-      array=registros
+      let array = new Array();
+      array = registros;
       console.log(array, "  array    ");
 
       if (array.length == 0) {
         console.log("err == vacio []");
-       
       } else {
-       
-
         let contrasena = registros[0].contrasena;
         // console.log("DATOS     " + correo);
 
         if (DATA[1] == contrasena) {
           console.log("Existes y es igual ");
           if (registros[0].admin) {
-            res.redirect("/usuarioAdmin/index");
+          
+                //  requestListener;
+                // return requestListener;
+                // return res.redirect('http://localhost:3000/usuarioAdmin/index');
+
+                return res.send(JSON.stringify({login:true, redirect:'http://localhost:3000/usuarioAdmin/index'}));
+           // document.getElementById('impresion').innerHTML='<a href="/usuarioAdmin/index">users menu</a>';
+            //return false;
           } else {
-            res.redirect("/casas"); //lo envio a casas ver
+            return res.send(JSON.stringify({login:true, redirect:'http://localhost:3000/'}));
+
+            // res.redirect("/casas"); //lo envio a casas ver
           }
         } else {
           console.log("Compruebe sus datos ");
+          return res.send(alert('Conprueb sus datos'))
+        
+          //return res.send(JSON.stringify({login:true, redirect:'http://localhost:3000/'}));
+          return err ;
         }
       }
 
