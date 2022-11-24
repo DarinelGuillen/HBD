@@ -18,4 +18,13 @@ module.exports={//SE NECESITA PARA USERS
             datos.admin,
         ], funcion);        
     },
+    verificarUsuario: function (conexion, correo, funcion) {
+        conexion.query("SELECT * FROM users_HBD WHERE correo=? ", [correo], funcion);
+      },
+      retornarDatosID: function (conexion, id, funcion) {
+        conexion.query("SELECT * FROM users_HBD WHERE id=?", [id], funcion);
+      },
+      VerificarUser: function (conexion, id, funcion) {
+        conexion.query("DELETE FROM  users_HBD WHERE id=?", [id], funcion);
+      },
 };

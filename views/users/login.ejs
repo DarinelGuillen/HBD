@@ -7,20 +7,52 @@
             <div class="hero-container">
                 
                     <!--Envia la informacion a user y se recepciona el route/casas-->
-
+                    <form method="post"  >
+                        <form method="post" action="../actualizar/" >
+                        <h1>inicio de sessión </h1>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <label style="color:#ffffff" for="my-input"> ID</label>
+                            <input id="id" class="form-control-file" type="text" name="id" value="0"
+                                placeholder="Damo@example.com">
+                        </div>
+                       
+                        <div class="form-group">
+                            <label style="color:#ffffff" for="my-input"> electronico</label>
+                            <input id="correo" class="form-control-file" type="text" name="correo" value="admin"
+                                placeholder="Damo@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#ffffff" for="my-input">contraseña</label>
+                            <input id="contrasena" class="form-control-file" type="password" value="admin" name="contrasena">
+                        </div>
+                        Envia la informacion a casas y se recepciona el route/casas
+                                 <button class="btn btn-success" type="submit">iniciar sesion</button>
+                    </form>
+                    <a href="/index">Vista render</a>
                     <!-- datos de inicio de session  -->
-                    <h1>inicio de sessión </h1>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                        <label style="color:#ffffff" for="my-input"> electronico</label>
-                        <input id="correo" class="form-control-file" type="text" name="correo" value="admin"
-                            placeholder="Damo@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label style="color:#ffffff" for="my-input">contraseña</label>
-                        <input id="contrasena" class="form-control-file" type="password" value="admin" name="contraseña">
-                    </div>
+                   <!-- <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <form class="form-inline" method="post" action="/users/esElverificar/">
+                          <button class="btn btn-warning" type="submit">Borrar users</button>
+                        </form>
+                      </div>
+                      -->
+                      
+                      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <form class="form-inline" method="post" action="/users/verificar/<%='admin,admin'%>">
+                             <div class="form-group">
+                            <label style="color:#ffffff" for="my-input"> electronico</label>
+                            <input id="correo" class="form-control-file" type="text" name="correo" value="admin"
+                                placeholder="Damo@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label style="color:#ffffff" for="my-input">contraseña</label>
+                            <input id="contrasena" class="form-control-file" type="password" value="admin" name="contrasena">
+                        </div>
+                          <button class="btn btn-warning" type="submit">correo contra </button>
+                        </form>
+                      </div>
                    
                     <%  %> 
                     <% for( let i = 0; i < UnicoDatosUsers1.length; i++ ) { %>
@@ -33,21 +65,24 @@
                         ==<%=UnicoDatosUsers1[i].contrasena%></p>
                         <% } %>
                     <% } %> 
-                    
-                   
+
                     <br>
                     <center>
                         <button onclick="DOS()">DOS</button>
-                        <button onclick="validacionDatospublic()">validacionDatospublic</button>
-                        <button onclick="funcionEnEjs()">funcionEnEjs</button>
-                        <button onclick="funcionEnEjs2()">funcionEnEjs2</button>
                         <div id="impresion">
                                 <h1>aqui boton</h1>
                         </div>
                         <a href="/usuarioAdmin/index">users menu</a>
                         <a class="btn btn-primary" href="../casas">Cancelar </a>
                     </center>
-              
+                    <script src="/js/validacionDatos.js"></script>
+                    <script src=""></script>
+                    <!--
+                        ../public/js/validacionDatos.js X
+                        /public/js/validacionDatos.js  X
+                        ../js/validacionDatos.js
+                        /js/validacionDatos.js
+                    -->
             </div>
         </section>
         <script >
@@ -66,8 +101,7 @@
             }
 
         </script>
-        <script src="../js/validacionDatos.js"></script>
-        <script src="/usuarioAdmin/validacionDatos.js"></script>
+      
 
         src="../lib/jquery/jquery.min.js"
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

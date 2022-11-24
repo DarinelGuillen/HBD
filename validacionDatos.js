@@ -27,8 +27,16 @@ function DOS() {
   document.getElementById('impresion').innerHTML=' <a href="/usuarioAdmin/index">users menu</a>';
   console.log('DOS EN VALI PUBLIC')
   console.log('consola  prueba  funcionDeValidacion 333');
-  obtecionDeDaatos();
+  obtecionDeDaatos(con.query);
 }
+
+
+
+
+
+
+
+
 
 
 

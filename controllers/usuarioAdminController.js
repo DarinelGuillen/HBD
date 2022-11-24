@@ -23,15 +23,25 @@ module.exports = {
    });
   },
   obt: function (req, res) {
-    usuarioAdmin.obtenerValidacicion(conexion, function (err, datos) {
+    usuarioAdmin.obtener(conexion, function (err, datos) {
       // console.log(datos);
       //res.render("usuarioAdmin/index");
       //res.render("usuarioAdmin/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
-      res.send("usuarioAdmin/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
+      res.send("../public/js/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
       //res.send(datos);
       //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
 
    });
+  },
+  login: function (req, res) {
+    user.obtener(conexion, function (err, datos) {
+      // console.log(datos);
+      res.render("users/login", {
+        title: "Aplicación",
+        UnicoDatosUsers1: datos,
+      }); //views/casas/index
+    });
+    // res.render("users/login");
   },
   /*ver: function (req, res) {
     usuarioAdmin.obtener(conexion, function (err, datos) {

@@ -1,7 +1,6 @@
-var express = require("express");//SE NECESITA PARA USERS
+var express = require("express"); //SE NECESITA PARA USERS
 var router = express.Router();
 const usersController = require("../controllers/usersController");
-;
 // var multer = require("multer");
 // const { route } = require(".");
 // const usersController = require("../controllers/usersController");
@@ -19,10 +18,15 @@ const usersController = require("../controllers/usersController");
 // var cargar = multer({ storage: rutaAlmacen });
 
 /* GET users listing. */
+router.get("/index", usersController.index);
 
 router.get("/crear", usersController.crear);
-router.post("/",usersController.guardar);
+router.post("/", usersController.guardar);
 router.get("/login", usersController.login);
+//router.post("/verificar/:correo/:contrasena", usersController.verificar);
+//router.post('/esElverificar/:id',usersController.esElverificar);
+router.post('/verificar/:correo',usersController.verificar);
+
 
 // router.post("/",cargar.single("archivo"),librosController.guardar);
 module.exports = router;
