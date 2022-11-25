@@ -3,16 +3,19 @@ var usuarioAdmin = require("../model/usuarioAdmin");
 // var borrar = require("fs");
 
 module.exports = {
-  index: function (req, res) {
-    usuarioAdmin.obtener(conexion, function (err, datos) {
-      // console.log(datos);
-      //res.render("usuarioAdmin/index");
-    // res.render("usuarioAdmin/index", { title: "Aplicación", bdpInmuebles: datos }); //views/casas/index
-    res.render("usuarioAdmin/index", { bdpUsers:datos}); //views/casas/index
-    //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
+  // index: function (req, res) {
+    
+  //   usuarioAdmin.obtener(conexion, function (err, datos) {
+      
+  //     // console.log(datos);
+  //     //res.render("usuarioAdmin/index");
+  //   // res.render("usuarioAdmin/index", { title: "Aplicación", bdpInmuebles: datos }); //views/casas/index
+  //   res.render("usuarioAdmin/index", {title:'HOLAAAAAA!', bdpUsers:datos}); //views/casas/index
+  //   //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
 
-    });
-  },
+  //   }
+  //   );
+  // },
   index1: function (req, res) {
     usuarioAdmin.obtener1(conexion, function (err, datos) {
       // console.log(datos);
@@ -22,18 +25,7 @@ module.exports = {
 
    });
   },
-  obt: function (req, res) {
-    usuarioAdmin.obtener(conexion, function (err, datos) {
-      // console.log(datos);
-      //res.render("usuarioAdmin/index");
-      //res.render("usuarioAdmin/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
-      res.send("../public/js/validacionDatos.js", {  bdpUsers: datos }); //views/casas/index
-      //res.send(datos);
-      //res.render("usuarioAdmin/index", { bdpInmuebles: datosInmueble, bdpNotificaiones: datosNotificaciones,bdpUsers:datosUser}); //views/casas/index
-
-   });
-  },
-  login: function (req, res) {
+  /*login: function (req, res) {
     user.obtener(conexion, function (err, datos) {
       // console.log(datos);
       res.render("users/login", {
@@ -42,7 +34,7 @@ module.exports = {
       }); //views/casas/index
     });
     // res.render("users/login");
-  },
+  },*/
   /*ver: function (req, res) {
     usuarioAdmin.obtener(conexion, function (err, datos) {
       // console.log(datos);

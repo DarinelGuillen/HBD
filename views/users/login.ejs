@@ -17,33 +17,46 @@
                           <button class="btn btn-warning" type="submit">Borrar users</button>
                         </form>
                       </div>
-                      -->
-                      
-                      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                        <form id="formulario" class="form-inline" >
-                             <div class="form-group">
-                            <label style="color:#ffffff" for="my-input"> electronico</label>
-                            <input id="correo" class="form-control-file" type="text" name="correo" placeholder="Damo@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label style="color:#ffffff" for="my-input">contraseña</label>
-                            <input id="contrasena" class="form-control-file" type="password"  name="contrasena">
-                        </div>
-                          <button class="btn btn-warning" type="submit" >correo contra </button>
-                        </form>
+                      -->  
+                      <div class="form-group">
+                        <label style="color:#ffffff" for="my-input"> electronico</label>
+                        <input id="correo" class="form-control-file" type="text" name="correo" placeholder="Damo@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:#ffffff" for="my-input">contraseña</label>
+                        <input id="contrasena" class="form-control-file" type="password"  name="contrasena">
+                    </div>
+                    <button class="btn btn-warning" onclick="Verificar()" >Verificar existencia </button>
+                    
+                      <div id="H"></div>
                       </div>
                       <script>
+                        
+                        function Verificar(){
+                            let correo=document.getElementById('correo').value;
+                            let contrasena=document.getElementById('contrasena').value;
+                            document.getElementById('H').innerHTML=''+
+                            `<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <form id="formulario" class="form-inline"     method="get" action="/users/verificar/`+
+                        correo+','+contrasena+
+                        `">
+                      <button class="btn btn-warning" type="submit" ><h1>LOGIN</h1> </button>
+                           
+                        </form>`;
+                        }
+                      </script>
+                      <!-- <script>
 
                         $(document).ready(function() {
                     
                             $('#formulario').submit(function(e) {
                                 e.preventDefault();
-                                let co=document.getElementById('correo').value+'';
+                                let correo=document.getElementById('correo').value+'';
                                 let contrasena=document.getElementById('contrasena').value+'';
 
                                 $.ajax({
                                     type: "POST",
-                                    url: 'http://localhost:3000/users/verificar/'+co+','+contrasena,
+                                    url: 'http://localhost:3000/users/verificar/'+correo+','+contrasena,
                                     headers: {'Authorization': 'Bearer xxxxxxxxxxxxx'},
                                     data: $(this).serialize(),
                                     success: function(response)
@@ -58,54 +71,22 @@
                                });
                              });
                         });
-                    </script>
-                    <%  %> 
+                    </script> -->
+                   
                     <% for( let i = 0; i < UnicoDatosUsers1.length; i++ ) { %>
-                       <% if (UnicoDatosUsers1[i].correo=='admin') { %>
-                        
+                      
                       
                         <p style="color: red;"><%=UnicoDatosUsers1[i].id%>==
                             <%=UnicoDatosUsers1[i].nombre%>++<%=UnicoDatosUsers1[i].apellido%>
                             ==<%=UnicoDatosUsers1[i].edad%>==<%=UnicoDatosUsers1[i].correo%>
                         ==<%=UnicoDatosUsers1[i].contrasena%></p>
                         <% } %>
-                    <% } %> 
+                  
 
-                    <br>
-                    <center>
-                        <button onclick="DOS()">DOS</button>
-                        <div id="impresion">
-                                <h1>aqui boton</h1>
-                        </div>
-                       <!-- <a href="/usuarioAdmin/index">users menu</a>-->
-                        <a class="btn btn-primary" href="../casas">Cancelar </a>
-                    </center>
-                    <script src="/js/validacionDatos.js"></script>
-                    <script src=""></script>
-                    <!--
-                        ../public/js/validacionDatos.js X
-                        /public/js/validacionDatos.js  X
-                        ../js/validacionDatos.js
-                        /js/validacionDatos.js
-                    -->
-            </div>
+                    
         </section>
-        <script >
-            function funcionEnEjs() {
-                alert('consola  prueba  funcionDeValidacion 123')
-                console.log('consola  prueba  funcionDeValidacion 123');
-                }
-        </script>
-        <script>
-           
-            // var borrar = require("fs");
-            function funcionEnEjs2() {
-                
-            alert('consola  prueba  funcionDeValidacion 123')
-            console.log('consola  prueba  funcionDeValidacion 123');
-            }
-
-        </script>
+       
+       
       
 
         src="../lib/jquery/jquery.min.js"
