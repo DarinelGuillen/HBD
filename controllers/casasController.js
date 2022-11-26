@@ -1,6 +1,6 @@
-var conexion = require("../config/conexion");
-var casa = require("../model/casa");
-var borrar = require("fs");
+let conexion = require("../config/conexion");
+let casa = require("../model/casa");
+let borrar = require("fs");
 
 module.exports = {
   // indexmain: function (req, res) {
@@ -43,7 +43,7 @@ module.exports = {
     console.log("Recepción de datos");
     console.log(req.params.id);
     casa.retornarDatosID(conexion, req.params.id, function (err, registros) {
-      var nombreImagen = "public/images/" + registros[0].img;
+      let nombreImagen = "public/images/" + registros[0].img;
       //Aqui ira el if para saber si USER el dueño de la casa
       if (borrar.existsSync(nombreImagen)) {
         borrar.unlinkSync(nombreImagen);
@@ -70,7 +70,7 @@ module.exports = {
     if (req.file) {
       if (req.file.filename) {
         casa.retornarDatosID(conexion, req.body.id, function (err, registros) {
-          var nombreImagen = "public/images/" + registros[0].img;
+          let nombreImagen = "public/images/" + registros[0].img;
           //Aqui ira el if para saber si USER el dueño de la casa
           if (borrar.existsSync(nombreImagen)) {
             borrar.unlinkSync(nombreImagen);

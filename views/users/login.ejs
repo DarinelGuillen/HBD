@@ -6,8 +6,9 @@
 
         <div id="preloader"></div>
 
-        <section id="hero">
-            <div class="hero-container">
+        <section id="hero" >
+            <div class="hero-container" style="font-size:200% ;">
+           <h1><%= alert  %><br><br></h1>
                 
                     <!--Envia la informacion a user y se recepciona el route/casas-->
                    
@@ -26,23 +27,20 @@
                         <label style="color:#ffffff" for="my-input">contraseña</label>
                         <input id="contrasena" class="form-control-file" type="password"  name="contrasena">
                     </div>
-                    <button class="btn btn-warning" onclick="Verificar()" >Verificar existencia </button>
-                    
-                      <div id="H"></div>
+                    <div id="H">
+                    <button type="button" class="btn btn-primary" onclick="Verificar()" >Verificar existencia </button>
                       </div>
+                      </div>
+                    </section>
                       <script>
-                        
                         function Verificar(){
-                            let correo=document.getElementById('correo').value;
-                            let contrasena=document.getElementById('contrasena').value;
-                            document.getElementById('H').innerHTML=''+
-                            `<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        let correo=document.getElementById('correo').value;
+                        let contrasena=document.getElementById('contrasena').value;
+                        document.getElementById('H').innerHTML=''+
+                        `<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                         <form id="formulario" class="form-inline"     method="get" action="/users/verificar/`+
                         correo+','+contrasena+
-                        `">
-                      <button class="btn btn-warning" type="submit" ><h1>LOGIN</h1> </button>
-                           
-                        </form>`;
+                        `"><button class="btn btn-success" type="submit" ><h1>LOGIN</h1> </button> </form>`;
                         }
                       </script>
                       <!-- <script>
@@ -72,23 +70,5 @@
                              });
                         });
                     </script> -->
-                   
-                    <% for( let i = 0; i < UnicoDatosUsers1.length; i++ ) { %>
-                      
-                      
-                        <p style="color: red;"><%=UnicoDatosUsers1[i].id%>==
-                            <%=UnicoDatosUsers1[i].nombre%>++<%=UnicoDatosUsers1[i].apellido%>
-                            ==<%=UnicoDatosUsers1[i].edad%>==<%=UnicoDatosUsers1[i].correo%>
-                        ==<%=UnicoDatosUsers1[i].contrasena%></p>
-                        <% } %>
-                  
-
-                    
-        </section>
-       
-       
-      
-
-        src="../lib/jquery/jquery.min.js"
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         <%- include ../layouts/pie.ejs %>
