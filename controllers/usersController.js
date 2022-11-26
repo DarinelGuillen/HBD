@@ -1,6 +1,5 @@
 var conexion = require("../config/conexion");
 var user = require("../model/user");
-// var borrar = require("fs");
 
 module.exports = {
   index: function (req, res) {
@@ -11,7 +10,7 @@ module.exports = {
     res.render("users/crear");
   },
   login: function (req, res) {
-    user.obtener(conexion, function (err, datos) {
+    user.obtenerUser(conexion, function (err, datos) {
       // console.log(datos);
       res.render("users/login", {
         title: "Aplicación",
@@ -28,7 +27,6 @@ module.exports = {
       // res.redirect("/casas");
     });
   },
-
   verificar: function (req, res) {
     console.log("Recepción de datos");
     var DATA = req.params.correo.split(",");
@@ -37,10 +35,16 @@ module.exports = {
     // console.log(req.params.contrasena+'============');
 
     user.verificarUsuario(conexion, DATA[0], function (err, registros) {
-      console.log(registros, "  resgistros    ");
+      let varInmuebles = new Array();
+      console.log(
+        " ========= resgistros    ",
+        registros,
+        " ========= resgistros    "
+      );
+
       let array = new Array();
       array = registros;
-      console.log(array, "  array    ");
+      //console.log(array, "  array    ");
 
       if (array.length == 0) {
         console.log("err == vacio []");
@@ -50,54 +54,53 @@ module.exports = {
 
         if (DATA[1] == contrasena) {
           console.log("Existes y es igual ");
-          if (registros[0].admin) {
-            console.log("ADMIN");
 
-            //  requestListener;
-            // return requestListener;
-            // return res.redirect('http://localhost:3000/usuarioAdmin/index');
+          user.obtenerInmuebles(conexion, function (error, dataI) {
             console.log(
-              "REGISTROS===============",
-              registros,
-              "REGISTROS==============="
+              "====dataI" + JSON.stringify(dataI[0].id) + "====dataI"
             );
-            res.render('users/verificar',{title:'This is the title',data:registros})
-            // return res.send(
-            //   JSON.stringify({
-            //     data: registros,
-            //     login: true,
-            //     redirect: "http://localhost:3000/users/indexAdmin",
-            //   })
-            // );
-            // document.getElementById('impresion').innerHTML='<a href="/usuarioAdmin/index">users menu</a>';
-            //return false;
-          } else {
-            console.log("NO ADMIN0000===");
+            varInmuebles = dataI;
+            console.log("===varInmuebles " + varInmuebles[0]);
+          });
+          setTimeout(() => {
+            if (registros[0].admin) {
+              console.log("ADMIN=====", varInmuebles[0]);
+              res.render("users/verificar", {
+                dataInmueblesRegistrados: varInmuebles,
+                title: "This is the title",
+                dataParaVerificadoUser: registros,
+              });
+              // return res.send(
+              //   JSON.stringify({
+              //     data: registros,
+              //     login: true,
+              //     redirect: "http://localhost:3000/users/indexAdmin",
+              //   })
+              // );
+              //return false;
+            } else {
+              console.log("NO ADMIN0000=== ", varInmuebles);
+              res.render("users/noVerificado", {
+                dataInmueblesRegistrados: varInmuebles,
+                title: "This is the title",
+                dataparaNoVerificadoUser: registros,
+              });
 
-            return res.send(
-              JSON.stringify({
-                login: true,
-                redirect: "http://localhost:3000/users/index",
-              })
-            );
-
-            // res.redirect("/casas"); //lo envio a casas ver
-          }
+              /*return res.send(JSON.stringify({ login: true, redirect: "http://localhost:3000/users/index",}) );*/
+            }
+          }, 2000);
         } else {
           console.log("Compruebe sus datos ");
           //return res.send(JSON.stringify({login:true, redirect:'http://localhost:3000/'}));
         }
       }
-
-      /*user.verificarUsuario(conexion,req.params.id_libro,function(err){
-    //res.redirect("/casas");//lo envio a casas ver
-   // res.redirect('/usuarioAdmin/index/:',registros[0].id)//lo envio a user admin index e intento enviar el ID
-   if(registros[0].admin){
-    res.redirect('/usuarioAdmin/index')
-   }else{
-    res.redirect("/casas");//lo envio a casas ver
-   }
-  })*/
+    });
+  },
+  noVerificado: function (req, res) {
+    user.obtenerInmuebles(conexion, datos, function (err) {
+      //res.render("users/noVerificado",{title2:'This is the title2',dataparaNoVerificadoUserInmuebles:datos})
+      res.render("users/noVerificado");
+      // res.redirect("/casas");
     });
   },
 };

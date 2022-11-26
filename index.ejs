@@ -7,7 +7,6 @@
   Hero Section
   ============================-->
 
-  <a href="/usuarioAdmin/index">users menu</a>
 
   
   <section id="hero">
@@ -211,31 +210,52 @@
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-12">
-          <h3 class="section-title">Visualización de inmuebles</h3>
+          <h3 class="section-title">Visualización De inmuebles </h3>
+          <br>
+          <center>
+            <a href="/casas/crear" class="btn btn-primary" type="button">Registra tu inmueble ahora</a>
+          </center>
           <div class="section-title-divider"></div>
           <p class="section-description"></p>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <a class="portfolio-item" style="background-image: url(img/inmueble_casa.jpeg);" href="/ProOnliPc/html/VisualizaciónCasas.html">
-            <div class="details">
-              <h4>Casa</h4>
-              <span>Visualiza aquí</span>
-            </div>
-          </a>
-        </div>
 
-        <div class="col-md-6">
-          <a class="portfolio-item" style="background-image: url(img/inmueble_departamento.jpeg);" href="/ProOnliPc/html/VisualizaciónDepartamentos.html">
-            <div class="details">
-              <h4>Departamento</h4>
-              <span>Visualiza aquí</span>
-            </div>
-          </a>
-        </div>
+      <div class="row">
+        <% for( let i=0; i < data.length; i++ ) { %>
+          <div class="col-md-3">
+            <a class="portfolio-item" style="background-image: url('/images/<%=data[i].img %>');">
+              <div class="details" style="color:rgb(0, 2, 2);">
+                <br>
+                <b>Municipio:<%=data[i].municipio%>
+                </b>
+                <br>
+                <td>Precio mensual:$<%=data[i].precio%>
+                </td>
+                <br>
+                <td>Dimenciones:<%=data[i].dimenciones%>m²
+                </td>
+                <br>
+                <td>Descripcion:<%=data[i].descripcion_general%>
+                </td>
+                <br>
+
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                  <form class="form-inline" method="get" action="/users/login">
+                    <button class="btn btn-danger" type="submit">VER</button>
+                  </form>
+                </div>
+
+
+              </div>
+
+            </a>
+          </div>
+
+          <% } %>
       </div>
+    </div>
+  </section>
 
   <!--==========================
   Testimonials Section

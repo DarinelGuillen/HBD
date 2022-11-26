@@ -36,12 +36,13 @@
 
 
               <div class="row">
-                <% for( let i=0; i < DATOSinmueblesCD.length; i++ ) { %>
+                <%let num=Math.round(DATOSinmueblesCD.length/2)  %>
+                <% for( let i=0; i< num; i++ ) { %>
                   <div class="col-md-3">
                     <a class="portfolio-item" style="background-image: url('/images/<%=DATOSinmueblesCD[i].img %>');">
-                      <div class="details">
+                      <div class="details" style="color:rgb(5, 5, 5);">
                         <br>
-                        <b style="color:rgb(5, 5, 5);">Municipio:<%=DATOSinmueblesCD[i].municipio%>
+                        <b >Municipio:<%=DATOSinmueblesCD[i].municipio%>
                         </b>
                         <br>
                         <td>Numero de registro:<%=DATOSinmueblesCD[i].id%>

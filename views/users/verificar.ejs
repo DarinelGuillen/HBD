@@ -1,5 +1,4 @@
 <%- include ../layouts/cabeceraUser.ejs %>
-<a href="/usuarioadmin/dos" ><h1>wwwwwwwwwwwwww</h1></a>
   <div id="preloader"></div>
 
   <!--==========================
@@ -30,10 +29,22 @@
    
     <div id="impresion"></div>
     <h1>HEEREEEEE//// <%= title %>   </h1>
-    <h1>data//// <%= data %>   </h1>
-    <h1>data nombre= <%= data[0].nombre%> </h1>
-   
+    <h1>dataParaVerificadoUser//// <%= dataParaVerificadoUser %>   </h1>
+    <h1>dataParaVerificadoUser nombre= <%= dataParaVerificadoUser[0].nombre%> </h1>
+    <h1>dataParaVerificadoUser id= <%= dataParaVerificadoUser[0].id%>=== <%= dataInmueblesRegistrados[0].id_propietario %> </h1>
+   <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>
+
+   <% for( let i = 0; i < dataInmueblesRegistrados.length; i++ ) { %>
+    <% if (dataParaVerificadoUser[0].id==parseInt(dataInmueblesRegistrados[i].id_propietario)) { %>
+      <!--Se puede comprobar diponibilidad ademas -->
+     <p>iterador i= <%= i %>   ID=;; <%= dataInmueblesRegistrados[i].id %> 
+     ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %> 
+      = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %> 
+        IMAGEN;; <%= dataInmueblesRegistrados[i].img %> </p>
+    <% } %>
+   <% } %>
   </section>
+  
   <!--==========================
   Acerca de nosostros mi scrum team bien chido y tumba codigo
   ============================-->
