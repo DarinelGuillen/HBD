@@ -6,13 +6,27 @@ module.exports = {
     // res.render("prueba/index");
     res.render("../index.ejs"); //index de usuarios registrados no admin's
   },
-  crear: function (req, res) {
-    res.render("users/crear");
-  },
+
+  // crearInmueble: function (req, res) {
+  //   console.log("crearInmueble: function (req, res) {============");
+  //   res.render("users/crearInmueble");
+  // },
+  // guardarInmueble: function (req, res) {
+  //   console.log("ENTRE A GUARDAAR INMUEBLES");
+  //   console.log("DATOS===============", req.body);
+  //   console.log("FILE NAME===============", req.file.filename);
+  //   // //llama la funcion inserrtar
+  //   user.insertarInmueble(conexion, req.body, req.file, function (err) {
+  //     res.redirect("../");
+  //   });
+  // },
   login: function (req, res) {
     // console.log(datos);
     res.render("users/login", { alert: ";)" });
     // res.render("users/login");
+  },
+  crear: function (req, res) {
+    res.render("users/crear");
   },
   guardar: function (req, res) {
     console.log(req.body);
