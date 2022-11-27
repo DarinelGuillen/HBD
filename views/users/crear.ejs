@@ -1,89 +1,90 @@
 <%- include ../layouts/cabecera.ejs %>
-  <!-- //SE NECESITA PARA USERS -->
+<!-- //SE NECESITA PARA USERS -->
 
-  <body>
-    <div id="preloader"></div>
-    <!--==========================
+<body>
+  <div id="preloader"></div>
+  <!--==========================
     Hero Section
     ============================-->
 
-    <section id="hero">
-      <div class="hero-container">
-        <div class="wow fadeIn">
-          <div class="hero-logo">
-            <img class="" src="../img/user.png" width="200" alt="ProOnliPc">
-          </div>
-
-          <h1>Registrate ahora </h1>
-          <h2>Para ser <span class="rotating">parte de nosotros, un arrendador, un arrendatario </span></h2>
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+        <div class="hero-logo">
+          <img class="" src="../img/user.png" width="200" alt="ProOnliPc">
         </div>
+
+        <h1>Registrate ahora </h1>
+        <h2>Para ser <span class="rotating">parte de nosotros, un arrendador, un arrendatario </span></h2>
       </div>
-    </section>
+    </div>
+  </section>
 
 
-    <!--==========================
+  <!--==========================
     Formulario
     ============================-->
 
-    <section id="about">
-      <div class="container wow fadeInUp">
-        <div class="row">
-          <div class="col-md-12">
-            <form method="post" action="/users">
-              <!--Envia la informacion a casas y se recepciona el route/casas-->
+  <section id="about">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <form method="post" action="/users">
+            <!--Envia la informacion a casas y se recepciona el route/casas-->
 
-              <!-- b-form-group -->
-
-              
-
-              <div class="form-group">
-                <label for="my-input">nombre</label>
-                <input id="my-input" class="form-control" type="text" name="nombre">
-              </div>
-              <div class="form-group">
-                <label for="my-input">apellidos</label>
-                <input id="my-input" class="form-control" type="text" name="apellido">
-              </div>
-              <div class="form-group">
-                <label for="my-input">edad</label>
-                <input id="my-input" class="form-control" type="number" name="edad">
-              </div>
-              <div class="form-group">
-                <label for="my-input">correo electronico</label>
-                <input id="my-input" class="form-control" type="text" name="correo">
-              </div>
-              <div class="form-group">
-                <label for="my-input">contraseña</label>
-                <input id="my-input" class="form-control" type="text" name="contrasena">
-              </div>
-              <div class="form-group">
-                <label for="my-select">sexo</label>
-                <select id="my-select" class="form-control" name="sexo">
-                  <option value="M">Masculino</option>
-                  <option value="F">Femenino</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="my-input">curp</label>
-                <input id="my-input" class="form-control" type="text" name="curp">
-              </div>
-              <div class="form-group">
-                <label for="my-input">admin</label>
-                <input id="my-input" class="form-control" type="number" name="admin">
-              </div>
-
-              <!-- b-btn -->
-              <br>
-              <center>
-                <button class="btn btn-success" type="submit">Guardar</button>
-
-                <a class="btn btn-primary" href="../casas">Cancelar </a>
-              </center>
-
-            </form>
-
-    </section>
+            <!-- b-form-group -->
 
 
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <%- include ../layouts/pie.ejs %>
+
+            <div class="form-group">
+              <label for="my-input">nombre</label>
+              <input id="my-input" class="form-control" type="text" name="nombre">
+            </div>
+            <div class="form-group">
+              <label for="my-input">apellidos</label>
+              <input id="my-input" class="form-control" type="text" name="apellido">
+            </div>
+            <div class="form-group">
+              <label for="my-input">edad</label>
+              <input id="my-input" class="form-control" type="number" name="edad">
+            </div>
+            <div class="form-group">
+              <label for="my-input">correo electronico</label>
+              <input id="my-input" class="form-control" type="text" name="correo">
+            </div>
+            <div class="form-group">
+              <label for="my-input">contraseña</label>
+              <input id="my-input" class="form-control" type="text" name="contrasena">
+            </div>
+            <div class="form-group">
+              <label for="my-select">sexo</label>
+              <select id="my-select" class="form-control" name="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="my-input">curp</label>
+              <input id="my-input" class="form-control" type="text" name="curp">
+            </div>
+            <div class="form-group">
+              <label for="my-input"> 0)Simplemente quiero ver a arrendar casas<br>1)Quiero dar a conocer mis inmuebles</label>
+              <input id="my-input" class="form-control" type="number" name="admin">
+            </div>
+            
+
+            <!-- b-btn -->
+            <br>
+            <center>
+              <button class="btn btn-success" type="submit">Guardar</button>
+
+              <a class="btn btn-primary" href="http://localhost:3000/">Cancelar </a>
+            </center>
+
+          </form>
+
+  </section>
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <%- include ../layouts/pie.ejs %>

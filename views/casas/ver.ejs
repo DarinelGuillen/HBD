@@ -1,90 +1,90 @@
 <%- include ../layouts/cabecera.ejs %>
-  <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="../img/casa.webp" alt="ProOnliPc" width="200">
-        </div>
-        <h1>Visualiza los Inmuebles</h1>
-        <h2>Ya sea <span class="rotating">Casa, Departamento </span></h2>
+<section id="hero">
+  <div class="hero-container">
+    <div class="wow fadeIn">
+      <div class="hero-logo">
+        <img class="" src="../img/casa.webp" alt="ProOnliPc" width="200">
       </div>
+      <h1>Visualiza los Inmuebles</h1>
+      <h2>Ya sea <span class="rotating">Casa, Departamento </span></h2>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!--==========================
+<!--==========================
   Formulario
   ============================-->
 
-  <section id="about">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
+<section id="about">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
 
-          <section id="portfolio">
-            <div class="container wow fadeInUp">
-              <div class="row">
-                <div class="col-md-12">
-                  <h3 class="section-title">Visualización De inmuebles </h3>
-                  <br>
-                  <center>
-                    <a href="/casas/crear" class="btn btn-primary" type="button">Registra tu inmueble ahora</a>
-                  </center>
-                  <div class="section-title-divider"></div>
-                  <p class="section-description"></p>
-                </div>
-              </div>
-
-
-              <div class="row">
-                <%let num=Math.round(DATOSinmueblesCD.length/2)  %>
-                <% for( let i=0; i< DATOSinmueblesCD.length; i++ ) { %>
-                  <div class="col-md-3">
-                    <a class="portfolio-item" style="background-image: url('/images/<%=DATOSinmueblesCD[i].img %>');">
-                      <div class="details" style="color:rgb(5, 5, 5);">
-                        <br>
-                        <b >Municipio:<%=DATOSinmueblesCD[i].municipio%>
-                        </b>
-                        <br>
-                        <td>Numero de registro:<%=DATOSinmueblesCD[i].id%>
-                        </td>
-                        <br>
-                        <td>Precio mensual:$<%=DATOSinmueblesCD[i].precio%>
-                        </td>
-                        <br>
-                        <td>Dimenciones:<%=DATOSinmueblesCD[i].dimenciones%>m²
-                        </td>
-                        <br>
-                        <td>Descripcion:<%=DATOSinmueblesCD[i].descripcion_general%>
-                        </td>
-                        <br>
-
-                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                          <form class="form-inline" method="get" action="/casas/editar/<%=DATOSinmueblesCD[i].id%> ">
-                            <button class="btn btn-danger" type="submit">Editar</button>
-                          </form>
-                        </div>
-
-                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                          <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOSinmueblesCD[i].id%>">
-                            <button class="btn btn-warning" type="submit">Borrar</button>
-                          </form>
-                        </div>
-
-                      </div>
-
-                    </a>
-                  </div>
-
-                  <% } %>
+        <section id="portfolio">
+          <div class="container wow fadeInUp">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 class="section-title">Visualización De inmuebles </h3>
+                <br>
+                <center>
+                  <a href="/casas/crear" class="btn btn-primary" type="button">Registra tu inmueble ahora</a>
+                </center>
+                <div class="section-title-divider"></div>
+                <p class="section-description"></p>
               </div>
             </div>
-          </section>
-          
 
-        </div>
+
+            <div class="row">
+              <%let num=Math.round(DATOSinmueblesCD.length/2)  %>
+              <% for( let i=0; i< DATOSinmueblesCD.length; i++ ) { %>
+              <div class="col-md-3">
+                <a class="portfolio-item" style="background-image: url('/images/<%=DATOSinmueblesCD[i].img %>');">
+                  <div class="details" style="color:rgb(5, 5, 5);">
+                    <br>
+                    <b>Municipio:<%=DATOSinmueblesCD[i].municipio%>
+                    </b>
+                    <br>
+                    <td>Numero de registro:<%=DATOSinmueblesCD[i].id%>
+                    </td>
+                    <br>
+                    <td>Precio mensual:$<%=DATOSinmueblesCD[i].precio%>
+                    </td>
+                    <br>
+                    <td>Dimenciones:<%=DATOSinmueblesCD[i].dimenciones%>m²
+                    </td>
+                    <br>
+                    <td>Descripcion:<%=DATOSinmueblesCD[i].descripcion_general%>
+                    </td>
+                    <br>
+
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                      <form class="form-inline" method="get" action="/casas/editar/<%=DATOSinmueblesCD[i].id%> ">
+                        <button class="btn btn-danger" type="submit">Editar</button>
+                      </form>
+                    </div>
+
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                      <form class="form-inline" method="post" action="/casas/eliminar/<%=DATOSinmueblesCD[i].id%>">
+                        <button class="btn btn-warning" type="submit">Borrar</button>
+                      </form>
+                    </div>
+
+                  </div>
+
+                </a>
+              </div>
+
+              <% } %>
+            </div>
+          </div>
+        </section>
+
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <%- include ../layouts/pie.ejs %>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<%- include ../layouts/pie.ejs %>
