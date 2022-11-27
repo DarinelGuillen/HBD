@@ -41,7 +41,10 @@ module.exports = {
     var DATA = req.params.correo.split(",");
     console.log(DATA, " DATA");
     user.verificarUsuario(conexion, DATA[0], function (err, registros) {
-      let varInmuebles = new Array();
+      //DATOS GLOBALES
+      let varInmu = new Array();
+      let varNotifi = new Array();
+      //END DATOS GLOBALES 
       console.log(
         " ========= resgistros    ",
         registros,
@@ -61,33 +64,49 @@ module.exports = {
 
         if (DATA[1] == contrasena) {
           console.log("Existes y es igual ");
-          user.obtenerInmuebles(conexion, function (error, dataI) {
-            console.log(
-              "====dataI" + JSON.stringify(dataI[0].id) + "====dataI"
-            );
-            varInmuebles = dataI;
-            console.log("===varInmuebles " + varInmuebles[0]);
-          });
+                  user.obtenerInmuebles(conexion, function (error, dataImu) {
+                        console.log(
+                          "====dataImu" + JSON.stringify(dataImu[0]) + "=END===dataImu"
+                        );
+                        varInmu = dataImu;
+                        console.log("===varInmu=varInmu[0]= " + varInmu[0]+'=END==varInmu');
+                      });
+                  user.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+                        console.log(
+                          "====dataNotifi" + JSON.stringify(dataNotifi[0]) + "=END===dataNotifi"
+                        );
+                        varNotifi = dataNotifi;
+                        console.log("===varNotifi =varNotifi[0]== " + varNotifi[0]+'=END==varNotifi');
+                      });
           setTimeout(() => {
             if (registros[0].admin) {
-              console.log("ADMIN=====", varInmuebles[0]);
+              console.log("ADMIN=====", varInmu[0],'\nADMIN=== NOTIFI=='+varNotifi[0]);
               res.render("users/verificar", {
-                dataInmueblesRegistrados: varInmuebles,
-                title: "This is the title",
+                dataInmueblesRegistrados: varInmu,
+                dataNotifiUser:varNotifi,
+                title: "USER ADMIN",
                 dataParaVerificadoUser: registros,
               });
             } else {
-              console.log("NO ADMIN0000=== ", varInmuebles);
-              res.render("users/noVerificado", {
-                dataInmueblesRegistrados: varInmuebles,
+              console.log("NO ADMIN0000=== ", varInmu);
+              res.render("users/verificar", {
+                dataInmueblesRegistrados: varInmu,
+                dataNotifiUser:varNotifi,
+                title: "USER NO ADMIN",
+                dataParaVerificadoUser: registros,
+              });
+              /*res.render("users/noVerificado", {
+                dataImunmueblesRegistrados: varInmu,
                 title: "This is the title",
                 dataparaNoVerificadoUser: registros,
-              });
+              });*/
             }
-          }, 1000);
+          }, 1500);
         } else {
           console.log("Compruebe sus datos ");
+         // res.render("users/login/", { alert: ";)datos mal mijo " });
           res.redirect("/users/login");
+          //res.redirect("/users/login");
         }
       }
     });

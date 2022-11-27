@@ -33,7 +33,7 @@
     <h1>dataParaVerificadoUser nombre= <%= dataParaVerificadoUser[0].nombre%> </h1>
     <h1>dataParaVerificadoUser id= <%= dataParaVerificadoUser[0].id%>=== <%= dataInmueblesRegistrados[0].id_propietario %> </h1>
    <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>
-
+                    
    <% for( let i = 0; i < dataInmueblesRegistrados.length; i++ ) { %>
     <% if (dataParaVerificadoUser[0].id==parseInt(dataInmueblesRegistrados[i].id_propietario)) { %>
       <!--Se puede comprobar diponibilidad ademas -->
@@ -43,330 +43,32 @@
         IMAGEN;; <%= dataInmueblesRegistrados[i].img %> </p>
     <% } %>
    <% } %>
-       <button type="button"><a href="/casas/crear" >CREA UN NUEVO INMUEBLE </a></button>
-  </section>
-  
-  <!--==========================
-  Acerca de nosostros mi scrum team bien chido y tumba codigo
-  ============================-->
-
-  <section id="about">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Acerca de nosotros</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">Somos una empresa altamanete capacitada y disponible a sugerencia de clientes de todo tipo.</p>
-        </div>
-      </div>
-    </div>
-    <div class="container about-container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-6 col-md-push-6 about-content">
-          <h2 class="about-title">Retroalimentaciones</h2>
-          <p class="about-text">Trabajamos con base a mejoras que sumen
-             más al proyecto para darle más facilidades a los clientes.
-          </p>
-          <p class="about-text">
-            La empresa tiene el siguiente dilema "Trabaja duro y juega duro" a nuestros empleados se les 
-            agrega un dia mas de descanso para implementar la inovación en ellos y puedan implementar 
-            ideas que nutran a la empresa.
-          </p>
-          <p class="about-text">
-           Contamos con personal altamente capacitados en sus áreas laborales y en conjunción de otros especialistas
-           conformamos un equipo de alta gama para producción de alta calidad.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--==========================
-  Precios Servicios Alquiler
-  ============================-->
-<section id="PreciosServicios">
-  <div class="container ">
-   <center><h2>Descubre nuestros planes por darte a conocer</h2></center> 
-    <div class="row row-30 justify-content-center ">
-      <div class="col-md-6 col-lg-6 col-xl-6" >
-        <div class="box-pricing box-pricing-black">
-          <div class="box-pricing-body">
-            <h5 class="box-pricing-title">Básico</h5>
-            <h3 class="box-pricing-price">$500.00</h3>
-            <div class="box-pricing-time">Mensual</div>
-            <div class="box-pricing-divider">
-              <div class="divider"></div><span>Básico</span>
-            </div>
-            <ul class="box-pricing-list">
-              <li class="active">Alta de casa</li>
-              <li class="active">Alta de departamento</li>
-              <li>Seguro de inmueble</li>
-              <li>Monitoreo de servicios</li>
-              
-            </ul>
-          </div>
-          <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" href="#">Conoce más</a></div>
-        </div>
-      </div>
-      
-      <div class="col-md-6 col-lg-6 col-xl-6">
-        <div class="box-pricing box-pricing-black box-pricing-popular">
-          <div class="box-pricing-body">
-            <h5 class="box-pricing-title">Premium</h5>
-            <h3 class="box-pricing-price">$5000.00</h3>
-            <div class="box-pricing-time">Anual</div>
-            <div class="box-pricing-divider">
-              <div class="divider"></div><span>Premium</span>
-            </div>
-            <ul class="box-pricing-list">
-              <li class="active">Alta de casas</li>
-              <li class="active">Alta de departamentos</li>
-              <li class="active">Seguro de inmueble</li>
-              <li class="active">Monitoreo de servicios</li>
-            </ul>
-          </div>
-          <div class="box-pricing-button"><a class="button button-lg button-block button-primary" href="#">Conoce más</a></div>
-          <div class="box-pricing-badge">popular</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <!--==========================
-   Nuestros Beneficios
-  ============================-->
-
-  <section id="services">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Nuestros Beneficios</h3>
-          <div class="section-title-divider"></div>
-        <p class="section-description">HOUSE BY DAMO</p>
-      </div>
-    </div>
-      <div class="row">
-        <div class="col-md-3 service-item">
-          <div class="service-icon"><i class="fa fa-desktop"></i></div>
-          <h4 class="service-title"><a href="">Accesibilidad</a></h4>
-          <p class="service-description">Puedes ingresar en la comodidad y facilidad de cualquier dispositivo.</p>
-        </div>
-        <div class="col-md-3 service-item">
-          <div class="service-icon"><i class="fa fa-bar-chart"></i></div>
-          <h4 class="service-title"><a href="">Costos</a></h4>
-          <p class="service-description">Tu manejas cuanto es el plazo de los pagos por darte a conocer.</p>
-        </div>
-        <div class="col-md-3 service-item">
-          <div class="service-icon"><i class="fa fa-photo"></i></div>
-          <h4 class="service-title"><a href="">Experiencia de visualización</a></h4>
-          <p class="service-description">Nos encargamos de brindar buenas experiencias para ti.</p>
-        </div>
-        <div class="col-md-3 service-item">
-          <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
-          <h4 class="service-title"><a href="">Alquiler</a></h4>
-          <p class="service-description">Facil y sencillo con la confianza de House by damo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--==========================
-  Somos House By Damo
-  ============================-->
-
-  <section class="section section-sm bg-default">
-  <div class="container">
-    <div class="row row-30 row-xl-24 justify-content-center align-items-center align-items-lg-start text-left">
-      <div class="col-md-6 col-lg-5 col-xl-6 text-center"><a class="text-img" href="#">
-        <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="480" height="480"></canvas></div><span class="counter animated">1º</span></a></div>
-          <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            <div class="text-width-extra-small offset-top-lg-24 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-              <h3 class="title-decoration-lines-left">Somos House by damo</h3>
-              <p class="text-gray-500">Los primeros en estar a unos clics de distancia.</p><a class="button button-secondary button-pipaluk" href="#">Clic</a>
-            </div>
-          </div>
-            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInRight;">
-             <div class="row justify-content-center border-2-column offset-top-xl-26">
-              <div class="col-9 col-sm-6">
-                <div class="counter-amy">
-                  <div class="counter-amy-number"><span class="counter animated">10</span><span class="symbol">M</span>
-                    </div>
-                      <h6 class="counter-amy-title">Y crecemos más</h6>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-  <!--==========================
-  Registro de usuario
-  ============================-->
-
-  <section id="subscribe">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-8">
-          <h3 class="subscribe-title">Registrate ahora</h3>
-          <p class="subscribe-text">¡¡¡Deberás llenar el siguiente fomulario para ello!!!</p>
-        </div>
-        <div class="col-md-4 subscribe-btn-container">
-          <a class="subscribe-btn" href="#">Clic aquí</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--==========================
-  Visualización de inmueble
-  ============================-->
-
-  <section id="portfolio">
-    <sec class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Visualización de inmuebles</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description"></p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <a class="portfolio-item" style="background-image: url(/img/inmueble_casa.jpeg);" href="/ProOnliPc/html/VisualizaciónCasas.html">
-            <div class="details">
-              <h4>Casa</h4>
-              <span>Visualiza aquí</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-6">
-          <a class="portfolio-item" style="background-image: url(/img/inmueble_departamento.jpeg);" href="/ProOnliPc/html/VisualizaciónDepartamentos.html">
-            <div class="details">
-              <h4>Departamento</h4>
-              <span>Visualiza aquí</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
-  <!--==========================
-  Testimonials Section
-  ============================-->
-
-  <section id="testimonials">
+   <button type="button"><a href="/casas/crear" >CREA UN NUEVO INMUEBLE </a></button>
+   <h1>Notificaciones dataNotifiUser</h1>
+   <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
+   <% let num=0; %> 
+   <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
+    <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
+     
    
-      <div class="container-fluid">
-        <h2>¿Qué dice la gente?</h2>
-        <div class="row row-50 row-sm">
-          <div class="col-md-4 col-xl-4 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
-            <!-- Quote Modern-->
-            <article class="quote-modern quote-modern-custom">
-              <div class="unit unit-spacing-md align-items-center">
-                <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles" src="/img/doc_aremi.JPG" alt="" width="75" height="75"></a></div>
-                <div class="unit-body">
-                  <h4 class="quote-modern-cite"><a href="#">Doc. Aremy Olaya Virrueta Gordillo</a></h4>
-                  <p class="quote-modern-status">Cliente regular</p>
-                </div>
-              </div>
-              <div class="quote-modern-text">
-                <p class="q">Con house by damo es facil y sencillo rentar para alguien que no es de esa ciudad o municipio y gracias a ello pude ver una casa para mudarme en vacaciones de verano, sin necesidad de ir a ese punto y gastar tiempo y recursos.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-md-4 col-xl-4 wow fadeInRight" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInRight;">
-            <!-- Quote Modern-->
-            <article class="quote-modern quote-modern-custom">
-              <div class="unit unit-spacing-md align-items-center">
-                <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles" src="/img/doc_carlos.png" alt="" width="75" height="75"></a></div>
-                <div class="unit-body">
-                  <h4 class="quote-modern-cite"><a href="#">Doc. Carlos Alberto Díaz Hernández</a></h4>
-                  <p class="quote-modern-status">Cliente frecuente</p>
-                </div>
-              </div>
-              <div class="quote-modern-text">
-                <p class="q">Gracias por facilitarme el proceso que conlleva demasiado tiempo en reunir a personas que ocuparan el inmueble y no cumplan ya sea con pagos o puntos de reunión, con House by damo me ahorran todas esas vueltas y optimizan mucho mi tiempo.</p>
-              </div>
-            </article>
-          </div>
-          <div class="col-md-4 col-xl-4 wow fadeInRight" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
-            <!-- Quote Modern-->
-            <article class="quote-modern quote-modern-custom">
-              <div class="unit unit-spacing-md align-items-center">
-                <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles" src="/img/profesito_ali.png" alt="" width="75" height="75"></a></div>
-                <div class="unit-body">
-                  <h4 class="quote-modern-cite"><a href="#">Doc. Alí Santiago López Zunún</a></h4>
-                  <p class="quote-modern-status">Regular client</p>
-                </div>
-              </div>
-              <div class="quote-modern-text">
-                <p class="q">Me agrada la idea que implementaron en la que podemos navegar con una muy buena vista mientras estoy haciendo el proceso de alquilar</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <!--==========================
-  Team Section
-  ============================-->
-  <section id="team">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Nuestro Equipo</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">Scrum Team</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <div class="member">
-            <div class="pic"><img src="/img/DarioA.png" alt=""></div>
-            <h4>Darío Antonio Gutiérrez Álletez</h4>
-            <span>Master Scrum</span>
-            <div class="social">
-              <a href="https://mobile.twitter.com/dariogtz4"><i class="fa fa-twitter"></i></a>
-              <a href="https://www.facebook.com/dario.gutierrezalletes/"><i class="fa fa-facebook"></i></a>
-              <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#chat/welcome"><i class="fa fa-google-plus"></i></a>
-              <a href="https://www.linkedin.com/in/dario-antonio-gutierrez-alletez-41353a225/"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="member">
-            <div class="pic"><img src="/img/MerlinO.png" alt=""></div>
-            <h4>José Ángel Ortega Merlin</h4>
-            <span>Product Owner</span>
-            <div class="social">
-              <a href="https://twitter.com/angelxmxxx"><i class="fa fa-twitter"></i></a>
-              <a href="https://www.facebook.com/Zurdo.Angel.xMerlin"><i class="fa fa-facebook"></i></a>
-              <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#chat/dm/vDVT1EAAAAE"><i class="fa fa-google-plus"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="member">
-            <div class="pic"><img src="/img/DarinelE.png" alt=""></div>
-            <h4>Christian Darinel Escobar Guillén</h4>
-            <span>Scrum Team</span>
-            <div class="social">
-              <a href="https://m.facebook.com/darinel.escobar.716?eav=AfZqvklT5s13eV2yiPcziLAkrCbVmfvCKJHbGB0SkF6YGHzRjXDP6NTVf7Z8XT2HxR8&paipv=0"><i class="fa fa-facebook"></i></a>
-              <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#chat/dm/sxEr1EAAAAE"><i class="fa fa-google-plus"></i></a>
-              <a href="https://www.linkedin.com/in/darinel-escobar-62b9bb251"><i class="fa fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <p>
+            id noti= <%= dataNotifiUser[i].id %> <br>
+            id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
+            mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
+            id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
+            id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
+          </p>
+          <% }else{%>
+            <% if (num==0) { %>
+            <% num=1 %> 
+              <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
+                <% } %>
+          <%} %>
+   <% } %>
+       
   </section>
   
+ 
 
   <!--==========================
   Contact Section

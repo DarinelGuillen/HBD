@@ -8,6 +8,10 @@ module.exports = {
     conexion.query("SELECT * FROM Depa_Casa_HBD", funcion);
     // conexion.query("SELECT * FROM prueba", funcion);
   },
+  obtenerNotificaciones: function (conexion, funcion) {
+    conexion.query("SELECT * FROM notificaciones", funcion);
+    // conexion.query("SELECT * FROM prueba", funcion);
+  },
   // insertarInmueble: function (conexion, datos, archivos, funcion) {
   //   conexion.query(
   //     "INSERT INTO Depa_Casa_HBD " +
