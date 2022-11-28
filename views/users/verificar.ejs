@@ -1,4 +1,10 @@
+<% if (dataParaVerificadoUser[0].admin==1) { %>
+<!--SI ES ADMIN UNA CABECERA ESPECIAL DE LO CONTRARIO UNA CABECERA NORMAL -->
 <%- include ../layouts/cabeceraUser.ejs %>
+
+<% } else{%>
+<%- include ../layouts/cabeceraIF.ejs %>
+<% } %>
 <div id="preloader"></div>
 
 <!--==========================
@@ -40,31 +46,51 @@
   <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
     ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
     = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
-    IMAGEN;; <%= dataInmueblesRegistrados[i].img %> </p>
+    IMAGEN;; <img class="img-thumbnail" width="50px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
+  <% }else{ %>
+  <!--IF-->
+
   <% } %>
+  <!--else-->
   <% } %>
-  <button type="button"><a href="/casas/crear">CREA UN NUEVO INMUEBLE </a></button>
-  <h1>Notificaciones dataNotifiUser</h1>
-  <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
-  <% let num=0; %>
-  <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
-  <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
+  <!--FOR-->
+  <% if (dataParaVerificadoUser[0].admin==1) { %>
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <form id="formulario" class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
+      <button class="btn btn-danger" type="submit">
+        <h1>Crear Un Nuevo Inmueble </h1>
+      </button>
+    </form><br>
+    
+    <button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>
+
+    <button type="button"><a href="/casas/crear/<%= dataParaVerificadoUser[0].correo %>,<%= dataParaVerificadoUser[0].contrasena%>">CREA UN NUEVO INMUEBLE </a></button>
+
+    <% }else{ %>
+    <p>Puede imprimir algo si no admin </p>
+
+    <% } %>
+    <h1>Notificaciones dataNotifiUser</h1>
+    <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
+    <% let num=0; %>
+    <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
+    <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
 
 
-  <p>
-    id noti= <%= dataNotifiUser[i].id %> <br>
-    id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
-    mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
-    id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
-    id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
-  </p>
-  <% }else{%>
+    <p>
+      id noti= <%= dataNotifiUser[i].id %> <br>
+      id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
+      mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
+      id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
+      id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
+    </p>
+    <% }else{%>
     <% if (num==0) { %>
     <% num=1 %>
     <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
     <% } %>
-  <%} %>
-  <% } %>
+    <%} %>
+    <% } %>
 
 </section>
 

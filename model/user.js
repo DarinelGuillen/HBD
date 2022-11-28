@@ -39,10 +39,10 @@ module.exports = {
   //   );
   //   // conexion.query("INSERT INTO prueba (`id`, `img`) VALUES(?,?);",[datos.id,archivos.filename],funcion)
   // },
-  insertarUser: function (conexion, datos, archivos, funcion) {
+  insertarUser: function (conexion, datos, funcion) {
     conexion.query(
-      "INSERT INTO " +
-        "users_HBD (nombre,apellido,edad,correo,contrasena,sexo,curp,admin) values (?,?,?,?,?,?,?,?)",
+      "INSERT INTO users_HBD " +
+        "( `nombre`,`apellido`,`edad`,`correo`,`contrasena`,`sexo`,`curp`,`admin`) VALUES (?,?,?,?,?,?,?,?);",
       [
         datos.nombre,
         datos.apellido,
@@ -62,7 +62,6 @@ module.exports = {
       [correo],
       funcion
     );
-
   },
   retornarDatosID: function (conexion, id, funcion) {
     conexion.query("SELECT * FROM users_HBD WHERE id=?", [id], funcion);

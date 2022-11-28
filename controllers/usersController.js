@@ -25,8 +25,24 @@ module.exports = {
     res.render("users/login", { alert: ";)" });
     // res.render("users/login");
   },
+  crearI: function (req, res) {
+    res.render("users/crearI")
+    console.log("Recepción de datos");
+    console.log(req.params.id);
+    user.retornarDatosID(conexion, re.params.id, function (err, registros) {
+      console.log(
+        " ========= resgistros    ",
+        registros,
+        " ========= resgistros    "
+      );
+      res.render("users/crearI",{dataUser:registros[0]});
+    })
+    
+    //res.render("users/crearI");
+  },
+ 
   crear: function (req, res) {
-    res.render("users/crear");
+    
   },
   guardar: function (req, res) {
     console.log(req.body);

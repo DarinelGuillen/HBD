@@ -9,18 +9,8 @@
         <section id="hero" >
             <div class="hero-container" style="font-size:200% ;">
            <h1><%= alert  %><br><br></h1>
-                
-                    <!--Envia la informacion a user y se recepciona el route/casas-->
-                   
-                    <!-- datos de inicio de session  -->
-                   <!-- <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                        <form class="form-inline" method="post" action="/users/esElverificar/">
-                          <button class="btn btn-warning" type="submit">Borrar users</button>
-                        </form>
-                      </div>
-                      -->  
                       <div class="form-group">
-                        <label style="color:#ffffff" for="my-input"> electronico</label>
+                        <label style="color:#ffffff" for="my-input">Correo</label>
                         <input id="correo" class="form-control-file" type="text" name="correo" placeholder="Damo@example.com">
                     </div>
                     <div class="form-group">
@@ -32,14 +22,12 @@
                       </div>
                       </div>
                     </section>
-                      <script>
+                      <script onload="Verificar()">
                         function Verificar(){
-                        let correo=document.getElementById('correo').value;
-                        let contrasena=document.getElementById('contrasena').value;
                         document.getElementById('H').innerHTML=''+
                         `<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                         <form id="formulario" class="form-inline"     method="get" action="/users/verificar/`+
-                        correo+','+contrasena+
+                        (document.getElementById('correo').value)+','+(document.getElementById('contrasena').value)+
                         `"><button class="btn btn-success" type="submit" ><h1>LOGIN</h1> </button> </form>`;
                         }
                       </script>

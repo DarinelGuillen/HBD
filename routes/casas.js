@@ -24,7 +24,7 @@ var cargar=multer({storage:rutaAlmacen});
 // router.get("/", casasController.index);
 router.get("/", indexController.index);
 router.get("/crear", casasController.crear);
-router.post("/",cargar.single("archivo"),casasController.guardar)
+router.post("/",cargar.single("archivo"),casasController.guardar);
 router.post('/eliminar/:id',casasController.eliminar);
 router.get('/editar/:id',casasController.editar);
 router.post("/actualizar",cargar.single("archivo"),casasController.actualizar)
