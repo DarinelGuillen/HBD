@@ -28,7 +28,8 @@ router.get("/crear", usersController.crear);
 router.post("/", usersController.guardar);
 //crear END//
 // //crearInmueble//
-router.get("/crearI/:id", usersController.crearI);
+router.get("/crearI/:id",usersController.crearI);
+
 router.post("/",cargar.single("archivo"),usersController.guardar);
 // router.get("/crearInmueble", usersController.crearInmueble);
 // router.post("/",cargar.single("archivo"),usersController.guardarInmueble)

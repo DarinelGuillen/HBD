@@ -26,17 +26,13 @@ module.exports = {
     // res.render("users/login");
   },
   crearI: function (req, res) {
-    res.render("users/crearI")
-    console.log("Recepción de datos");
-    console.log(req.params.id);
-    user.retornarDatosID(conexion, re.params.id, function (err, registros) {
-      console.log(
-        " ========= resgistros    ",
-        registros,
-        " ========= resgistros    "
-      );
-      res.render("users/crearI",{dataUser:registros[0]});
-    })
+    console.log('req.params.id==== ',req.params.id);
+    user.retornarDatosID(conexion, req.params.id, function (err, dato) {
+      console.log('dato===+'+dato[0]);
+      //console.log(stringify(dato));
+      res.render("users/crearI", { data: dato[0] });
+      //res.render("users/crearI",{dataUser:registros[0]});
+    });
     
     //res.render("users/crearI");
   },

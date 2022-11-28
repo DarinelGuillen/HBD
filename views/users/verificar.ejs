@@ -56,11 +56,15 @@
   <!--FOR-->
   <% if (dataParaVerificadoUser[0].admin==1) { %>
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <form id="formulario" class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
-      <button class="btn btn-danger" type="submit">
-        <h1>Crear Un Nuevo Inmueble </h1>
-      </button>
+    <form class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
+      <button class="btn btn-danger" type="submit"><h1>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h1></button>
     </form><br>
+
+    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+      <form class="form-inline" method="get" action="/casas/editar/">
+        <button class="btn btn-danger" type="submit">Editar</button>
+      </form>
+    </div>
     
     <button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>
 
