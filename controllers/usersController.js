@@ -26,9 +26,9 @@ module.exports = {
     // res.render("users/login");
   },
   crearI: function (req, res) {
-    console.log('req.params.id==== ',req.params.id);
+    console.log('CREAR I req.params.id==== ',req.params);
     user.retornarDatosID(conexion, req.params.id, function (err, dato) {
-      console.log('dato===+'+dato[0]);
+      console.log('crear I dato===+'+dato[0]);
       //console.log(stringify(dato));
       res.render("users/crearI", { data: dato[0] });
       //res.render("users/crearI",{dataUser:registros[0]});

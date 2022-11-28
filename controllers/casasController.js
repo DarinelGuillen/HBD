@@ -57,9 +57,9 @@ module.exports = {
     // });
   },
   editar: function (req, res) {
-    console.log('req.params.id== ='+req.params.id);
+    console.log('req.params.id== ='+req.params);
     casa.retornarDatosID(conexion, req.params.id, function (err, registros) {
-      console.log(registros[0]);
+      console.log('Registros '+registros[0]);
       res.render("casas/editar", { casa: registros[0] });
     });
   },

@@ -47,9 +47,14 @@
     ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
     = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
     IMAGEN;; <img class="img-thumbnail" width="50px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
+  <button>EDITAR</button>
+  <button>Borrar</button>
   <% }else{ %>
   <!--IF-->
-
+  <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
+    ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
+    = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
+    IMAGEN;; <img class="img-thumbnail" width="50px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
   <% } %>
   <!--else-->
   <% } %>
@@ -57,7 +62,9 @@
   <% if (dataParaVerificadoUser[0].admin==1) { %>
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <form class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
-      <button class="btn btn-danger" type="submit"><h1>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h1></button>
+      <button class="btn btn-danger" type="submit">
+        <h1>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h1>
+      </button>
     </form><br>
 
     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
@@ -65,7 +72,7 @@
         <button class="btn btn-danger" type="submit">Editar</button>
       </form>
     </div>
-    
+
     <button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>
 
     <button type="button"><a href="/casas/crear/<%= dataParaVerificadoUser[0].correo %>,<%= dataParaVerificadoUser[0].contrasena%>">CREA UN NUEVO INMUEBLE </a></button>
@@ -104,4 +111,4 @@
   Contact Section
   ============================-->
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-<%- include ../layouts/pie.ejs %>
+<%- include ../layouts/pieEditar.ejs %>
