@@ -1,249 +1,189 @@
 <% if (dataParaVerificadoUser[0].admin==1) { %>
   <!--SI ES ADMIN UNA CABECERA ESPECIAL DE LO CONTRARIO UNA CABECERA NORMAL -->
   <%- include ../layouts/cabeceraUser.ejs %>
+  
   <% } else{%>
   <%- include ../layouts/cabeceraIF.ejs %>
-<% } %>
-
-<div id="preloader"></div>
-
-<!--==========================
-  Hero Section
-  ============================-->
-
-<section id="hero">
-  <div class="hero-container">
-    <div class="wow fadeIn">
-      <div class="hero-logo">
-        <img class="" src="/img/HouseByDamo.png" alt="ProOnliPc">
-      </div>
-
-      <h1>Bienvenido A House By Damo</h1>
-      <h2>Nosotros creamos tus <span class="rotating">comodidades, tiempos, experiencias </span></h2>
-      <div class="actions">
-        <a href="#about" class="btn-get-started">Inicia</a>
-        <a href="#services" class="btn-services">Nuestros servicios</a>
+  <% } %>
+  <div id="preloader"></div>
+  
+  <!--==========================
+    Hero Section
+    ============================-->
+  
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+        <div class="hero-logo">
+          <img class="" src="/img/HouseByDamo.png" alt="ProOnliPc">
+        </div>
+  
+        <h1>Bienvenido A House By Damo</h1>
+        <h2>Nosotros creamos tus <span class="rotating">comodidades, tiempos, experiencias </span></h2>
+        <div class="actions">
+          <a href="#about" class="btn-get-started">Inicia</a>
+          <a href="#services" class="btn-services">Nuestros servicios</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!--==========================
-  Sección de encabezado
-  ============================-->
-
-
-
-
+  </section>
+  
+  <!--==========================
+    Sección de encabezado
+    ============================-->
+  
+  
+  
+  
   <section id="about">
     <div class="container wow fadeInUp">
       <div class="row">
-        <center><h1><%= title %></h1></center>
-          <h1>dataParaVerificadoUser//// <%= dataParaVerificadoUser %> </h1>
-          <center><h1> Bienvenido <%= dataParaVerificadoUser[0].nombre%> </h1> </center>
-          <h1>dataParaVerificadoUser id= <%= dataParaVerificadoUser[0].id%>=== <%= dataInmueblesRegistrados[0].id_propietario %> </h1>
-          <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>
+        <center>
+          <h1><%= title %></h1>
+        </center>
+        <h1>dataParaVerificadoUser//// <%= dataParaVerificadoUser %> </h1>
+        <center>
+          <h1> Bienvenido <%= dataParaVerificadoUser[0].nombre%> </h1>
+        </center>
+        <h1> id= <%= dataParaVerificadoUser[0].id%></h1>
+        <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>
       </div>
     </div>
-
-
-
-<<<<<<< HEAD
-  <div class="container wow fadeInUp">
-    <div class="row">
-      <% for( let i = 0; i < dataInmueblesRegistrados.length; i++ ) { %>
-
-
-      <% if (dataParaVerificadoUser[0].id==dataInmueblesRegistrados[i].id_propietario) { %>
-      <!--Se puede comprobar diponibilidad ademas -->
-      <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
-        ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
-        = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
-        IMAGEN;; <img class="img-thumbnail" width="100px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
-        
-        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-          <form class="form-inline" method="get" action="/casas/editar/<%=dataInmueblesRegistrados[i].id%> ">
-            <button class="btn btn-danger" type="submit">Editar</button>
-          </form>
-        </div>
-
-        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-          <form class="form-inline" method="post" action="/casas/eliminar/<%=dataInmueblesRegistrados[i].id%>">
-            <button class="btn btn-warning" type="submit">Borrar</button>
-          </form>
-        </div>
-      <% } %>
-
-
-
-      <!--IF-->
-      <% if (dataParaVerificadoUser[0].admin==0) { %>
-       
-      
-      <% if (dataParaVerificadoUser[0].id!=dataInmueblesRegistrados[i].id_propietario) { %>
-
-      <p>USER NORMAl iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
-        ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
-        = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
-        IMAGEN;; <img class="img-thumbnail" width="30px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
-       <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-          <form class="form-inline" method="post"
-           action="/users/favoritos/<%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>">
-            <button class="btn btn-warning" type="submit">add favoritos 
-              <%=dataParaVerificadoUser[0].correo%>,<%=dataParaVerificadoUser[0].contrasena%>,
-              <%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>
-            </button>
-            <button>ME interesa</button>
-          </form>
-        </div>
-        <% } %><!--IF-->
-      <% } %><!--IF-->
-      <!--else-->
-      <% } %>
-      <!--FOR-->
-
-
-
-      
-      <% if (dataParaVerificadoUser[0].admin==1) { %>
-      <!--<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-=======
+  
+  
+  
     <div class="container wow fadeInUp">
       <div class="row">
         <% for( let i = 0; i < dataInmueblesRegistrados.length; i++ ) { %>
-          <% if (dataParaVerificadoUser[0].id==parseInt(dataInmueblesRegistrados[i].id_propietario)) { %>
-          <!--Se puede comprobar diponibilidad ademas -->
-          <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
-            ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
-            = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
-            IMAGEN;; <img class="img-thumbnail" width="200px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
-          <button>EDITAR</button>
-          <button>Borrar</button>
-          <% }else{ %>
-          <!--IF-->
-          <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
-            ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
-            = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
-            IMAGEN;; <img class="img-thumbnail" width="50px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
-          <% } %>
-          <!--else-->
-          <% } %>
-          <!--FOR-->
-          <% if (dataParaVerificadoUser[0].admin==1) { %>
+  
+  
+        <% if (dataParaVerificadoUser[0].id==dataInmueblesRegistrados[i].id_propietario) { %>
+        <!--Se puede comprobar diponibilidad ademas -->
+        <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
+          ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
+          = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
+          IMAGEN;; <img class="img-thumbnail" width="100px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
+          
           <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
->>>>>>> cb13b16a4d949df8a3c21ccd03188542d27553f2
-            <form class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
-              <button class="btn btn-danger" type="submit">
-                <h1>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h1>
+            <form class="form-inline" method="get" action="/casas/editar/<%=dataInmueblesRegistrados[i].id%> ">
+              <button class="btn btn-danger" type="submit">Editar</button>
+            </form>
+          </div>
+  
+          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <form class="form-inline" method="post" action="/casas/eliminar/<%=dataInmueblesRegistrados[i].id%>">
+              <button class="btn btn-warning" type="submit">Borrar</button>
+            </form>
+          </div>
+        <% } %>
+  
+  
+  
+        <!--IF-->
+        <% if (dataParaVerificadoUser[0].admin==0) { %>
+         
+        
+        <% if (dataParaVerificadoUser[0].id!=dataInmueblesRegistrados[i].id_propietario) { %>
+  
+        <p>USER NORMAl iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
+          ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
+          = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
+          IMAGEN;; <img class="img-thumbnail" width="30px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
+         <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <form class="form-inline" method="post"
+             action="/users/favoritos/<%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>">
+              <button class="btn btn-warning" type="submit">add favoritos 
+                <%=dataParaVerificadoUser[0].correo%>,<%=dataParaVerificadoUser[0].contrasena%>,
+                <%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>
               </button>
-            </form><br>
-        
-            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <form class="form-inline" method="get" action="/casas/editar/">
-                <button class="btn btn-danger" type="submit">Editar</button>
-              </form>
-<<<<<<< HEAD
-            </div>-->
-
-      <!--<button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>-->
-
-      <!--<button type="button"><a href="/casas/crear/<%= dataParaVerificadoUser[0].id %>">CREA UN NUEVO INMUEBLE casas/crear</a></button>
-            -->
-
-      <!--INPORTANTE -->
-      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-        <form class="form-inline" method="get" action="/casas/crear/<%=dataParaVerificadoUser[0].id%>">
-          <button class="btn btn-danger" type="submit">
-            <h5>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h5>
-          </button>
-        </form><br>
-        <% }else{ %>
-        <p>Puede imprimir algo si no admin </p>
-
+              <button>ME interesa</button>
+            </form>
+          </div>
+          <% } %><!--IF-->
+        <% } %><!--IF-->
+        <!--else-->
         <% } %>
-
-
-
-        <h1>section Notificaciones dataNotifiUser</h1>
-        <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
-        <% let num=0; %>
-        <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
-        <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
-
-
-        <p>
-          id noti= <%= dataNotifiUser[i].id %> <br>
-          id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
-          mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
-          id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
-          id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
-        </p>
-        <% }else{%>
-        <% if (num==0) { %>
-        <% num=1 %>
-        <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
-        <% } %>
-        <%} %>
-        <% } %>
+        <!--FOR-->
+  
+  
+  
+        
+        <% if (dataParaVerificadoUser[0].admin==1) { %>
+        <!--<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
+                <button class="btn btn-danger" type="submit">
+                  <h1>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h1>
+                </button>
+              </form><br>-->
+  
+        <!--<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <form class="form-inline" method="get" action="/casas/editar/">
+                  <button class="btn btn-danger" type="submit">Editar</button>
+                </form>
+              </div>-->
+  
+        <!--<button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>-->
+  
+        <!--<button type="button"><a href="/casas/crear/<%= dataParaVerificadoUser[0].id %>">CREA UN NUEVO INMUEBLE casas/crear</a></button>
+              -->
+  
+        <!--INPORTANTE -->
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+          <form class="form-inline" method="get" action="/casas/crear/<%=dataParaVerificadoUser[0].id%>">
+            <button class="btn btn-danger" type="submit">
+              <h5>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h5>
+            </button>
+          </form><br>
+          <% }else{ %>
+          <p>Puede imprimir algo si no admin </p>
+  
+          <% } %>
+  
+  
+  
+          <h1>section Notificaciones dataNotifiUser</h1>
+          <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
+          <% let num=0; %>
+          <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
+          <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
+  
+  
+          <p>
+            id noti= <%= dataNotifiUser[i].id %> <br>
+            id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
+            mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
+            id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
+            id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
+          </p>
+          <% }else{%>
+          <% if (num==0) { %>
+          <% num=1 %>
+          <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
+          <% } %>
+          <%} %>
+          <% } %>
+        </div>
       </div>
-=======
-            </div>
+      <h1>section FAVOTIRITOS QUE DEBERIA DE ESTAR ARRIVA</h1>
+      <h4>NOTA: generar una condicion para solo mostrar los favoritos del id user id</h4>
+      <% for( let i = 0; i < dataFavoritosUser.length; i++ ) { %>
+        <p>ID FAVO: <%=dataFavoritosUser[i].id  %> >
+        ID USER: <%=dataFavoritosUser[i].id_user  %> >
+        ID CASA: <%=dataFavoritosUser[i].id_casa %> </p>
+      <% } %>
         
-            <button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>
-        
-            <button type="button"><a href="/casas/crear/<%= dataParaVerificadoUser[0].correo %>,<%= dataParaVerificadoUser[0].contrasena%>">CREA UN NUEVO INMUEBLE </a></button>
-        
-            <% }else{ %>
-            <p>Puede imprimir algo si no admin </p>
-        
-            <% } %>
-
-
-
-            <h1>Notificaciones dataNotifiUser</h1>
-            <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
-            <% let num=0; %>
-            <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
-            <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
-        
-        
-            <p>
-              id noti= <%= dataNotifiUser[i].id %> <br>
-              id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
-              mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
-              id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
-              id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
-            </p>
-            <% }else{%>
-            <% if (num==0) { %>
-            <% num=1 %>
-            <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
-            <% } %>
-            <%} %>
-            <% } %>      </div>
->>>>>>> cb13b16a4d949df8a3c21ccd03188542d27553f2
-    </div>
-    <h1>section FAVOTIRITOS QUE DEBERIA DE ESTAR ARRIVA</h1>
-    <h4>NOTA: generar una condicion para solo mostrar los favoritos del id user id</h4>
-    <% for( let i = 0; i < dataFavoritosUser.length; i++ ) { %>
-      <p>ID FAVO: <%=dataFavoritosUser[i].id  %> >
-      ID USER: <%=dataFavoritosUser[i].id_user  %> >
-      ID CASA: <%=dataFavoritosUser[i].id_casa %> </p>
-    <% } %>
-      
-    <div class="container wow fadeInUp">
-      <div class="row">
-        
+      <div class="container wow fadeInUp">
+        <div class="row">
+  
+        </div>
       </div>
-    </div>
-    <div class="container wow fadeInUp">
-      <div class="row">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt at modi voluptatem. Perferendis consequatur ipsum totam esse, doloribus laboriosam nisi officiis excepturi tempora possimus exercitationem suscipit iure quod aspernatur ea!
+      <div class="container wow fadeInUp">
+        <div class="row">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt at modi voluptatem. Perferendis consequatur ipsum totam esse, doloribus laboriosam nisi officiis excepturi tempora possimus exercitationem suscipit iure quod aspernatur ea!
+        </div>
       </div>
-    </div>
-    
+  
   </section>
-
 
 
 
