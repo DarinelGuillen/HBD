@@ -1,4 +1,4 @@
-<%- include ../layouts/cabeceraEditar.ejs %>
+
   <div id="preloader"></div>
 
   <!--==========================
@@ -19,8 +19,8 @@
           <img class="" src="/img/casa.webp" width="200" alt="ProOnliPc">
         </div>
 
-        <h1>Registra tu inmueble</h1>
-        <h2>Para ser <span class="rotating">parte de nosotros, un arrendador, un arrendatario </span></h2>
+        <h1>Registra tu inmueble <%=dataUser.nombre%> </h1>
+        <h2>Para dar a conocer <span class="rotating">tus casas, departamentos, e inmuebles en general</span></h2>
       </div>
     </div>
   </section>
@@ -29,19 +29,14 @@
   <!--==========================
   Formulario
   ============================-->
-<h1>ESTAS EN CREAR INMUEBLE EN USERS <%=data.nombre  %> </h1>
+<h1>ESTAS EN CREAR INMUEBLE EN USERS (BORAR ESTE H1) </h1>
   <section id="about">
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="/casas" enctype="multipart/form-data">
-            <!--Envia la informacion a casas y se recepciona el route/casas-->
+          <form method="post" action="/users" enctype="multipart/form-data">
+            <!--<form method="post" action="/casas" enctype="multipart/form-data">-->
 
-            <!-- b-form-group -->
-            <!-- <div class="form-group">
-              <label for="my-input">ID</label>//type file
-              <input id="my-input" class="form-control-file" type="number" name="id">
-            </div> -->
 
             <div class="form-group">
               <label for="my-input">Municipio:</label>
@@ -84,6 +79,7 @@
                 <option value="0">NO</option>
                 <option value="1">YES</option>
               </select>
+            </div>
               <div class="form-group">
                 <label for="my-select">Aire Acondicionado:</label>
                 <select id="my-select" class="form-control" name="aire_acondicionado">
@@ -108,7 +104,7 @@
               </div>
               <div class="form-group">
                 <label for="my-input">Ingrese su ID usuario:</label>
-                <input id="my-input" class="form-control" type="number" name="id_propietario">
+                <input id="my-input" class="form-control" type="number" value="<%=dataUser.id%>" placeholder="<%=dataUser.id  %>" name="id_propietario">
               </div>
 
               <div class="form-group">
@@ -127,18 +123,20 @@
               <!-- b-btn -->
               <br>
               <center>
-                <button class="btn btn-success" type="submit" href="../">Guardar</button>
-
-                <a class="btn btn-primary" href="../">Cancelar </a>
-
+                <button class="btn btn-success" type="submit" href="/users/verificar/<%=dataUser.correo%>,<%=dataUser.contrasena%>">Guardar</button>
               </center>
           
           </form>
+          
   </section>
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=dataUser.correo%>,<%=dataUser.contrasena%>">
+      <button class="btn btn-success" type="submit" ><h1>Cancelar (FUNCIONA)</h1> </button> 
+  </form>
+  </div>
+  <button type="button"><a href="/users/verificar/<%=dataUser.correo%>,<%=dataUser.contrasena%>">CANCELAR 2 (FUNCIONA) </a></button>
 
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 
-
-    <%- include ../layouts/pieEditar.ejs %> 

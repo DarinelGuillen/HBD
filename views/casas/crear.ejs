@@ -1,144 +1,240 @@
-<%- include ../layouts/cabecera.ejs %>
-  <div id="preloader"></div>
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+  <meta charset="utf-8">
+  <title>HOUSE BY DAMO</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link rel="shortcut icon" href="/img/casaLogo.png">
+
+  <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+  <meta property="og:title" content="">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="">
+
+  <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
+
+  <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+
+  <!-- Google Fonts -->
+  <link href="/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/lib/animate-css/animate.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="/css/style.css" rel="stylesheet">
+  </head>
+
+
+<body>
   <!--==========================
   Sección de encabezado
   ============================-->
 
-  
-  <!-- #header -->
+  <header id="header">
+    <div class="container">
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="../img/logo2.png" alt="" title="" /></img></a>
+        <!-- Descomenta abajo si prefieres usar una imagen de texto -->
+        <!--<h1><a href="#hero">Encabezado 1</a></h1>-->
+      </div>
 
-  <!--==========================
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="http://localhost:3000/">Inicio</a></li>
+          <li><a href="http://localhost:3000/">Acerca de nosotros</a></li>
+          <li><a href="">Servicios</a></li>
+          <li><a href="/casas/ver">HOLA</a></li>
+          <li><a href="http://localhost:3000/">Scrum team</a></li>
+          <li><a href="/users/crear">Registrate ahora</a></li>
+          <li><a href="../users/login">inicia session</a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header>
+  <!-- #header -->
+<div id="preloader"></div>
+
+<!--==========================
+  Sección de encabezado
+  ============================-->
+
+
+<!-- #header -->
+
+<!--==========================
   Hero Section
   ============================-->
 
-  <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="../img/casa.webp" width="200" alt="ProOnliPc">
-        </div>
-
-        <h1>Registra tu inmueble</h1>
-        <h2>Para ser <span class="rotating">parte de nosotros, un arrendador, un arrendatario </span></h2>
+<section id="hero">
+  <div class="hero-container">
+    <div class="wow fadeIn">
+      <div class="hero-logo">
+        <img class="" src="/img/casa.webp" width="200" alt="ProOnliPc">
       </div>
-    </div>
-  </section>
- 
 
-  <!--==========================
+      <h1>Registra tu inmueble <%=dataUser.nombre  %></h1>
+      <h2>Para dar a conocer <span class="rotating">tus casas, tus departamentos, mucho mas </span></h2>
+    </div>
+  </div>
+</section>
+
+
+<!--==========================
   Formulario
   ============================-->
 
-  <section id="about">
-    <div class="container wow fadeInUp">
+<section id="about">
+  <div class="container wow fadeInUp">
+    <div class="row">
+      <div class="col-md-12">
+        <form method="post" action="/casas" enctype="multipart/form-data">
+          <!--Envia la informacion a casas y se recepciona el route/casas-->
+           <div class="form-group">
+            <label for="my-input">Municipio:</label>
+            <input id="my-input" class="form-control" type="text" name="municipio">
+          </div>
+          <div class="form-group">
+            <label for="my-input">calle:</label>
+            <input id="my-input" class="form-control" type="text" name="calle">
+          </div>
+          <div class="form-group">
+            <label for="my-input">codigo Postal:</label>
+            <input id="my-input" class="form-control" type="number" name="codigo_postal">
+          </div>
+          <div class="form-group">
+            <label for="my-input">Numero Exterior:</label>
+            <input id="my-input" class="form-control" type="number" name="numero_exterior">
+          </div>
+          <div class="form-group">
+            <label for="my-input">Dimencionde del inmueble en m²: (metros cuadrados)</label>
+            <input id="my-input" class="form-control" type="text" name="dimenciones">
+          </div>
+          <div class="form-group">
+            <label for="my-input">Cantidad de Baños:</label>
+            <input id="my-input" class="form-control" type="number" name="c_banos">
+          </div>
+          <div class="form-group">
+            <label for="my-input">Cantidad de Recamaras:</label>
+            <input id="my-input" class="form-control" type="number" name="c_recamaras">
+          </div>
+          <div class="form-group">
+            <label for="my-select">Amueblado:</label>
+            <select id="my-select" class="form-control" name="amueblado">
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="my-select">Internet:</label>
+            <select id="my-select" class="form-control" name="internet">
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select>
+            </div>
+            <div class="form-group">
+              <label for="my-select">Aire Acondicionado:</label>
+              <select id="my-select" class="form-control" name="aire_acondicionado">
+                <option value="0">NO</option>
+                <option value="1">YES</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="my-input">Precio (mensual):</label>
+              <input id="my-input" class="form-control" type="number" name="precio">
+            </div>
+            <div class="form-group">
+              <label for="my-input">Descripción del inmueble:</label>
+              <input id="my-input" class="form-control" type="text" name="descripcion_general">
+            </div>
+            <div class="form-group">
+              <label for="my-select">Tipo de inmueble:</label>
+              <select id="my-select" class="form-control" name="tipo_depa0_casa1">
+                <option value="1">Casa</option>
+                <option value="0">Departamento</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="my-input">Ingrese su ID usuario:</label>
+              <input id="my-input" class="form-control" type="number" value="<%=dataUser.id%>" placeholder="<%=dataUser.id  %>" name="id_propietario">
+            </div>
+
+            <div class="form-group">
+              <label for="my-select">Estado del inmueble: </label>
+              <select id="my-select" class="form-control" name="disponible1_No0">
+                <option value="0">Disponible</option>
+                <option value="1">Ocupado</option>
+              </select>
+            </div>
+            <!-- b-form-file -->
+
+            <div class="form-group">Imagen</label>
+              <input id="my-input" class="form-control-file" type="file" name="archivo">
+            </div>
+
+            <!-- b-btn -->
+            <br>
+            <center>
+              <button class="btn btn-success" type="submit" href="../">Guardar</button>
+            </center>
+
+        </form>
+</section>
+<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+  <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=dataUser.correo%>,<%=dataUser.contrasena%>">
+    <button class="btn btn-success" type="submit" ><h1>Cancelar (FUNCIONA)</h1> </button> 
+</form>
+</div>
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!--==========================
+  Footer
+  ============================-->
+  <footer id="footer">
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="/casas" enctype="multipart/form-data">
-            <!--Envia la informacion a casas y se recepciona el route/casas-->
+          <div class="copyright">
+            &copy; Copyright Exitos 20-21 <strong>Scrum teamcito</strong>. Todos los derechos reservados
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- #footer -->
+</div>
+      <!-- Required JavaScript Libraries -->
+      <script src="/lib/jquery/jquery.min.js"></script>
+      <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/lib/superfish/hoverIntent.js"></script>
+      <script src="/lib/superfish/superfish.min.js"></script>
+      <script src="/lib/morphext/morphext.min.js"></script>
+      <script src="/lib/wow/wow.min.js"></script>
+      <script src="/lib/stickyjs/sticky.js"></script>
+      <script src="/lib/easing/easing.js"></script>
 
-            <!-- b-form-group -->
-            <!-- <div class="form-group">
-              <label for="my-input">ID</label>//type file
-              <input id="my-input" class="form-control-file" type="number" name="id">
-            </div> -->
+      <!-- Template Specisifc Custom Javascript File -->
+      <script src="/js/custom.js"></script>
 
-            <div class="form-group">
-              <label for="my-input">Municipio:</label>
-              <input id="my-input" class="form-control" type="text" name="municipio">
-            </div>
-            <div class="form-group">
-              <label for="my-input">calle:</label>
-              <input id="my-input" class="form-control" type="text" name="calle">
-            </div>
-            <div class="form-group">
-              <label for="my-input">codigo Postal:</label>
-              <input id="my-input" class="form-control" type="number" name="codigo_postal">
-            </div>
-            <div class="form-group">
-              <label for="my-input">Numero Exterior:</label>
-              <input id="my-input" class="form-control" type="number" name="numero_exterior">
-            </div>
-            <div class="form-group">
-              <label for="my-input">Dimencionde del inmueble en m²: (metros cuadrados)</label>
-              <input id="my-input" class="form-control" type="text" name="dimenciones">
-            </div>
-            <div class="form-group">
-              <label for="my-input">Cantidad de Baños:</label>
-              <input id="my-input" class="form-control" type="number" name="c_banos">
-            </div>
-            <div class="form-group">
-              <label for="my-input">Cantidad de Recamaras:</label>
-              <input id="my-input" class="form-control" type="number" name="c_recamaras">
-            </div>
-            <div class="form-group">
-              <label for="my-select">Amueblado:</label>
-              <select id="my-select" class="form-control" name="amueblado">
-                <option value="0">NO</option>
-                <option value="1">YES</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="my-select">Internet:</label>
-              <select id="my-select" class="form-control" name="internet">
-                <option value="0">NO</option>
-                <option value="1">YES</option>
-              </select>
-              <div class="form-group">
-                <label for="my-select">Aire Acondicionado:</label>
-                <select id="my-select" class="form-control" name="aire_acondicionado">
-                  <option value="0">NO</option>
-                  <option value="1">YES</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="my-input">Precio (mensual):</label>
-                <input id="my-input" class="form-control" type="number" name="precio">
-              </div>
-              <div class="form-group">
-                <label for="my-input">Descripción del inmueble:</label>
-                <input id="my-input" class="form-control" type="text" name="descripcion_general">
-              </div>
-              <div class="form-group">
-                <label for="my-select">Tipo de inmueble:</label>
-                <select id="my-select" class="form-control" name="tipo_depa0_casa1">
-                  <option value="1">Casa</option>
-                  <option value="0">Departamento</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="my-input">Ingrese su ID usuario:</label>
-                <input id="my-input" class="form-control" type="number" name="id_propietario">
-              </div>
+      <script src="/contactform/contactform.js"></script>
 
-              <div class="form-group">
-                <label for="my-select">Estado del inmueble: </label>
-                <select id="my-select" class="form-control" name="disponible1_No0">
-                  <option value="0">Disponible</option>
-                  <option value="1">Ocupado</option>
-                </select>
-              </div>
-              <!-- b-form-file -->
+</body>
 
-              <div class="form-group">Imagen</label>
-                <input id="my-input" class="form-control-file" type="file" name="archivo">
-              </div>
-
-              <!-- b-btn -->
-              <br>
-              <center>
-                <button class="btn btn-success" type="submit" href="../">Guardar</button>
-
-                <a class="btn btn-primary" href="../">Cancelar </a>
-
-              </center>
-          
-          </form>
-  </section>
-
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-
-
-    <%- include ../layouts/pie.ejs %> 
+</html>

@@ -26,19 +26,33 @@ module.exports = {
     // res.render("users/login");
   },
   crearI: function (req, res) {
-    console.log('CREAR I req.params.id==== ',req.params);
+    /* console.log('\nCREAR I req.params.id==== ',req.params+'===\n');
     user.retornarDatosID(conexion, req.params.id, function (err, dato) {
-      console.log('crear I dato===+'+dato[0]);
+      console.log('\ncrear I dato===+'+dato[0],'\n');
       //console.log(stringify(dato));
       res.render("users/crearI", { data: dato[0] });
       //res.render("users/crearI",{dataUser:registros[0]});
+    });*/
+    console.log("req.params.id== =" + req.params.id + "==============\n");
+    user.retornarDatosID(conexion, req.params.id, function (err, REGISTRO) {
+      console.log("REGISTRO " + REGISTRO[0].id);
+      res.render("casa/crear", { dataUser: REGISTRO[0] });
     });
-    
+
     //res.render("users/crearI");
   },
- 
+  guardarI: function (req, res) {
+    console.log('HOLAAAAAAAAA!!=ENTRES\n\n');
+    //Cuando se ejecuta el controlador
+    console.log(req.body);
+    console.log(req.file.filename);
+    // //llama la funcion inserrtar
+    user.insertar(conexion, req.body, req.file, function (err) {
+      res.redirect("user/login");
+    });
+  },
   crear: function (req, res) {
-    
+    res.render("users/crear");
   },
   guardar: function (req, res) {
     console.log(req.body);
@@ -56,7 +70,7 @@ module.exports = {
       //DATOS GLOBALES
       let varInmu = new Array();
       let varNotifi = new Array();
-      //END DATOS GLOBALES 
+      //END DATOS GLOBALES
       console.log(
         " ========= resgistros    ",
         registros,
@@ -76,26 +90,36 @@ module.exports = {
 
         if (DATA[1] == contrasena) {
           console.log("Existes y es igual ");
-                  user.obtenerInmuebles(conexion, function (error, dataImu) {
-                        console.log(
-                          "====dataImu" + JSON.stringify(dataImu[0]) + "=END===dataImu"
-                        );
-                        varInmu = dataImu;
-                        console.log("===varInmu=varInmu[0]= " + varInmu[0]+'=END==varInmu');
-                      });
-                  user.obtenerNotificaciones(conexion, function (error, dataNotifi) {
-                        console.log(
-                          "====dataNotifi" + JSON.stringify(dataNotifi[0]) + "=END===dataNotifi"
-                        );
-                        varNotifi = dataNotifi;
-                        console.log("===varNotifi =varNotifi[0]== " + varNotifi[0]+'=END==varNotifi');
-                      });
+          user.obtenerInmuebles(conexion, function (error, dataImu) {
+            console.log(
+              "====dataImu" + JSON.stringify(dataImu[0]) + "=END===dataImu"
+            );
+            varInmu = dataImu;
+            console.log(
+              "===varInmu=varInmu[0]= " + varInmu[0] + "=END==varInmu"
+            );
+          });
+          user.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+            console.log(
+              "====dataNotifi" +
+                JSON.stringify(dataNotifi[0]) +
+                "=END===dataNotifi"
+            );
+            varNotifi = dataNotifi;
+            console.log(
+              "===varNotifi =varNotifi[0]== " + varNotifi[0] + "=END==varNotifi"
+            );
+          });
           setTimeout(() => {
             if (registros[0].admin) {
-              console.log("ADMIN=====", varInmu[0],'\nADMIN=== NOTIFI=='+varNotifi[0]);
+              console.log(
+                "ADMIN=====",
+                varInmu[0],
+                "\nADMIN=== NOTIFI==" + varNotifi[0]
+              );
               res.render("users/verificar", {
                 dataInmueblesRegistrados: varInmu,
-                dataNotifiUser:varNotifi,
+                dataNotifiUser: varNotifi,
                 title: "USER ADMIN",
                 dataParaVerificadoUser: registros,
               });
@@ -103,7 +127,7 @@ module.exports = {
               console.log("NO ADMIN0000=== ", varInmu);
               res.render("users/verificar", {
                 dataInmueblesRegistrados: varInmu,
-                dataNotifiUser:varNotifi,
+                dataNotifiUser: varNotifi,
                 title: "USER NO ADMIN",
                 dataParaVerificadoUser: registros,
               });
@@ -116,7 +140,7 @@ module.exports = {
           }, 1500);
         } else {
           console.log("Compruebe sus datos ");
-         // res.render("users/login/", { alert: ";)datos mal mijo " });
+          // res.render("users/login/", { alert: ";)datos mal mijo " });
           res.redirect("/users/login");
           //res.redirect("/users/login");
         }

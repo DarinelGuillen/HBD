@@ -1,6 +1,7 @@
 var express = require("express"); //SE NECESITA PARA USERS
 var router = express.Router();
 const usersController = require("../controllers/usersController");
+const casasController = require("../controllers/casasController");
 
 var multer= require('multer');
 var fecha= Date.now();
@@ -27,10 +28,11 @@ router.get("/noVerificados", usersController.noVerificado);
 router.get("/crear", usersController.crear);
 router.post("/", usersController.guardar);
 //crear END//
-// //crearInmueble//
-router.get("/crearI/:id",usersController.crearI);
+router.get("/crear/:id", casasController.crear);
 
-router.post("/",cargar.single("archivo"),usersController.guardar);
+// //crearInmueble//
+//router.get("/crearI/:id",usersController.crearI);
+//router.post("/",cargar.single("archivo"),usersController.guardarI);
 // router.get("/crearInmueble", usersController.crearInmueble);
 // router.post("/",cargar.single("archivo"),usersController.guardarInmueble)
 // //crearInmueble END//

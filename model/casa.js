@@ -32,6 +32,9 @@ module.exports = {
   retornarDatosID: function (conexion, id, funcion) {
     conexion.query("SELECT * FROM Depa_Casa_HBD WHERE id=?", [id], funcion);
   },
+  retornarDatosIDuser: function (conexion, id, funcion) {
+    conexion.query("SELECT * FROM users_HBD WHERE id=?", [id], funcion);
+  },
   borrar: function (conexion, id, funcion) {
     conexion.query("DELETE FROM Depa_Casa_HBD WHERE ID=?", [id], funcion);
   },
