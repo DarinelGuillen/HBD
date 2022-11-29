@@ -1,10 +1,10 @@
 <% if (dataParaVerificadoUser[0].admin==1) { %>
-<!--SI ES ADMIN UNA CABECERA ESPECIAL DE LO CONTRARIO UNA CABECERA NORMAL -->
-<%- include ../layouts/cabeceraUser.ejs %>
-
-<% } else{%>
-<%- include ../layouts/cabeceraIF.ejs %>
+  <!--SI ES ADMIN UNA CABECERA ESPECIAL DE LO CONTRARIO UNA CABECERA NORMAL -->
+  <%- include ../layouts/cabeceraUser.ejs %>
+  <% } else{%>
+  <%- include ../layouts/cabeceraIF.ejs %>
 <% } %>
+
 <div id="preloader"></div>
 
 <!--==========================
@@ -35,23 +35,20 @@
 
 
 
-<section id="about">
-  <div class="container wow fadeInUp">
-    <div class="row">
-      <center>
-        <h1><%= title %></h1>
-      </center>
-      <h1>dataParaVerificadoUser//// <%= dataParaVerificadoUser %> </h1>
-      <center>
-        <h1> Bienvenido <%= dataParaVerificadoUser[0].nombre%> </h1>
-      </center>
-      <h1> id= <%= dataParaVerificadoUser[0].id%></h1>
-      <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>
+  <section id="about">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <center><h1><%= title %></h1></center>
+          <h1>dataParaVerificadoUser//// <%= dataParaVerificadoUser %> </h1>
+          <center><h1> Bienvenido <%= dataParaVerificadoUser[0].nombre%> </h1> </center>
+          <h1>dataParaVerificadoUser id= <%= dataParaVerificadoUser[0].id%>=== <%= dataInmueblesRegistrados[0].id_propietario %> </h1>
+          <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>
+      </div>
     </div>
-  </div>
 
 
 
+<<<<<<< HEAD
   <div class="container wow fadeInUp">
     <div class="row">
       <% for( let i = 0; i < dataInmueblesRegistrados.length; i++ ) { %>
@@ -110,16 +107,42 @@
       
       <% if (dataParaVerificadoUser[0].admin==1) { %>
       <!--<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+=======
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <% for( let i = 0; i < dataInmueblesRegistrados.length; i++ ) { %>
+          <% if (dataParaVerificadoUser[0].id==parseInt(dataInmueblesRegistrados[i].id_propietario)) { %>
+          <!--Se puede comprobar diponibilidad ademas -->
+          <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
+            ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
+            = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
+            IMAGEN;; <img class="img-thumbnail" width="200px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
+          <button>EDITAR</button>
+          <button>Borrar</button>
+          <% }else{ %>
+          <!--IF-->
+          <p>iterador i= <%= i %> ID=;; <%= dataInmueblesRegistrados[i].id %>
+            ID PROPIETARIO ;; <%= dataInmueblesRegistrados[i].id_propietario %>
+            = DISPONIBILIDAD;; <%= dataInmueblesRegistrados[i].disponible1_No0 %>
+            IMAGEN;; <img class="img-thumbnail" width="50px" src="/images/<%= dataInmueblesRegistrados[i].img %>" alt=""></p>
+          <% } %>
+          <!--else-->
+          <% } %>
+          <!--FOR-->
+          <% if (dataParaVerificadoUser[0].admin==1) { %>
+          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+>>>>>>> cb13b16a4d949df8a3c21ccd03188542d27553f2
             <form class="form-inline" method="get" action="/users/crearI/<%=dataParaVerificadoUser[0].id%>">
               <button class="btn btn-danger" type="submit">
                 <h1>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h1>
               </button>
-            </form><br>-->
-
-      <!--<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            </form><br>
+        
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
               <form class="form-inline" method="get" action="/casas/editar/">
                 <button class="btn btn-danger" type="submit">Editar</button>
               </form>
+<<<<<<< HEAD
             </div>-->
 
       <!--<button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>-->
@@ -163,6 +186,42 @@
         <%} %>
         <% } %>
       </div>
+=======
+            </div>
+        
+            <button type="button"><a href="/users/crearI">CREA UN NUEVO XXXXXXXXXXX </a></button>
+        
+            <button type="button"><a href="/casas/crear/<%= dataParaVerificadoUser[0].correo %>,<%= dataParaVerificadoUser[0].contrasena%>">CREA UN NUEVO INMUEBLE </a></button>
+        
+            <% }else{ %>
+            <p>Puede imprimir algo si no admin </p>
+        
+            <% } %>
+
+
+
+            <h1>Notificaciones dataNotifiUser</h1>
+            <p>en vez de imprirlo asi se puede imprir la casa completa que fue solisitada y mas datos de usuario que envia la notificasion</p>
+            <% let num=0; %>
+            <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
+            <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
+        
+        
+            <p>
+              id noti= <%= dataNotifiUser[i].id %> <br>
+              id_user que envio la notificasion = <%= dataNotifiUser[i].id_user %> <br>
+              mensaje de user= <%= dataNotifiUser[i].mensaje %> <br>
+              id_propietario <%= dataNotifiUser[i].id_propietario%> <br>
+              id_inmueble= <%= dataNotifiUser[i].id_inmueble %> <br>
+            </p>
+            <% }else{%>
+            <% if (num==0) { %>
+            <% num=1 %>
+            <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
+            <% } %>
+            <%} %>
+            <% } %>      </div>
+>>>>>>> cb13b16a4d949df8a3c21ccd03188542d27553f2
     </div>
     <h1>section FAVOTIRITOS QUE DEBERIA DE ESTAR ARRIVA</h1>
     <h4>NOTA: generar una condicion para solo mostrar los favoritos del id user id</h4>
@@ -174,7 +233,7 @@
       
     <div class="container wow fadeInUp">
       <div class="row">
-
+        
       </div>
     </div>
     <div class="container wow fadeInUp">
@@ -182,8 +241,25 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt at modi voluptatem. Perferendis consequatur ipsum totam esse, doloribus laboriosam nisi officiis excepturi tempora possimus exercitationem suscipit iure quod aspernatur ea!
       </div>
     </div>
+    
+  </section>
 
-</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -192,9 +268,9 @@
 <section id="prueba">
 
   <div id="impresion"></div>
+  
 
-
-
+  
 
 </section>
 
