@@ -27,7 +27,13 @@ module.exports = {
   },
 
   crear: function (req, res) {
-    res.render("casas/crear");
+    console.log("HOLAAAAAAAAAAAAAA");
+    //res.render("casas/crear");
+    console.log("req.params.id== =" + req.params.id + "==============\n");
+    casa.retornarDatosIDuser(conexion, req.params.id, function (err, REGISTRO) {
+      console.log("REGISTRO " + REGISTRO[0]);
+      res.render("casas/crear", { dataUser: REGISTRO[0] });
+    });
   },
 
   guardar: function (req, res) {
@@ -57,9 +63,9 @@ module.exports = {
     // });
   },
   editar: function (req, res) {
-    console.log('req.params.id== ='+req.params);
+    console.log("req.params.id== =" + req.params);
     casa.retornarDatosID(conexion, req.params.id, function (err, registros) {
-      console.log('Registros '+registros[0]);
+      console.log("Registros " + registros[0]);
       res.render("casas/editar", { casa: registros[0] });
     });
   },
