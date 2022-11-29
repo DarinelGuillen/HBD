@@ -23,7 +23,7 @@ var cargar=multer({storage:rutaAlmacen});
 /* GET users listing. */
 router.get("/index", usersController.index);
 router.get("/verificar/:correo", usersController.verificar);
-router.get("/noVerificados", usersController.noVerificado);
+//router.get("/noVerificados", usersController.noVerificado);
 //crear user//
 router.get("/crear", usersController.crear);
 router.post("/", usersController.guardar);
@@ -36,6 +36,10 @@ router.get("/crear/:id", casasController.crear);
 // router.get("/crearInmueble", usersController.crearInmueble);
 // router.post("/",cargar.single("archivo"),usersController.guardarInmueble)
 // //crearInmueble END//
+
+router.post('/favoritos/:id',usersController.favoritos);
+
+
 
 router.get("/login", usersController.login);
 

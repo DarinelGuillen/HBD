@@ -70,6 +70,8 @@ module.exports = {
       //DATOS GLOBALES
       let varInmu = new Array();
       let varNotifi = new Array();
+      let varFavori = new Array();
+      
       //END DATOS GLOBALES
       console.log(
         " ========= resgistros    ",
@@ -106,9 +108,16 @@ module.exports = {
                 "=END===dataNotifi"
             );
             varNotifi = dataNotifi;
+            console.log("===varNotifi =varNotifi[0]== " + varNotifi[0] + "=END==varNotifi");
+          });
+          user.obtenerFavoritos(conexion, function (error, dataFavori) {
             console.log(
-              "===varNotifi =varNotifi[0]== " + varNotifi[0] + "=END==varNotifi"
+              "====dataNotifi" +
+                JSON.stringify(dataFavori[0]) +
+                "=END===dataNotifi"
             );
+            varFavori = dataFavori;
+            console.log("===varFavori =varFavori[0]== " + varFavori[0] + "=END==varFavori");
           });
           setTimeout(() => {
             if (registros[0].admin) {
@@ -122,14 +131,17 @@ module.exports = {
                 dataNotifiUser: varNotifi,
                 title: "USER ADMIN",
                 dataParaVerificadoUser: registros,
+                dataFavoritosUser:varFavori
               });
             } else {
-              console.log("NO ADMIN0000=== ", varInmu);
+              console.log("NO ADMIN0000=== ", varInmu.length);
               res.render("users/verificar", {
                 dataInmueblesRegistrados: varInmu,
                 dataNotifiUser: varNotifi,
                 title: "USER NO ADMIN",
                 dataParaVerificadoUser: registros,
+                dataFavoritosUser:varFavori
+                
               });
               /*res.render("users/noVerificado", {
                 dataImunmueblesRegistrados: varInmu,
@@ -147,11 +159,33 @@ module.exports = {
       }
     });
   },
-  noVerificado: function (req, res) {
+  /*noVerificado: function (req, res) {
     user.obtenerInmuebles(conexion, datos, function (err) {
       //res.render("users/noVerificado",{title2:'This is the title2',dataparaNoVerificadoUserInmuebles:datos})
       res.render("users/noVerificado");
       // res.redirect("/casas");
     });
+  },*/
+  favoritos: function (req, res) {
+    let varInmu = new Array();
+    let varNotifi = new Array();
+    let varFavori = new Array();
+    console.log("Recepción de datos FAVORITOS=====");
+    var DATA = req.params.id.split(",");
+    console.log(DATA, " DATA");
+    console.log(DATA[0], " DATA[0]");
+    console.log(DATA[1], " DATA[1]");
+
+   /* user.retornarDatosID(conexion, DATA[0], function (err, registros) {
+      console.log('DENTRO DE RETORNAR DATOS ID FAVORITOS \nregistros',registros,' \n datoArrayUser=== ', datoArrayUser);
+      datoArrayUser=registros
+    });*/
+setTimeout(() => {
+  user.insertarFavoritos(conexion, DATA[0],DATA[1], function (err, registros) {
+    res.render("users/login",{alert:'estamos presentado inconvenientes\n por favor ingrese de nuevo'})
+      
+  });
+}, 500);
+   
   },
 };
