@@ -46,7 +46,7 @@ module.exports = {
   insertarUser: function (conexion, datos, funcion) {
     conexion.query(
       "INSERT INTO users_HBD " +
-        "( `nombre`,`apellido`,`edad`,`correo`,`contrasena`,`sexo`,`curp`,`admin`) VALUES (?,?,?,?,?,?,?,?);",
+        "( `nombre`,`apellido`,`edad`,`correo`,`contrasena`,`sexo`,`curp`,`admin`,`numero_tel`) VALUES (?,?,?,?,?,?,?,?,?);",
       [
         datos.nombre,
         datos.apellido,
@@ -56,6 +56,7 @@ module.exports = {
         datos.sexo,
         datos.curp,
         datos.admin,
+        datos.numero_tel,
       ],
       funcion
     );
