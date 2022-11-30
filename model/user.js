@@ -80,6 +80,19 @@ module.exports = {
       funcion
     );
   },
+  insertarNotificaciones: function (conexion, id_user,mensaje,id_propietario,id_inmueble, funcion) {
+    conexion.query(
+      "INSERT INTO notificaciones " +
+        "( `id_user`,`mensaje`,`id_propietario`,`id_inmueble`) VALUES (?,?,?,?);",
+      [
+        id_user,
+        mensaje,
+        id_propietario,
+        id_inmueble
+      ],
+      funcion
+    );
+  },
   retornarDatosID: function (conexion, id, funcion) {
     conexion.query("SELECT * FROM users_HBD WHERE id=?", [id], funcion);
   },

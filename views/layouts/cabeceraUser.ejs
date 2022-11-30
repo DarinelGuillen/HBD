@@ -64,7 +64,7 @@
               <!--<li><a href="http://localhost:3000/">Scrum team</a></li> -->
               <li><a href="#testimonials">Notificaciones</a></li>
               <li><a href="http://localhost:3000/">Desloguearse</a></li> 
-              <li><a style="color:#d81fcf"; >Bienvenido <%= dataParaVerificadoUser[0].nombre  %></a></li>
+              <li><a href="/users/verificar/<%=dbUserQ[0].correo%>,<%=dbUserQ[0].contrasena%>" style="color:#d81fcf"; >Bienvenido <%= dbUserQ[0].nombre  %></a></li>
             </ul>
           </nav>
           <!-- #nav-menu-container -->

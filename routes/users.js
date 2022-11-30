@@ -32,5 +32,6 @@ router.post("/", usersController.guardar);
 router.get("/crear/:id", casasController.crear);
 // //crearInmueble END//
 router.post('/favoritos/:id',usersController.favoritos);
+router.post('/notificaciones/:datos',usersController.notificaciones);
 
 module.exports = router;

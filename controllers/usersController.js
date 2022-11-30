@@ -8,11 +8,11 @@ module.exports = {
   },
   login: function (req, res) {
     // console.log(datos);
-    res.render("users/login", { alert: ";)" });
+    res.render("users/login", { alert: "" });
     // res.render("users/login");
   },
   guardarI: function (req, res) {
-    console.log('HOLAAAAAAAAA!!=ENTRE\n\n');
+    console.log("HOLAAAAAAAAA!!=ENTRE\n\n");
     //Cuando se ejecuta el controlador
     console.log(req.body);
     console.log(req.file.filename);
@@ -41,7 +41,7 @@ module.exports = {
       let varInmu = new Array();
       let varNotifi = new Array();
       let varFavori = new Array();
-      
+
       //END DATOS GLOBALES
       console.log(
         " ========= resgistros    ",
@@ -78,7 +78,9 @@ module.exports = {
                 "=END===dataNotifi"
             );
             varNotifi = dataNotifi;
-            console.log("===varNotifi =varNotifi[0]== " + varNotifi[0] + "=END==varNotifi");
+            console.log(
+              "===varNotifi =varNotifi[0]== " + varNotifi[0] + "=END==varNotifi"
+            );
           });
           user.obtenerFavoritos(conexion, function (error, dataFavori) {
             console.log(
@@ -87,7 +89,9 @@ module.exports = {
                 "=END===dataNotifi"
             );
             varFavori = dataFavori;
-            console.log("===varFavori =varFavori[0]== " + varFavori[0] + "=END==varFavori");
+            console.log(
+              "===varFavori =varFavori[0]== " + varFavori[0] + "=END==varFavori"
+            );
           });
           setTimeout(() => {
             if (registros[0].admin) {
@@ -97,21 +101,20 @@ module.exports = {
                 "\nADMIN=== NOTIFI==" + varNotifi[0]
               );
               res.render("users/verificar", {
-                dataInmueblesRegistrados: varInmu,
-                dataNotifiUser: varNotifi,
+                dbInmuebles: varInmu,
+                dbNotifi: varNotifi,
                 title: "USER ADMIN",
-                dataParaVerificadoUser: registros,
-                dataFavoritosUser:varFavori
+                dbUserQ: registros,
+                dbFavUs: varFavori,
               });
             } else {
               console.log("NO ADMIN0000=== ", varInmu.length);
               res.render("users/verificar", {
-                dataInmueblesRegistrados: varInmu,
-                dataNotifiUser: varNotifi,
+                dbInmuebles: varInmu,
+                dbNotifi: varNotifi,
                 title: "USER NO ADMIN",
-                dataParaVerificadoUser: registros,
-                dataFavoritosUser:varFavori
-                
+                dbUserQ: registros,
+                dbFavUs: varFavori,
               });
               /*res.render("users/noVerificado", {
                 dataImunmueblesRegistrados: varInmu,
@@ -119,7 +122,7 @@ module.exports = {
                 dataparaNoVerificadoUser: registros,
               });*/
             }
-          }, 1500);
+          }, 1100);
         } else {
           console.log("Compruebe sus datos ");
           // res.render("users/login/", { alert: ";)datos mal mijo " });
@@ -130,24 +133,143 @@ module.exports = {
     });
   },
   favoritos: function (req, res) {
-    let varInmu = new Array();
-    let varNotifi = new Array();
-    let varFavori = new Array();
     console.log("Recepción de datos FAVORITOS=====");
     var DATA = req.params.id.split(",");
     console.log(DATA, " DATA");
     console.log(DATA[0], " DATA[0]");
     console.log(DATA[1], " DATA[1]");
-
-   /* user.retornarDatosID(conexion, DATA[0], function (err, registros) {
-      console.log('DENTRO DE RETORNAR DATOS ID FAVORITOS \nregistros',registros,' \n datoArrayUser=== ', datoArrayUser);
-      datoArrayUser=registros
-    });*/
-
-  user.insertarFavoritos(conexion, DATA[0],DATA[1], function (err, registros) {
-    res.render("users/login",{alert:'estamos presentado inconvenientes\n por favor ingrese de nuevo'})
-      
-  });
-   
+    user.insertarFavoritos(
+      conexion,
+      DATA[0],
+      DATA[1],
+      function (err, registros) {
+        console.log("HOLAAAAAAA ENTRE INSEETARFAVORITOS/////////////////");
+        //DATOS GLOBALES
+        let varInmu = new Array();
+        let varNotifi = new Array();
+        let varFavori = new Array();
+        let varUser = new Array();
+        //END DATOS GLOBALES
+        user.obtenerInmuebles(conexion, function (error, dataImu) {
+          varInmu = dataImu;
+        });
+        user.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+          varNotifi = dataNotifi;
+        });
+        user.obtenerFavoritos(conexion, function (error, dataFavori) {
+          varFavori = dataFavori;
+        });
+        user.retornarDatosID(conexion, DATA[0], function (err, dataUser) {
+          varUser = dataUser;
+        });
+        setTimeout(() => {
+          console.log(
+            "LAST STEP SEE IF AM I ADMIN OR NOT N\n",
+            "DATAIMU",
+            varInmu.length,
+            "////\n",
+            "varNotifi",
+            varNotifi.length,
+            "////\n",
+            "varFavori",
+            varFavori.length,
+            "////\n",
+            "varUser",
+            varUser.length,
+            "////\n",
+            "END.LENGTH"
+          );
+          if (varUser[0].admin) {
+            res.render("users/verificar", {
+              dbInmuebles: varInmu,
+              dbNotifi: varNotifi,
+              title: "USER ADMIN",
+              dbUserQ: varUser,
+              dbFavUs: varFavori,
+            });
+          } else {
+            res.render("users/verificar", {
+              dbInmuebles: varInmu,
+              dbNotifi: varNotifi,
+              title: "USER NO ADMIN",
+              dbUserQ: varUser,
+              dbFavUs: varFavori,
+            });
+          }
+        }, 1100);
+      }
+    );
+  },
+  notificaciones: function (req, res) {
+    console.log("Recepción de datos FAVORITOS=====");
+    var DATA = req.params.datos.split(",");
+    console.log(DATA, " DATA/\n");
+    console.log(DATA[0], " DATA[0]/ID USER\n");
+    console.log(DATA[1], " DATA[1]/MENSAJE\n");
+    console.log(DATA[2], " DATA[2]/ID PROPIETARIO\n");
+    console.log(DATA[3], " DATA[3]/ID INMUEBLE\n");
+    user.insertarNotificaciones(
+      conexion,
+      DATA[0],
+      DATA[1],
+      DATA[2],
+      DATA[3],
+      function (err, registros) {
+        console.log("HOLAAAAAAA ENTRE INSERTAR NOTIFICACION/////////////////");
+        //DATOS GLOBALES
+        let varInmu = new Array();
+        let varNotifi = new Array();
+        let varFavori = new Array();
+        let varUser = new Array();
+        //END DATOS GLOBALES
+        user.obtenerInmuebles(conexion, function (error, dataImu) {
+          varInmu = dataImu;
+        });
+        user.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+          varNotifi = dataNotifi;
+        });
+        user.obtenerFavoritos(conexion, function (error, dataFavori) {
+          varFavori = dataFavori;
+        });
+        user.retornarDatosID(conexion, DATA[0], function (err, dataUser) {
+          varUser = dataUser;
+        });
+        setTimeout(() => {
+          console.log(
+            "LAST STEP SEE IF AM I ADMIN OR NOT N\n",
+            "DATAIMU",
+            varInmu.length,
+            "////\n",
+            "varNotifi",
+            varNotifi.length,
+            "////\n",
+            "varFavori",
+            varFavori.length,
+            "////\n",
+            "varUser",
+            varUser.length,
+            "////\n",
+            "END.LENGTH"
+          );
+          if (varUser[0].admin) {
+            res.render("users/verificar", {
+              dbInmuebles: varInmu,
+              dbNotifi: varNotifi,
+              title: "USER ADMIN",
+              dbUserQ: varUser,
+              dbFavUs: varFavori,
+            });
+          } else {
+            res.render("users/verificar", {
+              dbInmuebles: varInmu,
+              dbNotifi: varNotifi,
+              title: "USER NO ADMIN",
+              dbUserQ: varUser,
+              dbFavUs: varFavori,
+            });
+          }
+        }, 1100);
+      }
+    );
   },
 };
