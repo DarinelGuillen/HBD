@@ -6,43 +6,13 @@ module.exports = {
     // res.render("prueba/index");
     res.render("../index.ejs"); //index de usuarios registrados no admin's
   },
-
-  // crearInmueble: function (req, res) {
-  //   console.log("crearInmueble: function (req, res) {============");
-  //   res.render("users/crearInmueble");
-  // },
-  // guardarInmueble: function (req, res) {
-  //   console.log("ENTRE A GUARDAAR INMUEBLES");
-  //   console.log("DATOS===============", req.body);
-  //   console.log("FILE NAME===============", req.file.filename);
-  //   // //llama la funcion inserrtar
-  //   user.insertarInmueble(conexion, req.body, req.file, function (err) {
-  //     res.redirect("../");
-  //   });
-  // },
   login: function (req, res) {
     // console.log(datos);
     res.render("users/login", { alert: ";)" });
     // res.render("users/login");
   },
-  crearI: function (req, res) {
-    /* console.log('\nCREAR I req.params.id==== ',req.params+'===\n');
-    user.retornarDatosID(conexion, req.params.id, function (err, dato) {
-      console.log('\ncrear I dato===+'+dato[0],'\n');
-      //console.log(stringify(dato));
-      res.render("users/crearI", { data: dato[0] });
-      //res.render("users/crearI",{dataUser:registros[0]});
-    });*/
-    console.log("req.params.id== =" + req.params.id + "==============\n");
-    user.retornarDatosID(conexion, req.params.id, function (err, REGISTRO) {
-      console.log("REGISTRO " + REGISTRO[0].id);
-      res.render("casa/crear", { dataUser: REGISTRO[0] });
-    });
-
-    //res.render("users/crearI");
-  },
   guardarI: function (req, res) {
-    console.log('HOLAAAAAAAAA!!=ENTRES\n\n');
+    console.log('HOLAAAAAAAAA!!=ENTRE\n\n');
     //Cuando se ejecuta el controlador
     console.log(req.body);
     console.log(req.file.filename);
@@ -159,13 +129,6 @@ module.exports = {
       }
     });
   },
-  /*noVerificado: function (req, res) {
-    user.obtenerInmuebles(conexion, datos, function (err) {
-      //res.render("users/noVerificado",{title2:'This is the title2',dataparaNoVerificadoUserInmuebles:datos})
-      res.render("users/noVerificado");
-      // res.redirect("/casas");
-    });
-  },*/
   favoritos: function (req, res) {
     let varInmu = new Array();
     let varNotifi = new Array();
@@ -180,12 +143,11 @@ module.exports = {
       console.log('DENTRO DE RETORNAR DATOS ID FAVORITOS \nregistros',registros,' \n datoArrayUser=== ', datoArrayUser);
       datoArrayUser=registros
     });*/
-setTimeout(() => {
+
   user.insertarFavoritos(conexion, DATA[0],DATA[1], function (err, registros) {
     res.render("users/login",{alert:'estamos presentado inconvenientes\n por favor ingrese de nuevo'})
       
   });
-}, 500);
    
   },
 };

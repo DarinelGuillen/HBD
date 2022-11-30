@@ -1,334 +1,304 @@
 <% if (dataParaVerificadoUser[0].admin==1) { %>
-  <!--SI ES ADMIN UNA CABECERA ESPECIAL DE LO CONTRARIO UNA CABECERA NORMAL -->
-  <%- include ../layouts/cabeceraUser.ejs %>
-  
-  <% } else{%>
-  <%- include ../layouts/cabeceraIF.ejs %>
-  <% } %>
-  <div id="preloader"></div>
-  
-  <!--==========================
+<!--SI ES ADMIN UNA CABECERA ESPECIAL DE LO CONTRARIO UNA CABECERA NORMAL -->
+<%- include ../layouts/cabeceraUser.ejs %>
+
+<% } else{%>
+<%- include ../layouts/cabeceraIF.ejs %>
+<% } %>
+<div id="preloader"></div>
+
+<!--==========================
     Hero Section
     ============================-->
-  
-  <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="/img/HouseByDamo.png" alt="ProOnliPc">
-        </div>
-  
-        <h1>Bienvenido A House By Damo</h1>
-        <h2>Nosotros creamos tus <span class="rotating">comodidades, tiempos, experiencias </span></h2>
-        <div class="actions">
-          <a href="#about" class="btn-get-started">Inicia</a>
-          <a href="#services" class="btn-services">Nuestros servicios</a>
-        </div>
+
+<section id="hero">
+  <div class="hero-container">
+    <div class="wow fadeIn">
+      <div class="hero-logo">
+        <img class="" src="/img/HouseByDamo.png" alt="ProOnliPc">
+      </div>
+
+      <h1>Bienvenido <%= dataParaVerificadoUser[0].nombre%> <%= dataParaVerificadoUser[0].apellido%></h1>
+      <h2>Nosotros creamos tus <span class="rotating">comodidades, tiempos, experiencias </span></h2>
+      <div class="actions">
+        <a href="#portfolio" class="btn-get-started">Inicia</a>
+        <!--<a href="#services" class="btn-services">Nuestros servicios</a>-->
       </div>
     </div>
-  </section>
-  
-  <!--==========================
+  </div>
+</section>
+
+<!--==========================
     Sección de encabezado
     ============================-->
-  
-  
-  
-    <section id="about">
-      <div class="container wow fadeInUp">
-        <div class="row">
-          <center><h1><%= title %></h1></center>
-            <!--<h1>dataParaVerificadoUser//// <%= dataParaVerificadoUser %> </h1> -->
-            <center><h1> Bienvenido <%= dataParaVerificadoUser[0].nombre%> </h1> </center>
-           <!-- <h1>dataParaVerificadoUser id= <%= dataParaVerificadoUser[0].id%>=== <%= dataInmueblesRegistrados[0].id_propietario %> </h1>-->
-           <!-- <h1>length== <%= dataInmueblesRegistrados.length  %> </h1>-->
-        </div>
+
+
+
+<!-- impresion inmuebles-->
+
+<section id="portfolio">
+  <div class="container wow fadeInUp">
+    <h3 class="section-title">Mis Inmuebles</h3>
+    <div class="section-title-divider"></div>
+
+    <div class="row">
+      <% for( let i=0; i < dataInmueblesRegistrados.length; i++ ) { %>
+      <!--==========================
+            Sección Si admin inprimir Solo Mis Inmuebles 
+            ============================-->
+      <% if (dataParaVerificadoUser[0].id==dataInmueblesRegistrados[i].id_propietario) { %>
+      <div class="col-md-3">
+        <a class="portfolio-item" style="background-image: url('/images/<%=dataInmueblesRegistrados[i].img %>');">
+          <div class="details" style="color:rgb(0, 2, 2);">
+            <br>
+            <b>Id propietario:<%= dataInmueblesRegistrados[i].id_propietario %>
+            </b>
+            <br>
+            <td>Precio mensual:$<%=dataInmueblesRegistrados[i].precio%>
+            </td>
+            <br>
+            <td>Dimenciones:<%=dataInmueblesRegistrados[i].dimenciones%>m²
+            </td>
+            <br>
+            <td>Disponibilidad:<%= dataInmueblesRegistrados[i].disponible1_No0 %>
+            </td>
+            <br>
+              <!--==========================
+            BUTTON EDTITAR 
+            ============================-->
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="get" action="/casas/editar/<%=dataInmueblesRegistrados[i].id%> ">
+                <button class="btn btn-danger" type="submit">Editar</button>
+              </form>
+            </div>
+            <!--==========================
+            BUTTON BORRAR 
+            ============================-->
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="post" action="/casas/eliminar/<%=dataInmueblesRegistrados[i].id%>">
+                <button class="btn btn-warning" type="submit">Borrar</button>
+              </form>
+            </div>
+
+
+          </div>
+
+        </a>
       </div>
-    </section>
+      <% } %>
+
+                    <!--==========================
+                    Sección Si NO admin inprimir todos los Inmuebles disponibles 
+                    ============================-->
+      <% if (dataParaVerificadoUser[0].admin==0) { %>
+      <% if (dataParaVerificadoUser[0].id!=dataInmueblesRegistrados[i].id_propietario) { %>
+      <div class="col-md-3">
+        <a class="portfolio-item" style="background-image: url('/images/<%=dataInmueblesRegistrados[i].img %>');">
+          <div class="details" style="color:rgb(0, 2, 2);">
+            <br>
+            <b>Id propietario:<%= dataInmueblesRegistrados[i].id_propietario %>
+            </b>
+            <br>
+            <td>Precio mensual:$<%=dataInmueblesRegistrados[i].precio%>
+            </td>
+            <br>
+            <td>Dimenciones:<%=dataInmueblesRegistrados[i].dimenciones%>m²
+            </td>
+            <br>
+            <td>Disponibilidad:<%= dataInmueblesRegistrados[i].disponible1_No0 %>
+            </td>
+            <br>
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="post" action="/users/favoritos/<%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>">
+                <button class="meInteresa" type="submit"><img src="/img/corazon.png" alt="Agregar a mis favoritos"></button>
+                 </form>
+            </div>
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+              <form class="form-inline" method="post">
+                <button class="Pensando"><img src="/img/meinteresa.png" alt=""></button>
+
+              </form>
+            </div>
 
 
-  <!-- impresion inmuebles-->
-
-    <section id="portfolio">
-      <div class="container wow fadeInUp">
-        <h3 class="section-title">Inmuebles</h3>
-        <div class="section-title-divider"></div>
-  
-        <div class="row">
-          <% for( let i=0; i < dataInmueblesRegistrados.length; i++ ) { %>
-            <% if (dataParaVerificadoUser[0].id==dataInmueblesRegistrados[i].id_propietario) { %>
-                    <div class="col-md-3">
-                      <a class="portfolio-item" style="background-image: url('/images/<%=dataInmueblesRegistrados[i].img %>');">
-                        <div class="details" style="color:rgb(0, 2, 2);">
-                          <br>
-                          <b>Id propietario:<%= dataInmueblesRegistrados[i].id_propietario %>
-                          </b>
-                          <br>
-                          <td>Precio mensual:$<%=dataInmueblesRegistrados[i].precio%>
-                          </td>
-                          <br>
-                          <td>Dimenciones:<%=dataInmueblesRegistrados[i].dimenciones%>m²
-                          </td>
-                          <br>
-                          <td>Disponibilidad:<%= dataInmueblesRegistrados[i].disponible1_No0 %>
-                          </td>
-                          <br>
-              
-                          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                            <form class="form-inline" method="get" action="/casas/editar/<%=dataInmueblesRegistrados[i].id%> ">
-                              <button class="btn btn-danger" type="submit">Editar</button>
-                            </form>
-                          </div>
-                  
-                          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                            <form class="form-inline" method="post" action="/casas/eliminar/<%=dataInmueblesRegistrados[i].id%>">
-                              <button class="btn btn-warning" type="submit">Borrar</button>
-                            </form>
-                          </div>
-              
-              
-                        </div>
-              
-                      </a>
-                    </div>
-                    <% } %>
-
-
-                    <% if (dataParaVerificadoUser[0].admin==0) { %>
-         
-        
-                      <% if (dataParaVerificadoUser[0].id!=dataInmueblesRegistrados[i].id_propietario) { %>
-
-
-                        <div class="col-md-3">
-                          <a class="portfolio-item" style="background-image: url('/images/<%=dataInmueblesRegistrados[i].img %>');">
-                            <div class="details" style="color:rgb(0, 2, 2);">
-                              <br>
-                              <b>Id propietario:<%= dataInmueblesRegistrados[i].id_propietario %>
-                              </b>
-                              <br>
-                              <td>Precio mensual:$<%=dataInmueblesRegistrados[i].precio%>
-                              </td>
-                              <br>
-                              <td>Dimenciones:<%=dataInmueblesRegistrados[i].dimenciones%>m²
-                              </td>
-                              <br>
-                              <td>Disponibilidad:<%= dataInmueblesRegistrados[i].disponible1_No0 %>
-                              </td>
-                              <br>
-                  
-                              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                                <form class="form-inline" method="post"
-                                 action="/users/favoritos/<%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>">
-                                  <button class="meInteresa" type="submit" ><img src="/img/corazon.png" alt=""></button>
-                                   <!-- <%=dataParaVerificadoUser[0].correo%>,<%=dataParaVerificadoUser[0].contrasena%>,
-                                    <%=dataParaVerificadoUser[0].id%>,<%=dataInmueblesRegistrados[i].id%>
-                                  </button>-->
-                                </form>
-                              </div>
-
-                              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                                <form class="form-inline" method="post">
-                                 <button class="Pensando"><img src="/img/meinteresa.png" alt=""></button>
-                                 
-                                </form>
-                              </div>
-                              
-
-                            </div>
-                          </a>
-                        </div>
-                        <% } %><!--IF-->
-                      <% } %><!--IF-->
-          <% } %>
-        
-        </div>
+          </div>
+        </a>
       </div>
-    </section>
+      <% } %>
+      <!--IF-->
+      <% } %>
+      <!--IF-->
+      <% } %>
+
+    </div>
+  </div>
+</section>
 
 
 <!--impresion de boton crear segun user-->
 
 
-    <section id="subscribe">
-        <div class="container wow fadeInUp">
-          <% if (dataParaVerificadoUser[0].admin==1) { %>
-            <!--INPORTANTE -->
-            <center>
-            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <h1 style="color:rgb(255, 255, 255);">registra un nuevo inmueble </h1>
-              <form class="form-inline" method="get" action="/casas/crear/<%=dataParaVerificadoUser[0].id%>">
-                <button class="btn btn-danger" type="submit">
-                  <h5>Crear Un Nuevo Inmueble id=<%=dataParaVerificadoUser[0].id%></h5>
-                </button>
-              </form><br>
-              <% }else{ %>
-                <h2 style="color:rgb(255, 255, 255);" > La opcion mas clara House By Damo </h2>
-      
-              <% } %>
-        </div>
-      </center>
-    </section>
+<section id="subscribe">
+  <div class="container wow fadeInUp">
+    <% if (dataParaVerificadoUser[0].admin==1) { %>
+    <!--INPORTANTE -->
+    <center>
+      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+        <h1 style="color:rgb(255, 255, 255);">registra un nuevo inmueble </h1>
+        <form class="form-inline" method="get" action="/casas/crear/<%=dataParaVerificadoUser[0].id%>">
+          <button class="btn btn-danger" type="submit">
+            <h5>Crear Un Nuevo Inmueble <%=dataParaVerificadoUser[0].nombre%></h5>
+          </button>
+        </form><br>
+        <% }else{ %>
+        <h2 style="color:rgb(255, 255, 255);"> La opcion mas clara House By Damo </h2>
 
-
-    <!--notificaciones-->
-    <section id="testimonials">
-      <div class="container wow fadeInUp">
-
-        <center> <h1>Notificaciones </h1></center>
-        <div class="section-title-divider"></div>
-          <% let num=0; %>
-          <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
-          <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
-            <% for( let index = 0; index < dataInmueblesRegistrados.length; index++ ) { %>
-              <% if (dataInmueblesRegistrados[index].id=== dataNotifiUser[i].id_inmueble) { %>
-                <center><h3>Hola <%=dataParaVerificadoUser[0].nombre %> </h3><br>
-               
-                  <p>
-                    El usuario con id:<%= dataNotifiUser[i].id_user %> le  
-                    interesa tu inmueble ubicado en <%= dataInmueblesRegistrados[index].municipio%> y con <br>
-                    numero de registro <%= dataInmueblesRegistrados[index].id%> y precio mensual de <%= dataInmueblesRegistrados[index].precio%>  <br>
-                    mensaje de extra: <%= dataNotifiUser[i].mensaje %> <br>
-                  </p>
-                  
-                  <img src='/images/<%=dataInmueblesRegistrados[index].img %>' width="200px" alt="">
-                </center>
-                  <br>
-                  <br>
-              
-              <% } %>
-            
-            <% } %>
-            
-  
-  
-          <% }else{%>
-          <% if (num==0) { %>
-          <% num=1 %>
-          <h1 style="color:red  ;">No tienes mas notificasiones por el momento</h1>
-          <% } %>
-          <%} %>
-          <% } %>
-        
+        <% } %>
       </div>
-    </section>
+    </center>
+</section>
 
-    <!--favoritos-->
 
-    <section id="services">
-      <div class="container wow fadeInUp">
+<!--notificaciones-->
+<section id="testimonials">
+  <div class="container wow fadeInUp">
 
-        <center><h1>mis favoritos </h1></center>
-        <div class="section-title-divider"></div>
-        <% for( let i = 0; i < dataFavoritosUser.length; i++ ) { %>
-          <% if (dataFavoritosUser[i].id_user===dataParaVerificadoUser[0].id) { %>
+    <center>
+      <h1>Notificaciones </h1>
+    </center>
+    <div class="section-title-divider"></div>
+    <% let num=0; %>
+    <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
+    <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
+    <% for( let index = 0; index < dataInmueblesRegistrados.length; index++ ) { %>
+    <% if (dataInmueblesRegistrados[index].id=== dataNotifiUser[i].id_inmueble) { %>
+    <center>
+      <h3>Hola <%=dataParaVerificadoUser[0].nombre %> </h3><br>
 
-          <% for( let iterator = 0; iterator < dataInmueblesRegistrados.length; iterator++ ) { %>
-            <% if (dataInmueblesRegistrados[iterator].id==dataFavoritosUser[i].id_casa) { %>
+      <p>
+        El usuario con id:<%= dataNotifiUser[i].id_user %> le
+        interesa tu inmueble ubicado en <%= dataInmueblesRegistrados[index].municipio%> y con <br>
+        numero de registro <%= dataInmueblesRegistrados[index].id%> y precio mensual de <%= dataInmueblesRegistrados[index].precio%> <br>
+        mensaje de extra: <%= dataNotifiUser[i].mensaje %> <br>
+      </p>
 
-              
-              <p>Inmueble en <%=dataInmueblesRegistrados[iterator].municipio %> con <br>
-                precio de <%=dataInmueblesRegistrados[iterator].precio %> <br>
-                <!--ID d: <%=dataFavoritosUser[i].id  %> >
+      <img src='/images/<%=dataInmueblesRegistrados[index].img %>' width="200px" alt="">
+    </center>
+    <br>
+    <br>
+
+    <% } %>
+
+    <% } %>
+
+
+
+    <% }else{%>
+    <% if (num==0) { %>
+    <% num=1 %>
+    <center>
+      <h5 style="color:red  ;">No tienes mas notificasiones por el momento</h5>
+    </center>
+    <% } %>
+    <%} %>
+    <% } %>
+
+  </div>
+</section>
+
+<!--favoritos-->
+
+<section id="services">
+  <div class="container wow fadeInUp">
+
+    <center>
+      <h1>Mis favoritos </h1>
+    </center>
+    <div class="section-title-divider"></div>
+    <% for( let i = 0; i < dataFavoritosUser.length; i++ ) { %>
+    <% if (dataFavoritosUser[i].id_user===dataParaVerificadoUser[0].id) { %>
+
+    <% for( let iterator = 0; iterator < dataInmueblesRegistrados.length; iterator++ ) { %>
+    <% if (dataInmueblesRegistrados[iterator].id==dataFavoritosUser[i].id_casa) { %>
+
+
+    <p>Inmueble en <%=dataInmueblesRegistrados[iterator].municipio %> con <br>
+      precio de <%=dataInmueblesRegistrados[iterator].precio %> <br>
+      <!--ID d: <%=dataFavoritosUser[i].id  %> >
                 ID USER: <%=dataFavoritosUser[i].id_user  %> >-->
-                Numero de registro: <%=dataFavoritosUser[i].id_casa %> </p>
-                <img src='/images/<%=dataInmueblesRegistrados[iterator].img %>' width="200px" alt="">
-                <br>
-             
-            <% } %>
-            
-          
-          <% } %>
-             
-          <% } %>
-         
+      Numero de registro: <%=dataFavoritosUser[i].id_casa %>
+    </p>
+    <img src='/images/<%=dataInmueblesRegistrados[iterator].img %>' width="200px" alt="">
+    <br>
+
+    <% } %>
+
+
+    <% } %>
+
+    <% } %>
+
+    <% } %>
+
+  </div>
+</section>
+<!--carrusel -->
+<section id="about">
+  <div class="container wow fadeInUp">
+
+    <div class="content-all">
+      <div class="content-carrousel">
+
+        <% let num1=0; %>
+        <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
+        <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
+        <% for( let index = 0; index < dataInmueblesRegistrados.length; index++ ) { %>
+        <% if (dataInmueblesRegistrados[index].id=== dataNotifiUser[i].id_inmueble) { %>
+        <figure>
+          <div>
+            <center>
+              <h3>Hola <%=dataParaVerificadoUser[0].nombre %> </h3><br>
+              <p>
+                El usuario con id:<%= dataNotifiUser[i].id_user %> le
+                interesa tu inmueble ubicado en <%= dataInmueblesRegistrados[index].municipio%> y con <br>
+                numero de registro <%= dataInmueblesRegistrados[index].id%> y precio mensual de <%= dataInmueblesRegistrados[index].precio%> <br>
+                mensaje de extra: <%= dataNotifiUser[i].mensaje %> <br>
+              </p>
+
+              <img src='/images/<%=dataInmueblesRegistrados[index].img %>' width="200px" alt="">
+            </center>
+            <br>
+            <br>
+          </div>
+        </figure>
+
         <% } %>
 
-      </div>
-    </section>
-<!--carrusel -->
-    <section id="about">
-      <div class="container wow fadeInUp">
+        <% } %>
 
-        <div class="content-all">
-          <div class="content-carrousel">
 
-            <% let num1=0; %>
-          <% for( let i = 0; i < dataNotifiUser.length; i++ ) { %>
-          <% if (dataParaVerificadoUser[0].id==dataNotifiUser[i].id_propietario) { %>
-            <% for( let index = 0; index < dataInmueblesRegistrados.length; index++ ) { %>
-              <% if (dataInmueblesRegistrados[index].id=== dataNotifiUser[i].id_inmueble) { %>
-                <figure><div>
-                <center><h3>Hola <%=dataParaVerificadoUser[0].nombre %> </h3><br>
-               
-                  <p>
-                    El usuario con id:<%= dataNotifiUser[i].id_user %> le  
-                    interesa tu inmueble ubicado en <%= dataInmueblesRegistrados[index].municipio%> y con <br>
-                    numero de registro <%= dataInmueblesRegistrados[index].id%> y precio mensual de <%= dataInmueblesRegistrados[index].precio%>  <br>
-                    mensaje de extra: <%= dataNotifiUser[i].mensaje %> <br>
-                  </p>
-                  
-                  <img src='/images/<%=dataInmueblesRegistrados[index].img %>' width="200px" alt="">
-                </center>
-                  <br>
-                  <br>
-                </div></figure>
-              
-              <% } %>
-            
-            <% } %>
-            
-  
-  
-          <% }else{%>
-          <% if (num1==0) { %>
-          <% num1=1 %>
-          <h1 class="hola<%+num1%>"><%num1%></h1>
-          <% } %>
-          <%} %>
-          <% } %>
+
+        <% }else{%>
+        <% if (num1==0) { %>
+        <% num1=1 %>
+        <h1 class="hola<%+num1%>"><%num1%></h1>
+        <% } %>
+        <%} %>
+        <% } %>
 
 
 
 
-
-
-
-
-
-
-
-
-
-          
-              
-              
-          </div>
-        </div>
 
       </div>
-    </section>
-    
-  </section>
+    </div>
 
+  </div>
+</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</section>
 
 
 
