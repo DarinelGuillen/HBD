@@ -96,4 +96,11 @@ module.exports = {
   retornarDatosID: function (conexion, id, funcion) {
     conexion.query("SELECT * FROM users_HBD WHERE id=?", [id], funcion);
   },
+
+deleteFav: function (conexion, id, funcion) {
+    conexion.query("DELETE FROM favoritos WHERE ID=?", [id], funcion);
+  },
+  deleteNofi: function (conexion, id, funcion) {
+    conexion.query("DELETE FROM notificaciones WHERE ID=?", [id], funcion);
+  },
 };

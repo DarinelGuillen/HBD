@@ -34,4 +34,9 @@ router.get("/crear/:id", casasController.crear);
 router.post('/favoritos/:id',usersController.favoritos);
 router.post('/notificaciones/:datos',usersController.notificaciones);
 
+//delete Favorito
+router.post('/deleteFav/:id',usersController.deleteFav);
+router.post('/deleteNofi/:id',usersController.deleteNofi);
+
+
 module.exports = router;

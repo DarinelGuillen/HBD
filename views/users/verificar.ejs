@@ -63,8 +63,8 @@
             BUTTON BORRAR FAVORITO 
             ============================-->
             <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <form class="form-inline" method="post" action="/users/delete/<%=dbFavUs[i].id%>">
-                <button class="btn btn-warning" type="submit">Borrar FAVORITO /users/delete/<%=dbFavUs[i].id%></button>
+              <form class="form-inline" method="post" action="/users/deleteFav/<%=dbUserQ[0].id%>,<%=dbFavUs[i].id%>">
+                <button class="btn btn-warning" type="submit">Borrar FAVORITO <%=dbUserQ[0].id%>,<%=dbFavUs[i].id%></button>
               </form>
             </div>
     <img src='/images/<%=dbInmuebles[iterator].img %>' width="200px" alt="">
@@ -82,6 +82,64 @@
   </div>
 </section>
 <% } %>
+<!--notificaciones-->
+<% if (dbUserQ[0].admin==1) { %>
+ 
+
+  <section id="testimonials">
+    <div class="container wow fadeInUp">
+  
+      <center>
+        <h1>Notificaciones </h1>
+      </center>
+      <div class="section-title-divider"></div>
+      <% let num=0; %>
+      <% for( let i = 0; i < dbNotifi.length; i++ ) { %>
+      <% if (dbUserQ[0].id==dbNotifi[i].id_propietario) { %>
+      <% for( let index = 0; index < dbInmuebles.length; index++ ) { %>
+      <% if (dbInmuebles[index].id=== dbNotifi[i].id_inmueble) { %>
+      <center>
+        <h3>Hola <%=dbUserQ[0].nombre %> </h3><br>
+        <p>
+          El usuario con id: <%= dbNotifi[i].id_user %> le
+          interesa tu inmueble<br>
+           ubicado en: <%= dbInmuebles[index].municipio%> 
+           <br>registro: <%= dbInmuebles[index].id%> 
+           <br>precio mensual: <%= dbInmuebles[index].precio%> <br>
+          <h3>Puedes ponerte en contacto con el usuario interesado con el siguiente numero Telefonico:  <%= dbNotifi[i].mensaje %></h3>
+           <br>
+        </p>
+  
+        <img src='/images/<%=dbInmuebles[index].img %>' width="200px" alt="">
+      
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+          <form class="form-inline" method="post" action="/users/deleteNofi/<%=dbUserQ[0].id%>,<%=dbNotifi[i].id%>">
+            <button class="btn btn-warning" type="submit">Borrar NOTIFICAcION  <%=dbUserQ[0].id%>,<%=dbNotifi[i].id%></button>
+          </form>
+        </div>
+      </center>
+      <br>
+      <br>
+  
+      <% } %>
+  
+      <% } %>
+  
+  
+  
+      <% }else{%>
+      <% if (num==0) { %>
+      <% num=1 %>
+      <center>
+        <h5 style="color:red  ;">No tienes mas notificasiones por el momento</h5>
+      </center>
+      <% } %>
+      <%} %>
+      <% } %>
+  
+    </div>
+  </section>
+  <% } %>
 <!-- impresion inmuebles-->
 
 <section id="portfolio">
@@ -239,60 +297,7 @@
 </section>
 
 
-<!--notificaciones-->
-<% if (dbUserQ[0].admin==1) { %>
- 
 
-<section id="testimonials">
-  <div class="container wow fadeInUp">
-
-    <center>
-      <h1>Notificaciones </h1>
-    </center>
-    <div class="section-title-divider"></div>
-    <% let num=0; %>
-    <% for( let i = 0; i < dbNotifi.length; i++ ) { %>
-    <% if (dbUserQ[0].id==dbNotifi[i].id_propietario) { %>
-    <% for( let index = 0; index < dbInmuebles.length; index++ ) { %>
-    <% if (dbInmuebles[index].id=== dbNotifi[i].id_inmueble) { %>
-    <center>
-      <h3>Hola <%=dbUserQ[0].nombre %> </h3><br>
-      <p>
-        El usuario con id: <%= dbNotifi[i].id_user %> le
-        interesa tu inmueble<br>
-         ubicado en: <%= dbInmuebles[index].municipio%> 
-         <br>registro: <%= dbInmuebles[index].id%> 
-         <br>precio mensual: <%= dbInmuebles[index].precio%> <br>
-        <h3>Puedes ponerte en contacto con el usuario interesado con el siguiente numero Telefonico:  <%= dbNotifi[i].mensaje %></h3>
-         <br>
-      </p>
-
-      <img src='/images/<%=dbInmuebles[index].img %>' width="200px" alt="">
-    
-      <button>Borrar Notificacion </button>
-    </center>
-    <br>
-    <br>
-
-    <% } %>
-
-    <% } %>
-
-
-
-    <% }else{%>
-    <% if (num==0) { %>
-    <% num=1 %>
-    <center>
-      <h5 style="color:red  ;">No tienes mas notificasiones por el momento</h5>
-    </center>
-    <% } %>
-    <%} %>
-    <% } %>
-
-  </div>
-</section>
-<% } %>
 
 <!--carrusel -->
 <section id="about">
