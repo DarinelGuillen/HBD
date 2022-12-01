@@ -83,9 +83,12 @@
 </section>
 <% } %>
 <!--notificaciones-->
+
+
 <% if (dbUserQ[0].admin==1) { %>
   <!--carrusel -->
 <section id="testimonials">
+  <center>  <h1>notificaciones</h1>  </center>
   <div class="container wow fadeInUp">
     <center>
       <section>
@@ -318,95 +321,7 @@
 
 
 
-<!--carrusel -->
-<section id="testimonials">
-  <div class="container wow fadeInUp">
-    <center>
-      <section>
-        <div class="container">
-    
-    
-          <input type="radio" name="slider" class="d-none" id="s1" checked>
-          <input type="radio" name="slider" class="d-none" id="s2">
-          <input type="radio" name="slider" class="d-none" id="s3">
-          <input type="radio" name="slider" class="d-none" id="s4">
-          <input type="radio" name="slider" class="d-none" id="s5">
-    
-    
-    
-    
-      
-          <div class="cards">
-    
-    
-            <% let num1=0; %>
-            <% for( let i = 0; i < dbNotifi.length; i++ ) { %>
-            <% if (dbUserQ[0].id==dbNotifi[i].id_propietario) { %>
-            <% for( let index = 0; index < dbInmuebles.length; index++ ) { %>
-            <% if (dbInmuebles[index].id=== dbNotifi[i].id_inmueble) { %>
-              <label for="s<%=index%>" id="slide<%=index%>">
-                <div class="card">
-                  <div class="image">
-                    <img src='/images/<%=dbInmuebles[index].img %>' alt="">
-                    <div class="dots">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="infos">
-                    <span class="name">Hola <%=dbUserQ[0].nombre %></span>
-                    <span class="lorem">El usuario con id: <%= dbNotifi[i].id_user %> le
-                      interesa tu inmueble
-                       ubicado en: <%= dbInmuebles[index].municipio%> 
-                       registro: <%= dbInmuebles[index].id%> 
-                       precio mensual: <%= dbInmuebles[index].precio%> 
-                      Puedes ponerte en contacto con el usuario interesado con el siguiente numero Telefonico: <%= dbNotifi[i].mensaje %></span>
-                  </div>
-                  <div class="socials">
-                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                      <form class="form-inline" method="post" action="/users/deleteNofi/<%=dbUserQ[0].id%>,<%=dbNotifi[i].id%>">
-                        <button class="btn-contact" type="submit">Borrar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </label>
-      
-              
-    
-            <% } %>
-    
-            <% } %>
-    
-    
-    
-            <% }else{%>
-            <% if (num1==0) { %>
-            <% num1=1 %>
-            <h1 class="hola<%+num1%>"><%num1%></h1>
-            <% } %>
-            <%} %>
-            <% } %>
-    
-    
-    
-            
-      
-           
-          </div>
-      
-        </div>
-      </section>
-    </center>
-    
 
-
-  </div>
-</section>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-<!--////////////////////////////////////-->
 
 
 
