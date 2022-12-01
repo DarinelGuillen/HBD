@@ -32,6 +32,7 @@ module.exports = {
       let varInmu = new Array();
       let varNotifi = new Array();
       let varFavori = new Array();
+      let varUser = new Array();
       //END DATOS GLOBALES
       let array = new Array();
       array = registros;
@@ -62,9 +63,6 @@ module.exports = {
               "////\n",
               "varFavori",
               varFavori.length,
-              "////\n",
-              "varUser",
-              varUser.length,
               "////\n",
               "END.LENGTH"
             );

@@ -31,8 +31,7 @@
                         </div>
                         <!-- b-form-group -->
                         <div class="form-group">
-                            <label for="my-input">ID:</label>
-                            <input id="my-input" class="form-control-file" value="<%=casa.id%>" type="number" name="id">
+                            <input id="my-input" class="form-control-file" value="<%=casa.id%>" type="hidden" name="id">
                         </div>
 
                         <div class="form-group">
@@ -111,8 +110,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="my-input">Ingrese su ID </label>
-                                <input id="my-input" class="form-control" type="number" value="<%=casa.id_propietario%>"
+                                <input id="my-input" class="form-control" type="hidden" value="<%=casa.id_propietario%>"
                                     name="id_propietario">
                             </div>
 
@@ -132,12 +130,16 @@
 
                             <!-- b-btn --><br>
                             <button class="btn btn-success" type="submit">Guardar</button>
-                            <a class="btn btn-primary" href="/casas">Cancelar </a>
                     </form>
-
-                    <a href="/casas" class="btn btn-primary" type="button">Regresar A casas Visualizacion</a>
-
+                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=user.correo %>,<%user.contrasena%>">
+                          <button style="background-color:rgb(204, 45, 45)  ;" class="btn btn-success" type="submit" ><a style="color:rgb(240, 233, 233)  ;">
+                            Cancelar /users/verificar/<%=user.correo%>,<%=user.contrasena%></a> </button> 
+                      </form>
+                      </div>
     </section>
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    
     <%- include ../layouts/pieEditar.ejs %>

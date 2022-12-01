@@ -33,7 +33,7 @@
 <!--==========================
     Sección de encabezado
     ============================-->
-
+  
 <!--favoritos-->
 <% if (dbUserQ[0].admin==0) { %>
  
@@ -178,8 +178,8 @@
             BUTTON EDTITAR 
             ============================-->
             <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <form class="form-inline" method="get" action="/casas/editar/<%=dbInmuebles[i].id%> ">
-                <button class="btn btn-danger" type="submit">Editar</button>
+              <form class="form-inline" method="get" action="/casas/editar/<%=dbInmuebles[i].id%>,<%=dbUserQ[0].id%>">
+                <button class="btn btn-danger" type="submit">Editar /casas/editar/<%=dbInmuebles[i].id%>,<%=dbUserQ[0].id%></button>
               </form>
             </div>
             <!--==========================
@@ -255,23 +255,6 @@
     </div>
   </div>
 </section>
-  <script>
-    function aparecerAddMensaje(){
-      //Ingresamos un mensaje a mostrar
-      let ejemplo='Cantacteme, Estoy Interesado, Esta disponible en X fecha?, ETC..';
-      let mensaje = prompt("¿Cuál es tu Mensaje para su servidor?", ejemplo);
-      //Detectamos si el usuario ingreso un valor
-      if (mensaje != null&&mensaje!=ejemplo){
-        action="/users/favoritos/<%=dbUserQ[0].id%>,<%=dbInmuebles[0].id%>">
-      alert("Tu Mensaje " + mensaje);
-      }
-      //Detectamos si el usuario NO ingreso un valor
-      else {
-      alert("No has ingresado ningun mensaje\n Agrege algo");
-      }
-      
-    }
-  </script>
 
 <!--impresion de boton crear segun user-->
 

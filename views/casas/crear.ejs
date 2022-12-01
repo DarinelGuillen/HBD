@@ -193,13 +193,14 @@
               <button class="btn btn-success" type="submit" href="../">Guardar</button>
             </center>
         </form>
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+          <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=dataUser.correo%>,<%=dataUser.contrasena%>">
+            <button style="background-color:rgb(204, 45, 45)  ;" class="btn btn-success" type="submit" ><a style="color:rgb(240, 233, 233)  ;">Cancelar</a> </button> 
+        </form>
+        </div>
 </section>
 <center>
-  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=dataUser.correo%>,<%=dataUser.contrasena%>">
-      <button style="background-color:rgb(204, 45, 45)  ;" class="btn btn-success" type="submit" ><a style="color:rgb(240, 233, 233)  ;">Cancelar</a> </button> 
-  </form>
-  </div>
+  
 </center>
 
 
