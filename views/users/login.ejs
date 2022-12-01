@@ -71,20 +71,63 @@
         <div id="preloader"></div>
 
         <section id="hero" >
+
             <div class="hero-container" style="font-size:200% ;">
-           <h1><%= alert  %><br><br></h1>
-                      <div class="form-group">
-                        <label style="color:#ffffff" for="my-input">Correo</label>
+              <div class="hero-logo">
+                <img src="/img/user.png" width="200" alt="">
+              
+              </div>
+             
+           <!--<h1><%= alert  %><br><br></h1>-->
+
+           <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+           <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+           <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+           <!------ Include the above in your HEAD tag ---------->
+           
+           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+           
+           <div class="container">
+           <hr>
+           <div class="card bg-transparent">
+           <article class="card-body mx-auto" style="max-width: 400px;">
+             <p class="divider-text">
+              <span class="bg-light">Login</span>
+             </p>
+               <div class="form-group input-group">
+                 <div class="input-group-prepend">
+                   <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                    <input id="correo" class="form-control" type="text" name="correo" placeholder="Damo@example.com">
+               </div> <!-- form-group// -->
+                  <div class="form-group input-group">  
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                      </div>
+                        <input id="contrasena" class="form-control" type="password"  name="contrasena" placeholder="@¢∞|+absBAHS">
+                      </div> <!-- form-group// -->
+                      <div id="H">
+                        <button type="button" onclick="Verificar()" class="btn">Verificar Existencia</button>
+                      </div>       
+           </article>
+           </div> <!-- card.// -->
+           </div> 
+           <br><br>
+          
+
+                      <!--<div class="form-group">
+                        <label style="color:#ffffff" for="my-input" >Correo</label>
                         <input id="correo" class="form-control-file" type="text" name="correo" placeholder="Damo@example.com">
                     </div>
                     <div class="form-group">
-                        <label style="color:#ffffff" for="my-input">contraseña</label>
-                        <input id="contrasena" class="form-control-file" type="password"  name="contrasena">
+                        <label style="color:#ffffff" for="my-input">Contraseña</label>
+                        <input id="contrasena" class="form-control-file" type="password"  name="contrasena" placeholder="@¢∞|+absBAHS">
                     </div>
                     <div id="H">
-                    <button type="button" class="btn btn-primary" onclick="Verificar()" >Verificar existencia </button>
-                      </div>
-                      </div>
+                      <button type="button" class="btn btn-primary" onclick="Verificar()" >Verificar existencia </button>
+                    </div>
+                      </div>-->
                     </section>
                       <script onload="Verificar()">
                         function Verificar(){
@@ -92,7 +135,7 @@
                         `<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                         <form id="formulario" class="form-inline"     method="get" action="/users/verificar/`+
                         (document.getElementById('correo').value)+','+(document.getElementById('contrasena').value)+
-                        `"><button class="btn btn-success" type="submit" ><h1>LOGIN</h1> </button> </form>`;
+                        `"><button class="btn" type="submit" >login </button> </form>`;
                         }
                       </script>
                       <!-- <script>
