@@ -64,7 +64,6 @@
                     <% for( let iterator = 0; iterator < dbInmuebles.length; iterator++ ) { %>
                     <% if (dbInmuebles[iterator].id==dbFavUs[i].id_casa) { %>
                         <tr>
-                            
                             <td>
                                 <p>Inmueble en <%=dbInmuebles[iterator].municipio %> con <br>
                                     precio de <%=dbInmuebles[iterator].precio %> <br>
@@ -83,6 +82,15 @@
                                       <button class="btn btn-warning" type="submit">Borrar FAVORITO </button>
                                     </form>
                                   </div>
+                            
+                              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="post"
+                                 action="/users/notificaciones/<%=dbUserQ[0].id%>,<%=dbUserQ[0].numero_tel%>,<%=dbInmuebles[iterator].id_propietario%>,<%=dbInmuebles[iterator].id%>">
+                                  <button class="btn btn-danger" type="submit">
+                                    Dar a conocer tu interez
+                                  </button>
+                                </form>
+                              </div>
                             </td>
                             
                           </tr>
@@ -109,7 +117,7 @@
 
 <% if (dbUserQ[0].admin==1) { %>
   <!--carrusel -->
-<section id="testimonials">
+<section id="testimonials" style="padding-bottom: 350px;">
   <center>  <h1>notificaciones</h1>  </center>
   <div class="container wow fadeInUp">
     <center>
@@ -195,12 +203,36 @@
 
   </div>
 </section>
-<br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!--////////////////////////////////////-->
  
 
   <% } %>
+<!---->
+<!--impresion de boton crear segun user-->
+
+
+<section id="subscribe">
+  <div class="container wow fadeInUp">
+    <% if (dbUserQ[0].admin==1) { %>
+    <!--INPORTANTE -->
+    <center>
+      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+        <h1 style="color:rgb(255, 255, 255);">registra un nuevo inmueble </h1>
+        <form class="form-inline" method="get" action="/casas/crear/<%=dbUserQ[0].id%>">
+          <button class="btn btn-danger" type="submit">
+            <h5>Crear Un Nuevo Inmueble <%=dbUserQ[0].nombre%></h5>
+          </button>
+        </form><br>
+        <% }else{ %>
+        <h2 style="color:rgb(255, 255, 255);"> La opcion mas clara House By Damo </h2>
+
+        <% } %>
+      </div>
+    </center>
+</section>
+
+
 <!-- impresion inmuebles-->
 
 <section id="portfolio">
@@ -223,16 +255,21 @@
         <a class="portfolio-item" style="background-image: url('/images/<%=dbInmuebles[i].img %>');">
           <div class="details" style="color:rgb(0, 2, 2);">
             <br>
-            <b>Id propietario:<%= dbInmuebles[i].id_propietario %>
+            <b><%=dbUserQ[0].nombre %> Inmueble
             </b>
             <br>
             <td>Precio mensual:$<%=dbInmuebles[i].precio%>
             </td>
             <br>
-            <td>Dimenciones:<%=dbInmuebles[i].dimenciones%>m²
+            <td>Codigo Postal:<%=dbInmuebles[i].codigo_postal%>
             </td>
             <br>
-            <td>Disponibilidad:<%= dbInmuebles[i].disponible1_No0 %>
+            <td>Disponibilidad:
+              <% if (dbInmuebles[i].disponible1_No0==1) { %>
+               Disponible
+              <% }else{ %>
+                No Disponeble
+              <% } %>
             </td>
             <br>
               <!--==========================
@@ -247,7 +284,7 @@
             BUTTON BORRAR 
             ============================-->
             <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <form class="form-inline" method="post" action="/casas/eliminar/<%=dbInmuebles[i].id%>">
+              <form class="form-inline" method="get" action="/casas/eliminar/<%=dbUserQ[0].id%>,<%=dbInmuebles[i].id%>">
                 <button class="btn btn-warning" type="submit">Borrar</button>
               </form>
             </div>
@@ -296,8 +333,8 @@
                action="/users/notificaciones/<%=dbUserQ[0].id%>,<%=dbUserQ[0].numero_tel%>,<%=dbInmuebles[i].id_propietario%>,<%=dbInmuebles[i].id%>">
                 
                 <button class="Pensando" type="submit">
-                  <img src="/img/meinteresa.png" alt="INTERESADO"><br><!--<%=dbUserQ[0].id%>,<%=dbUserQ[0].numero_tel%>,
-                  <%=dbInmuebles[i].id_propietario%>,<%=dbInmuebles[i].id%>-->
+                  <img src="/img/meinteresa.png" alt="INTERESADO">
+                  
                 </button>
               </form>
             </div>
@@ -317,28 +354,7 @@
   </div>
 </section>
 
-<!--impresion de boton crear segun user-->
 
-
-<section id="subscribe">
-  <div class="container wow fadeInUp">
-    <% if (dbUserQ[0].admin==1) { %>
-    <!--INPORTANTE -->
-    <center>
-      <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-        <h1 style="color:rgb(255, 255, 255);">registra un nuevo inmueble </h1>
-        <form class="form-inline" method="get" action="/casas/crear/<%=dbUserQ[0].id%>">
-          <button class="btn btn-danger" type="submit">
-            <h5>Crear Un Nuevo Inmueble <%=dbUserQ[0].nombre%></h5>
-          </button>
-        </form><br>
-        <% }else{ %>
-        <h2 style="color:rgb(255, 255, 255);"> La opcion mas clara House By Damo </h2>
-
-        <% } %>
-      </div>
-    </center>
-</section>
 
 
 

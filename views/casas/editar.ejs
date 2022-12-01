@@ -125,12 +125,13 @@
                             <center> <button class="button button-secondary button-pipaluk" type="submit">Guardar</button> </center><br>
                     </form>
                     <center>
-                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                            <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=user.correo %>,<%user.contrasena%>">
-                              <button style="background-color:rgb(204, 45, 45)  ;" class="button button-secondary button-pipaluk" type="submit" ><a style="color:rgb(240, 233, 233)  ;">
-                                Cancelar</a> </button> 
-                          </form>
-                          </div>
+                        
+                 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <form id="formulario" class="form-inline" method="get" action="/users/verificar/<%=user.correo%>,<%=user.contrasena%>">
+                <button style="background-color:rgb(204, 45, 45)  ;" class="btn btn-success" type="submit" >
+                <a style="color:rgb(240, 233, 233)  ;">Cancelar </a> </button> 
+                </form>
+                </div>
                     </center>
                     
     </section>

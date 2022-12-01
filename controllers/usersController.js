@@ -87,6 +87,7 @@ module.exports = {
           }, 1100);
         } else {
           console.log("Compruebe sus datos ");
+          console.log(registros[0].contrasena,'===',DATA[1]);
           res.redirect("/users/login");
         }
       }

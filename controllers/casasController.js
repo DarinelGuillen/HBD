@@ -11,6 +11,7 @@ module.exports = {
   crear: function (req, res) {
     //res.render("casas/crear");
     console.log("req.params.id== =" + req.params.id + "==============\n");
+    console.log("== " + req.params.id_propietario + "id_propietario//\n");
     casa.retornarDatosIDuser(conexion, req.params.id, function (err, REGISTRO) {
       console.log("REGISTRO " + REGISTRO[0]);
       res.render("casas/crear", { dataUser: REGISTRO[0] });
@@ -21,24 +22,137 @@ module.exports = {
     //Cuando se ejecuta el controlador
     console.log(req.body);
     console.log(req.file.filename);
+    console.log("== " + req.body.id_propietario + "id_propietario//\n");
+    let ID=parseInt(req.body.id_propietario);
     // //llama la funcion inserrtar
     casa.insertar(conexion, req.body, req.file, function (err) {
-      res.redirect("/casas");
+      console.log("HOLAAAAAAA ENTRE casa.insertar/////////////////");
+      //DATOS GLOBALES
+      let varInmu = new Array();
+      let varNotifi = new Array();
+      let varFavori = new Array();
+      let varUser = new Array();
+      //END DATOS GLOBALES
+      casa.obtenerInmuebles(conexion, function (error, dataImu) {
+        varInmu = dataImu;
+      });
+      casa.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+        varNotifi = dataNotifi;
+      });
+      casa.obtenerFavoritos(conexion, function (error, dataFavori) {
+        varFavori = dataFavori;
+      });
+      casa.retornarDatosIDuser(conexion, ID, function (err, dataUser) {
+        varUser = dataUser;
+      });
+      setTimeout(() => {
+        console.log(
+          "LAST STEP SEE IF AM I ADMIN OR NOT N\n",
+          "DATAIMU",
+          varInmu.length,
+          "////\n",
+          "varNotifi",
+          varNotifi.length,
+          "////\n",
+          "varFavori",
+          varFavori.length,
+          "////\n",
+          "varUser",
+          varUser.length,
+          "////\n",
+          "END.LENGTH"
+        );
+        if (varUser[0].admin) {
+          res.render("users/verificar", {
+            dbInmuebles: varInmu,
+            dbNotifi: varNotifi,
+            title: "USER ADMIN",
+            dbUserQ: varUser,
+            dbFavUs: varFavori,
+          });
+        } else {
+          res.render("users/verificar", {
+            dbInmuebles: varInmu,
+            dbNotifi: varNotifi,
+            title: "USER NO ADMIN",
+            dbUserQ: varUser,
+            dbFavUs: varFavori,
+          });
+        }
+      }, 1100);
+      
     });
   },
   eliminar: function (req, res) {
     console.log("Recepción de datos");
-    console.log(req.params.id);
-    casa.retornarDatosID(conexion, req.params.id, function (err, registros) {
+    console.log("req.params.id== =" + req.params);
+    var DATA = req.params.id.split(",");
+    console.log(DATA, " DATA");
+    console.log(DATA[0], " DATA[0] ID USER");
+    console.log(DATA[1], " DATA[1] ID INMUEBLE");
+    casa.retornarDatosID(conexion, DATA[1], function (err, registros) {
       let nombreImagen = "public/images/" + registros[0].img;
       if (borrar.existsSync(nombreImagen)) {
         borrar.unlinkSync(nombreImagen);
       }
       console.log(nombreImagen);
-      casa.borrar(conexion, req.params.id, function (err) {});
-      // libro.borrar(conexion,req.params.id_libro,function(err){
-      res.redirect("/casas"); //Eato es para redirecsionar a una nueva ventana si se quiere asi
-    });
+      casa.borrar(conexion, DATA[1], function (err) {
+        console.log("HOLAAAAAAA ENTRE casa.borrar/////////////////");
+      //DATOS GLOBALES
+      let varInmu = new Array();
+      let varNotifi = new Array();
+      let varFavori = new Array();
+      let varUser = new Array();
+      //END DATOS GLOBALES
+      casa.obtenerInmuebles(conexion, function (error, dataImu) {
+        varInmu = dataImu;
+      });
+      casa.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+        varNotifi = dataNotifi;
+      });
+      casa.obtenerFavoritos(conexion, function (error, dataFavori) {
+        varFavori = dataFavori;
+      });
+      casa.retornarDatosIDuser(conexion, DATA[0], function (err, dataUser) {
+        varUser = dataUser;
+      });
+      setTimeout(() => {
+        console.log(
+          "LAST STEP SEE IF AM I ADMIN OR NOT N\n",
+          "DATAIMU",
+          varInmu.length,
+          "////\n",
+          "varNotifi",
+          varNotifi.length,
+          "////\n",
+          "varFavori",
+          varFavori.length,
+          "////\n",
+          "varUser",
+          varUser.length,
+          "////\n",
+          "END.LENGTH"
+        );
+        if (varUser[0].admin) {
+          res.render("users/verificar", {
+            dbInmuebles: varInmu,
+            dbNotifi: varNotifi,
+            title: "USER ADMIN",
+            dbUserQ: varUser,
+            dbFavUs: varFavori,
+          });
+        } else {
+          res.render("users/verificar", {
+            dbInmuebles: varInmu,
+            dbNotifi: varNotifi,
+            title: "USER NO ADMIN",
+            dbUserQ: varUser,
+            dbFavUs: varFavori,
+          });
+        }
+      }, 1100);
+      });
+      });
 
     // });
   },
@@ -69,6 +183,7 @@ module.exports = {
     console.log(req.body.id);
     console.log(req.body.municipio);
 console.log('ID PROPIETARIO= ',req.body.id_propietario);
+let ID=parseInt(req.body.id_propietario);
     if (req.file) {
       if (req.file.filename) {
         casa.retornarDatosID(conexion, req.body.id, function (err, registros) {
@@ -87,9 +202,63 @@ console.log('ID PROPIETARIO= ',req.body.id_propietario);
       }
     }
     if (req.body.municipio) {
-      casa.actualizar(conexion, req.body, function (err) {});
+      casa.actualizar(conexion, req.body, function (err) {
+        console.log("HOLAAAAAAA ENTRE casa.actualizar/////////////////");
+          //DATOS GLOBALES
+          let varInmu = new Array();
+          let varNotifi = new Array();
+          let varFavori = new Array();
+          let varUser = new Array();
+          //END DATOS GLOBALES
+          casa.obtenerInmuebles(conexion, function (error, dataImu) {
+            varInmu = dataImu;
+          });
+          casa.obtenerNotificaciones(conexion, function (error, dataNotifi) {
+            varNotifi = dataNotifi;
+          });
+          casa.obtenerFavoritos(conexion, function (error, dataFavori) {
+            varFavori = dataFavori;
+          });
+          casa.retornarDatosIDuser(conexion, ID, function (err, dataUser) {
+            varUser = dataUser;
+          });
+          setTimeout(() => {
+            console.log(
+              "LAST STEP SEE IF AM I ADMIN OR NOT N\n",
+              "DATAIMU",
+              varInmu.length,
+              "////\n",
+              "varNotifi",
+              varNotifi.length,
+              "////\n",
+              "varFavori",
+              varFavori.length,
+              "////\n",
+              "varUser",
+              varUser.length,
+              "////\n",
+              "END.LENGTH"
+            );
+            if (varUser[0].admin) {
+              res.render("users/verificar", {
+                dbInmuebles: varInmu,
+                dbNotifi: varNotifi,
+                title: "USER ADMIN",
+                dbUserQ: varUser,
+                dbFavUs: varFavori,
+              });
+            } else {
+              res.render("users/verificar", {
+                dbInmuebles: varInmu,
+                dbNotifi: varNotifi,
+                title: "USER NO ADMIN",
+                dbUserQ: varUser,
+                dbFavUs: varFavori,
+              });
+            }
+          }, 1100);
+        
+      });
     }
-    
-    //res.redirect("/casas");
   },
 };

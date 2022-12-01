@@ -35,6 +35,22 @@ module.exports = {
   retornarDatosIDuser: function (conexion, id, funcion) {
     conexion.query("SELECT * FROM users_HBD WHERE id=?", [id], funcion);
   },
+  obtenerUser: function (conexion, funcion) {
+    conexion.query("SELECT * FROM users_HBD", funcion);
+    // conexion.query("SELECT * FROM prueba", funcion);
+  },
+  obtenerInmuebles: function (conexion, funcion) {
+    conexion.query("SELECT * FROM Depa_Casa_HBD", funcion);
+    // conexion.query("SELECT * FROM prueba", funcion);
+  },
+  obtenerNotificaciones: function (conexion, funcion) {
+    conexion.query("SELECT * FROM notificaciones", funcion);
+    // conexion.query("SELECT * FROM prueba", funcion);
+  },
+  obtenerFavoritos: function (conexion, funcion) {
+    conexion.query("SELECT * FROM favoritos", funcion);
+    // conexion.query("SELECT * FROM prueba", funcion);
+  },
   borrar: function (conexion, id, funcion) {
     conexion.query("DELETE FROM Depa_Casa_HBD WHERE ID=?", [id], funcion);
   },
