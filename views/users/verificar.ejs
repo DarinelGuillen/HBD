@@ -143,7 +143,7 @@
               <label for="s<%=index%>" id="slide<%=index%>">
                 <div class="card">
                   <div class="image">
-                    <img src='/images/<%=dbInmuebles[index].img %>' alt="">
+                    <img  width="100px" src='/images/<%=dbInmuebles[index].img %>' alt="">
                     <div class="dots">
                       <div></div>
                       <div></div>
@@ -151,13 +151,13 @@
                     </div>
                   </div>
                   <div class="infos">
-                    <span class="name">Hola <%=dbUserQ[0].nombre %></span>
-                    <span class="lorem">El usuario con id: <%= dbNotifi[i].id_user %> le
-                      Interesa Tú Inmueble
+                    <span class="name"><%=dbUserQ[0].nombre %></span>
+                    <span class="lorem">Un usuario esta interezado
+                      en tu Inmueble<br>
                        Ubicado En: <%= dbInmuebles[index].municipio%> 
-                       Registro: <%= dbInmuebles[index].id%> 
-                       Precio Mensual: <%= dbInmuebles[index].precio%> 
-                      Puedes ponerte en contacto con el usuario interesado con el siguiente numero Teléfonico: <%= dbNotifi[i].mensaje %></span>
+                       Registro: <%= dbInmuebles[index].id%> <br>
+                        Con Precio Mensual: <%= dbInmuebles[index].precio%> Pesos <br>
+                      Puedes ponerte en contacto con el usuario interesado con el siguiente numero <br> Teléfonico: <%= dbNotifi[i].mensaje %></span>
                   </div>
                   <div class="socials">
                     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
