@@ -168,7 +168,6 @@
                   </div>
                 </div>
               </label>
-      
               
     
             <% } %>
@@ -298,49 +297,56 @@
                     ============================-->
       <% if (dbUserQ[0].admin==0) { %>
       <% if (dbUserQ[0].id!=dbInmuebles[i].id_propietario) { %>
-      <div class="col-md-3">
-        <a class="portfolio-item" style="background-image: url('/images/<%=dbInmuebles[i].img %>');">
-          <div class="details" style="color:rgb(0, 2, 2);">
-            <br>
-            <b>Id propietario:<%= dbInmuebles[i].id_propietario %>
-            </b>
-            <br>
-            <td>Precio mensual:$<%=dbInmuebles[i].precio%>
-            </td>
-            <br>
-            <td>Dimenciones:<%=dbInmuebles[i].dimenciones%>m²
-            </td>
-            <br>
-            <td>Disponibilidad:<%= dbInmuebles[i].disponible1_No0 %>
-            </td>
-            <br>
-          <!--==========================
-            BUTTON FAVORITOS 
-            ============================--> 
-            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <form class="form-inline" method="post" action="/users/favoritos/<%=dbUserQ[0].id%>,<%=dbInmuebles[i].id%>">
-                <button class="meInteresa" type="submit"><img src="/img/corazon.png" alt="Agregar a mis favoritos"></button>
-                 </form>
-            </div>
-            <!--==========================
-            BUTTON Interezado 
-            ============================--> 
-            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-              <form class="form-inline" method="post"
-               action="/users/notificaciones/<%=dbUserQ[0].id%>,<%=dbUserQ[0].numero_tel%>,<%=dbInmuebles[i].id_propietario%>,<%=dbInmuebles[i].id%>">
-                
-                <button class="Pensando" type="submit">
-                  <img src="/img/meinteresa.png" alt="INTERESADO">
-                  
-                </button>
-              </form>
-            </div>
-
-
+        <% if (dbInmuebles[i].disponible1_No0===1) { %>
+          <div class="col-md-3">
+            <a class="portfolio-item" style="background-image: url('/images/<%=dbInmuebles[i].img %>');">
+              <div class="details" style="color:rgb(0, 2, 2);">
+                <br>
+                <b>Id propietario:<%= dbInmuebles[i].id_propietario %>
+                </b>
+                <br>
+                <td>Precio mensual:$<%=dbInmuebles[i].precio%>
+                </td>
+                <br>
+                <td>Dimenciones:<%=dbInmuebles[i].dimenciones%>m²
+                </td>
+                <br> <% if (dbInmuebles[i].disponible1_No0 === 0) { %>
+                  <td>Disponibilidad: ocupado%></td>
+                  <% } else { %>
+                    <td>Disponibilidad: disponible </td>
+                <% } %>
+                </td>
+                <br>
+              <!--==========================
+                BUTTON FAVORITOS 
+                ============================--> 
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                  <form class="form-inline" method="post" action="/users/favoritos/<%=dbUserQ[0].id%>,<%=dbInmuebles[i].id%>">
+                    <button class="meInteresa" type="submit"><img src="/img/corazon.png" alt="Agregar a mis favoritos"></button>
+                     </form>
+                </div>
+                <!--==========================
+                BUTTON Interezado 
+                ============================--> 
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                  <form class="form-inline" method="post"
+                   action="/users/notificaciones/<%=dbUserQ[0].id%>,<%=dbUserQ[0].numero_tel%>,<%=dbInmuebles[i].id_propietario%>,<%=dbInmuebles[i].id%>">
+                    
+                    <button class="Pensando" type="submit">
+                      <img src="/img/meinteresa.png" alt="INTERESADO">
+                      
+                    </button>
+                  </form>
+                </div>
+    
+    
+              </div>
+            </a>
+            
           </div>
-        </a>
-        
-      </div>
+                
+               
+          <% } %>
       <% } %>
       <!--IF-->
       <% } %>
