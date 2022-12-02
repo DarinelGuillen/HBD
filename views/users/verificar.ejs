@@ -19,7 +19,7 @@
       </div>
 
       <h1>Bienvenido <%= dbUserQ[0].nombre%> <%= dbUserQ[0].apellido%></h1>
-      <h2>Nosotros creamos tus <span class="rotating">comodidades, tiempos, experiencias </span></h2>
+      <h2>Nosotros Creamos Tús <span class="rotating">Comodidades, Tiempos, Experiencias </span></h2>
       <div class="actions">
         <a href="#portfolio" class="btn-get-started">Inicia</a>
         <a href="/users/verificar/<%=dbUserQ[0].correo%>,<%=dbUserQ[0].contrasena%>" class="btn-get-started">Regargar</a>
@@ -42,7 +42,7 @@
   <div class="container wow fadeInUp">
 
     <center>
-      <h1>Mis favoritos </h1>
+      <h1>Mis Favoritos </h1>
     </center>
 
     <div class="row">
@@ -87,7 +87,7 @@
                                 <form class="form-inline" method="post"
                                  action="/users/notificaciones/<%=dbUserQ[0].id%>,<%=dbUserQ[0].numero_tel%>,<%=dbInmuebles[iterator].id_propietario%>,<%=dbInmuebles[iterator].id%>">
                                   <button class="btn btn-danger" type="submit">
-                                    Dar a conocer tu interez
+                                    Dar A Conocer Tú Interez
                                   </button>
                                 </form>
                               </div>
@@ -132,9 +132,6 @@
           <input type="radio" name="slider" class="d-none" id="s5">
     
     
-    
-    
-      
           <div class="cards">
     
     
@@ -156,11 +153,11 @@
                   <div class="infos">
                     <span class="name">Hola <%=dbUserQ[0].nombre %></span>
                     <span class="lorem">El usuario con id: <%= dbNotifi[i].id_user %> le
-                      interesa tu inmueble
-                       ubicado en: <%= dbInmuebles[index].municipio%> 
-                       registro: <%= dbInmuebles[index].id%> 
-                       precio mensual: <%= dbInmuebles[index].precio%> 
-                      Puedes ponerte en contacto con el usuario interesado con el siguiente numero Telefonico: <%= dbNotifi[i].mensaje %></span>
+                      Interesa Tú Inmueble
+                       Ubicado En: <%= dbInmuebles[index].municipio%> 
+                       Registro: <%= dbInmuebles[index].id%> 
+                       Precio Mensual: <%= dbInmuebles[index].precio%> 
+                      Puedes ponerte en contacto con el usuario interesado con el siguiente numero Teléfonico: <%= dbNotifi[i].mensaje %></span>
                   </div>
                   <div class="socials">
                     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
@@ -225,7 +222,7 @@
           </button>
         </form><br>
         <% }else{ %>
-        <h2 style="color:rgb(255, 255, 255);"> La opcion mas clara House By Damo </h2>
+        <h2 style="color:rgb(255, 255, 255);"> La Opción Más Clara HOUSE BY DAMO </h2>
 
         <% } %>
       </div>
